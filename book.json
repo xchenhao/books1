@@ -1,0 +1,41 @@
+{
+    "root": "./",
+    "title": "不可思议",
+    "author": "xchenhao",
+    "authorHomepage": "https://blog.csdn.net/xchenhao",
+    "description": "大千世界，不可思议",
+    "language": "zh-hans",
+    "copyright": "All Rights Reserved",
+    "plugins": [
+        "theme-code@0.0.20",
+        "-sharing",
+        "-lunr", 
+        "-search",
+        "search-pro",
+        "splitter",
+        "tbfed-pagefooter",
+        "expandable-chapters-small",
+        "github",
+        "-sharing-plus",
+        "code",
+        "-copy-code-button",
+        "anchor-navigation-ex"
+    ],
+    "pluginsConfig": {
+        "tbfed-pagefooter": {
+            "copyright":"xchenhao@2019",
+            "modify_label": "Last Updated: ",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "expandable-chapters":{},
+        "theme-default": {
+            "showLevel": false
+        },
+        "github": {
+            "url": "https://github.com/xchenhao"
+        },
+        "anchor-navigation-ex":{
+            "showLevel": false
+        }
+    }
+}
