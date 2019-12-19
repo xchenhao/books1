@@ -1,5 +1,5 @@
-./_book
+_book/
 
-./files
+files/
 
-./node_modules
+node_modules/
