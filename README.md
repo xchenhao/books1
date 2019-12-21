@@ -1,10 +1,3 @@
-# Deployment
+# 不可思议
 
-```sh
-# npm install gitbook-cli -g
-
-gitbook install
-gitbook build
-# gitbook serve
-```
-
+- 记录学习笔记
