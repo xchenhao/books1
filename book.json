@@ -20,7 +20,8 @@
         "code",
         "-copy-code-button",
         "anchor-navigation-ex",
-        "expandable-chapters"
+        "expandable-chapters",
+        "baidu"
     ],
     "pluginsConfig": {
         "tbfed-pagefooter": {
@@ -34,6 +35,9 @@
         },
         "github": {
             "url": "https://github.com/xchenhao"
+        },
+        "baidu": {
+            "token": "83c43387e8272ad163b25a4242e92fee"
         },
         "anchor-navigation-ex":{
             "showLevel": false
