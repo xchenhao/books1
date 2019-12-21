@@ -19,7 +19,8 @@
         "-sharing-plus",
         "code",
         "-copy-code-button",
-        "anchor-navigation-ex"
+        "anchor-navigation-ex",
+        "expandable-chapters"
     ],
     "pluginsConfig": {
         "tbfed-pagefooter": {

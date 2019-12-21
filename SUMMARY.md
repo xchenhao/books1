@@ -2,7 +2,7 @@
 
 * [Introduction](./README.md)
 
-* MongoDB 使用笔记
-  * [基础](./docs/mongo.md)
-  * [进阶](./docs/mongo_2.md)
+* MongoDB
+  * [基础](./docs/mongo/basis.md)
+  * [进阶](./docs/mongo/begin.md)
 
