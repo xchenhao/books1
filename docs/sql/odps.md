@@ -2,7 +2,7 @@
 
 ### ODPS
 - Open Data Processing Service
-- 与 Hive SQL 语法基本一致
+- ODPS SQL 与 Hive SQL 语法基本一致，语法是标准语法 ANSI SQL92 的一个子集，并有自己的扩展
 
 ### 创建表
 
@@ -59,19 +59,39 @@ SETPROJECT odps.sql.allow.fullscan = true; -- 对整个项目
 ### 更新（INSERT 语句）
 
 ```sql
--- 覆盖更新
-INSERT OVERWRITE TABLE a SELECT * FROM b;
+-- 注意与 MySQL 区别（有 TABLE 关键字）
 
+INSERT OVERWRITE|INTO TABLE tablename [PARTITION (partcol1=val1, partcol2=val2 ...)] [(col1,col2 ...)]
+select_statement
+FROM from_statement;
+```
+
+#### 示例
+
+```sql
+-- 覆盖更新（不支持指定列）
+INSERT OVERWRITE TABLE a SELECT * FROM b;
 -- 追加更新
-INSERT INTO a SELECT * FROM b;
+INSERT INTO TABLE a SELECT * FROM b;
+
+
+-- 创建目标表sale_detail_insert。
+create table sale_detail_insert like sale_detail;
+-- 给目标表增加分区。
+alter table sale_detail_insert add partition(sale_date='2013', region='china');
+-- 从源表sale_detail中取出数据插入目标表sale_detail_insert。
+insert overwrite table sale_detail_insert partition (sale_date='2013', region='china')
+  select shop_name, customer_id,total_price from sale_detail;
 ```
 
 ### 参考
 
+- SQL概述 https://help.aliyun.com/document_detail/27860.html
+- 更新表数据 INSERT OVERWRITE|INSERT INTO  https://help.aliyun.com/document_detail/73775.html
+- 基于ODPS的SQL语句 https://blog.csdn.net/dream_catcher_10/article/details/48826639
 - 2.3 阿里云ODPS常用SQL操作 https://www.jianshu.com/p/ca4189482409
 - 2.2 阿里云ODPS常用命令总结 https://www.jianshu.com/p/65378f022edd
 - 2.1 阿里云ODPS数据上传与下载 https://www.jianshu.com/p/a88d72afb3f0
-- 基于ODPS的SQL语句 https://blog.csdn.net/dream_catcher_10/article/details/48826639
 
 ### 记录
 
