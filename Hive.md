@@ -1,4 +1,4 @@
-## Hive
+### Hive 笔记
 
 ### Hive 工作原理
 ![Hive 工作原理](./images/hive_process.jpg)

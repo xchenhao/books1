@@ -1,4 +1,4 @@
-### 工具
+### JetBrains 破解
   - jetbrains-agent.jar
   - reset_jetbrains_eval_mac_linux.sh 或 reset_jetbrains_eval_windows.vbs
   - 工具下载地址：`https://pan.baidu.com/s/1K0C6ZfFv4ipdbTF5Cf36Bw 提取码: xrqm`
@@ -15,7 +15,7 @@
   - 将 lib 文件夹中的 **jetbrains-agent.jar 拖进 IDE 窗口**，在弹出的对话框中**点击安装**
   - **重启 IDE**，激活完成
 
-[![PHPStorm](http://note.books1.cn/wp-content/uploads/2020/04/281a30ac796ec6601c53338047856bb3.png)](http://note.books1.cn/wp-content/uploads/2020/04/281a30ac796ec6601c53338047856bb3.png)
+[![PHPStorm](./images/jetbrains_crack.png)](./images/jetbrains_crack.png)
 
 ### 适用范围
 理论上适⽤于⽬前Jetbrains全系列所有新⽼版本
