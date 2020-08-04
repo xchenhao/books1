@@ -1,7 +1,5 @@
 .DS_Store
-
 _book/
-
 files/
-
 node_modules/
+.vuepress/
