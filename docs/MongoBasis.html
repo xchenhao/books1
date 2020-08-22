@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Mongo 起步 | 不可思议</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    
+    <meta name="description" content="books1.cn">
+    <link rel="preload" href="/assets/css/0.styles.7ff0489b.css" as="style"><link rel="preload" href="/assets/js/app.679d03e9.js" as="script"><link rel="preload" href="/assets/js/2.d26c1986.js" as="script"><link rel="preload" href="/assets/js/7.1cc03740.js" as="script"><link rel="prefetch" href="/assets/js/10.3cd66de6.js"><link rel="prefetch" href="/assets/js/11.398fabc2.js"><link rel="prefetch" href="/assets/js/12.2de171eb.js"><link rel="prefetch" href="/assets/js/13.458a9e5c.js"><link rel="prefetch" href="/assets/js/3.b12edfa9.js"><link rel="prefetch" href="/assets/js/4.4c7a5221.js"><link rel="prefetch" href="/assets/js/5.8e0f96c5.js"><link rel="prefetch" href="/assets/js/6.e150a42e.js"><link rel="prefetch" href="/assets/js/8.f450415a.js"><link rel="prefetch" href="/assets/js/9.3a330e87.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.7ff0489b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">不可思议</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/Hive.html" class="sidebar-link">Hive 笔记</a></li><li><a href="/ODPS.html" class="sidebar-link">阿里云 ODPS 笔记</a></li><li><a href="/MongoBasis.html" aria-current="page" class="active sidebar-link">Mongo 起步</a></li><li><a href="/MongoBegin.html" class="sidebar-link">Mongo 基础</a></li><li><a href="/WebTorrent.html" class="sidebar-link">WebTorrent</a></li><li><a href="/JetBrainsCrack.html" class="sidebar-link">JetBrains 破解</a></li><li><a href="/Python.html" class="sidebar-link">/Python.html</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h4 id="mongo-起步"><a href="#mongo-起步" class="header-anchor">#</a> Mongo 起步</h4> <h5 id="安装"><a href="#安装" class="header-anchor">#</a> 安装</h5> <div class="language-shell extra-class"><pre class="language-shell"><code>brew <span class="token function">install</span> mongodb
+
+<span class="token comment"># 遇到 Error: An unexpected error occurred during the `brew link` step 解决方法</span>
+<span class="token comment"># 参考 https://blog.csdn.net/qq_24909089/article/details/83378210</span>
+<span class="token function">sudo</span> <span class="token function">mkdir</span> /usr/local/Frameworks
+<span class="token function">sudo</span> <span class="token function">chown</span> -R <span class="token variable"><span class="token variable">$(</span><span class="token function">whoami</span><span class="token variable">)</span></span> /usr/local/Frameworks
+</code></pre></div><h5 id="启动"><a href="#启动" class="header-anchor">#</a> 启动</h5> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 启动服务器</span>
+<span class="token function">mkdir</span> -p ./mongodb/data/db
+mongod --dbpath ./mongodb/data/db
+
+<span class="token comment"># 启动客户端</span>
+mongo
+</code></pre></div><h4 id="小试牛刀"><a href="#小试牛刀" class="header-anchor">#</a> 小试牛刀</h4> <h5 id="查看数据库"><a href="#查看数据库" class="header-anchor">#</a> 查看数据库</h5> <blockquote><p>show dbs</p></blockquote> <p>admin   0.000GB
+config  0.000GB
+local   0.000GB</p> <h5 id="创建-进入数据库"><a href="#创建-进入数据库" class="header-anchor">#</a> 创建/进入数据库</h5> <blockquote><p>use test</p></blockquote> <div class="language- extra-class"><pre><code>switched to db test
+</code></pre></div><h5 id="查看当前数据库"><a href="#查看当前数据库" class="header-anchor">#</a> 查看当前数据库</h5> <blockquote><p>db</p></blockquote> <div class="language- extra-class"><pre><code>test
+</code></pre></div><h5 id="插入文档"><a href="#插入文档" class="header-anchor">#</a> 插入文档</h5> <blockquote><p>db.myCollection.insert({'fruit': 'apple'})</p></blockquote> <div class="language- extra-class"><pre><code>WriteResult({ &quot;nInserted&quot; : 1 })
+</code></pre></div><h5 id="查看文档"><a href="#查看文档" class="header-anchor">#</a> 查看文档</h5> <blockquote><p>db.myCollection.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6931cb2978f4bd9becafc&quot;), &quot;fruit&quot; : &quot;apple&quot; }
+</code></pre></div><h5 id="查看当前数据库的所有集合"><a href="#查看当前数据库的所有集合" class="header-anchor">#</a> 查看当前数据库的所有集合</h5> <blockquote><p>show tables 或 show collections</p></blockquote> <div class="language- extra-class"><pre><code>myCollection
+</code></pre></div><h5 id="删除文档"><a href="#删除文档" class="header-anchor">#</a> 删除文档</h5> <blockquote><p>db.myCollection.remove()</p></blockquote> <div class="language- extra-class"><pre><code>WriteResult({ &quot;nRemoved&quot; : 1 })
+</code></pre></div><h5 id="删除集合"><a href="#删除集合" class="header-anchor">#</a> 删除集合</h5> <blockquote><p>db.myCollection.drop()</p></blockquote> <div class="language- extra-class"><pre><code>true
+</code></pre></div><h5 id="删除当前数据库"><a href="#删除当前数据库" class="header-anchor">#</a> 删除当前数据库</h5> <blockquote><p>db.dropDatabase()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;dropped&quot; : &quot;test&quot;, &quot;ok&quot; : 1 } 
+</code></pre></div><h4 id="更新-update-query-update-upsert-multi"><a href="#更新-update-query-update-upsert-multi" class="header-anchor">#</a> 更新 update(query, update, upsert, multi)</h4> <h5 id="inc-增加计数"><a href="#inc-增加计数" class="header-anchor">#</a> $inc 增加计数</h5> <blockquote><p>数据准备
+db.myCollection.insert({&quot;fruit&quot;: &quot;banana&quot;, &quot;count&quot;: 1})</p></blockquote> <blockquote><p>增加 3
+db.myCollection.update({&quot;fruit&quot;: &quot;banana&quot;}, {$inc: {&quot;count&quot;: 3}})
+db.myCollection.find()</p></blockquote> <div class="language- extra-class"><pre><code># 由 1 变成 4
+{ &quot;_id&quot; : ObjectId(&quot;5cd69a30b2978f4bd9becafd&quot;), &quot;fruit&quot; : &quot;banana&quot;, &quot;count&quot; : 4 }
+</code></pre></div><h5 id="set-设置字段值（若不存在则创建，已存在则覆盖），-unset-删除字段"><a href="#set-设置字段值（若不存在则创建，已存在则覆盖），-unset-删除字段" class="header-anchor">#</a> $set 设置字段值（若不存在则创建，已存在则覆盖），$unset 删除字段</h5> <blockquote><p>增加字段 owner
+db.myCollection.update({&quot;fruit&quot;: &quot;banana&quot;}, {&quot;$set&quot;: {&quot;owner&quot;: &quot;xchenhao&quot;}})
+db.myCollection.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd69a30b2978f4bd9becafd&quot;), &quot;fruit&quot; : &quot;banana&quot;, &quot;count&quot; : 4, &quot;owner&quot; : &quot;xchenhao&quot; }
+</code></pre></div><blockquote><p>已存在情况下则覆盖原有
+db.myCollection.update({&quot;fruit&quot;: &quot;banana&quot;}, {&quot;$set&quot;: {&quot;owner&quot;: &quot;somebody&quot;}})
+db.myCollection.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd69a30b2978f4bd9becafd&quot;), &quot;fruit&quot; : &quot;banana&quot;, &quot;count&quot; : 4, &quot;owner&quot; : &quot;somebody&quot; }
+</code></pre></div><blockquote><p>删除字段
+db.myCollection.update({&quot;fruit&quot;: &quot;banana&quot;}, {&quot;$unset&quot;: {&quot;owner&quot;: 1}})
+db.myCollection.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd69a30b2978f4bd9becafd&quot;), &quot;fruit&quot; : &quot;banana&quot;, &quot;count&quot; : 4 }
+</code></pre></div><h5 id="push-对数组追加元素"><a href="#push-对数组追加元素" class="header-anchor">#</a> $push 对数组追加元素</h5> <blockquote><p>db.myCollection.update({&quot;fruit&quot;: &quot;banana&quot;}, {$push: {&quot;owner&quot;: &quot;xchenhao&quot;}})
+db.myCollection.update({&quot;fruit&quot;: &quot;banana&quot;}, {$push: {&quot;owner&quot;: &quot;somebody&quot;}})
+db.myCollection.update({&quot;fruit&quot;: &quot;banana&quot;}, {$push: {&quot;owner&quot;: &quot;somebody&quot;}})
+db.myCollection.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd69a30b2978f4bd9becafd&quot;), &quot;fruit&quot; : &quot;banana&quot;, &quot;count&quot; : 4, &quot;owner&quot; : [ &quot;xchenhao&quot;, &quot;somebody&quot;, &quot;somebody&quot; ] }
+</code></pre></div><h5 id="pop-从数组元素中弹出元素（1-从尾部，-1-从头部）"><a href="#pop-从数组元素中弹出元素（1-从尾部，-1-从头部）" class="header-anchor">#</a> $pop 从数组元素中弹出元素（1 从尾部，-1 从头部）</h5> <blockquote><p>db.myCollection.update({&quot;fruit&quot;: &quot;banana&quot;}, {$pop: {&quot;owner&quot;: 1}})
+db.myCollection.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd69a30b2978f4bd9becafd&quot;), &quot;fruit&quot; : &quot;banana&quot;, &quot;count&quot; : 4, &quot;owner&quot; : [ &quot;xchenhao&quot;, &quot;somebody&quot; ] }
+</code></pre></div><h5 id="addtoset-添加到集合中（若已存在则不会增加）"><a href="#addtoset-添加到集合中（若已存在则不会增加）" class="header-anchor">#</a> $addToSet 添加到集合中（若已存在则不会增加）</h5> <blockquote><p>$each 可以依次增加
+db.myCollection.update({&quot;fruit&quot;: &quot;banana&quot;}, {$addToSet: {&quot;owner&quot;: {$each: [&quot;somebody&quot;, &quot;someone&quot;]}}})
+db.myCollection.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd69a30b2978f4bd9becafd&quot;), &quot;fruit&quot; : &quot;banana&quot;, &quot;count&quot; : 4, &quot;owner&quot; : [ &quot;xchenhao&quot;, &quot;somebody&quot;, &quot;someone&quot; ] }
+</code></pre></div><blockquote><p>db.myCollection.update({&quot;fruit&quot;: &quot;banana&quot;}, {$pop: {&quot;owner&quot;: -1}})
+db.myCollection.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd69a30b2978f4bd9becafd&quot;), &quot;fruit&quot; : &quot;banana&quot;, &quot;count&quot; : 4, &quot;owner&quot; : [ &quot;somebody&quot;, &quot;someone&quot; ] }
+</code></pre></div><h5 id="pull-删除数组中完全匹配的元素"><a href="#pull-删除数组中完全匹配的元素" class="header-anchor">#</a> $pull 删除数组中完全匹配的元素</h5> <blockquote><p>db.myCollection.update({&quot;fruit&quot;: &quot;banana&quot;}, {$push: {&quot;owner&quot;: &quot;somebody&quot;}})
+db.myCollection.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd69a30b2978f4bd9becafd&quot;), &quot;fruit&quot; : &quot;banana&quot;, &quot;count&quot; : 4, &quot;owner&quot; : [ &quot;somebody&quot;, &quot;someone&quot;, &quot;somebody&quot; ] }
+</code></pre></div><blockquote><p>db.myCollection.update({&quot;fruit&quot;: &quot;banana&quot;}, {$pull: {&quot;owner&quot;: &quot;somebody&quot;}})
+db.myCollection.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd69a30b2978f4bd9becafd&quot;), &quot;fruit&quot; : &quot;banana&quot;, &quot;count&quot; : 4, &quot;owner&quot; : [ &quot;someone&quot; ] }
+</code></pre></div><h5 id="set-的补充说明：对数组中的某个位置元素进行更新"><a href="#set-的补充说明：对数组中的某个位置元素进行更新" class="header-anchor">#</a> $set 的补充说明：对数组中的某个位置元素进行更新</h5> <blockquote><p>准备数据
+db.myCollection.update({&quot;fruit&quot;: &quot;banana&quot;}, {$set: {&quot;owner&quot;: [&quot;xchenhao&quot;, &quot;somebody&quot;, &quot;someone&quot;]}})
+db.myCollection.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd69a30b2978f4bd9becafd&quot;), &quot;fruit&quot; : &quot;banana&quot;, &quot;count&quot; : 4, &quot;owner&quot; : [ &quot;xchenhao&quot;, &quot;somebody&quot;, &quot;someone&quot; ] }
+</code></pre></div><blockquote><p>对数组第一个元素进行更新
+db.myCollection.update({&quot;fruit&quot;: &quot;banana&quot;}, {$set: {&quot;owner.0&quot;: &quot;whoami&quot;}})
+db.myCollection.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd69a30b2978f4bd9becafd&quot;), &quot;fruit&quot; : &quot;banana&quot;, &quot;count&quot; : 4, &quot;owner&quot; : [ &quot;whoami&quot;, &quot;somebody&quot;, &quot;someone&quot; ] }
+</code></pre></div><blockquote><p>不知道位置则用 $ 代替（查找到的位置）
+db.myCollection.update({&quot;owner&quot;: &quot;whoami&quot;}, {$set: {&quot;owner.$&quot;: &quot;It is me&quot;}})
+db.myCollection.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd69a30b2978f4bd9becafd&quot;), &quot;fruit&quot; : &quot;banana&quot;, &quot;count&quot; : 4, &quot;owner&quot; : [ &quot;It is me&quot;, &quot;somebody&quot;, &quot;someone&quot; ] }
+</code></pre></div><h5 id="update-第三个参数-upsert（是否在不存在的情况下进行插入）"><a href="#update-第三个参数-upsert（是否在不存在的情况下进行插入）" class="header-anchor">#</a> update 第三个参数 upsert（是否在不存在的情况下进行插入）</h5> <blockquote><p>db.fruit.find()
+db.fruit.update({&quot;name&quot;: &quot;apple&quot;}, {$set: {&quot;count&quot;: 100}}, true)</p></blockquote> <div class="language- extra-class"><pre><code>WriteResult({
+        &quot;nMatched&quot; : 0,
+        &quot;nUpserted&quot; : 1,
+        &quot;nModified&quot; : 0,
+        &quot;_id&quot; : ObjectId(&quot;5cd6a66105b099b1e534eaed&quot;)
+})
+</code></pre></div><blockquote><p>db.fruit.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6a66105b099b1e534eaed&quot;), &quot;name&quot; : &quot;apple&quot;, &quot;count&quot; : 100 }
+</code></pre></div><blockquote><p>db.fruit.update({&quot;name&quot;: &quot;apple&quot;}, {$set: {&quot;count&quot;: 999}}, true)
+db.fruit.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6a66105b099b1e534eaed&quot;), &quot;name&quot; : &quot;apple&quot;, &quot;count&quot; : 999 }
+</code></pre></div><h5 id="save-更新或创建（更新时需要指定-id）"><a href="#save-更新或创建（更新时需要指定-id）" class="header-anchor">#</a> save() 更新或创建（更新时需要指定 _id）</h5> <blockquote><p>db.fruit.save({&quot;name&quot;: &quot;banana&quot;, &quot;count&quot;: 10})</p></blockquote> <div class="language- extra-class"><pre><code>WriteResult({ &quot;nInserted&quot; : 1 })
+</code></pre></div><blockquote><p>db.fruit.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6a66105b099b1e534eaed&quot;), &quot;name&quot; : &quot;apple&quot;, &quot;count&quot; : 999 }
+{ &quot;_id&quot; : ObjectId(&quot;5cd6a6a0b2978f4bd9becafe&quot;), &quot;name&quot; : &quot;banana&quot;, &quot;count&quot; : 10 }
+</code></pre></div><blockquote><p>db.fruit.save({&quot;_id&quot;: ObjectId(&quot;5cd6a6a0b2978f4bd9becafe&quot;), &quot;name&quot;: &quot;banana&quot;, &quot;count&quot;: 800})</p></blockquote> <div class="language- extra-class"><pre><code>WriteResult({ &quot;nMatched&quot; : 1, &quot;nUpserted&quot; : 0, &quot;nModified&quot; : 1 })
+</code></pre></div><blockquote><p>db.fruit.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6a66105b099b1e534eaed&quot;), &quot;name&quot; : &quot;apple&quot;, &quot;count&quot; : 999 }
+{ &quot;_id&quot; : ObjectId(&quot;5cd6a6a0b2978f4bd9becafe&quot;), &quot;name&quot; : &quot;banana&quot;, &quot;count&quot; : 800 }
+</code></pre></div><h5 id="update-第四个参数是否更新多个文档（默认只更新找到的第一个文档）"><a href="#update-第四个参数是否更新多个文档（默认只更新找到的第一个文档）" class="header-anchor">#</a> update 第四个参数是否更新多个文档（默认只更新找到的第一个文档）</h5> <blockquote><p>db.fruit.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6a66105b099b1e534eaed&quot;), &quot;name&quot; : &quot;apple&quot;, &quot;count&quot; : 999 }
+{ &quot;_id&quot; : ObjectId(&quot;5cd6a6a0b2978f4bd9becafe&quot;), &quot;name&quot; : &quot;banana&quot;, &quot;count&quot; : 800 }
+</code></pre></div><blockquote><p>db.fruit.update({}, {$inc: {&quot;count&quot;: -100}}, false, false)</p></blockquote> <div class="language- extra-class"><pre><code>WriteResult({ &quot;nMatched&quot; : 1, &quot;nUpserted&quot; : 0, &quot;nModified&quot; : 1 })
+</code></pre></div><blockquote><p>db.fruit.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6a66105b099b1e534eaed&quot;), &quot;name&quot; : &quot;apple&quot;, &quot;count&quot; : 899 }
+{ &quot;_id&quot; : ObjectId(&quot;5cd6a6a0b2978f4bd9becafe&quot;), &quot;name&quot; : &quot;banana&quot;, &quot;count&quot; : 800 }
+</code></pre></div><blockquote><p>db.fruit.update({}, {$inc: {&quot;count&quot;: -100}}, false, true)</p></blockquote> <div class="language- extra-class"><pre><code>WriteResult({ &quot;nMatched&quot; : 2, &quot;nUpserted&quot; : 0, &quot;nModified&quot; : 2 })
+</code></pre></div><blockquote><p>db.fruit.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6a66105b099b1e534eaed&quot;), &quot;name&quot; : &quot;apple&quot;, &quot;count&quot; : 799 }
+{ &quot;_id&quot; : ObjectId(&quot;5cd6a6a0b2978f4bd9becafe&quot;), &quot;name&quot; : &quot;banana&quot;, &quot;count&quot; : 700 }
+</code></pre></div><blockquote><p>获取上次执行的反馈信息
+db.runCommand({getLastError: 1})</p></blockquote> <div class="language- extra-class"><pre><code>{
+        &quot;connectionId&quot; : 1,
+        &quot;n&quot; : 0,
+        &quot;syncMillis&quot; : 0,
+        &quot;writtenTo&quot; : null,
+        &quot;err&quot; : null,
+        &quot;ok&quot; : 1
+}
+</code></pre></div><h4 id="查询-find-query-show-fields"><a href="#查询-find-query-show-fields" class="header-anchor">#</a> 查询 find(query, show_fields)</h4> <blockquote><p>db.food.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6ec90b2978f4bd9becaff&quot;), &quot;count&quot; : 30, &quot;name&quot; : &quot;薯条&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5cd6ecb8b2978f4bd9becb00&quot;), &quot;name&quot; : &quot;炸鸡&quot;, &quot;count&quot; : 8 }
+{ &quot;_id&quot; : ObjectId(&quot;5cd6ecc2b2978f4bd9becb01&quot;), &quot;name&quot; : &quot;热狗&quot;, &quot;count&quot; : 12 }
+</code></pre></div><blockquote><p>第二参数指定是否输出（0 为不输出，除了 _id 外，其它需全为 1 或 0）
+参考 https://www.runoob.com/mongodb/mongodb-query.html
+db.food.find({}, {&quot;name&quot;: 1, &quot;_id&quot;: 0})</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;name&quot; : &quot;薯条&quot; }
+{ &quot;name&quot; : &quot;炸鸡&quot; }
+{ &quot;name&quot; : &quot;热狗&quot; }
+</code></pre></div><blockquote><p>查询 count 小于 10
+db.food.find({&quot;count&quot;: {$lt: 10}})</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6ecb8b2978f4bd9becb00&quot;), &quot;name&quot; : &quot;炸鸡&quot;, &quot;count&quot; : 8 }
+</code></pre></div><blockquote><p>查询 count 大于 10 且小于 20
+db.food.find({&quot;count&quot;: {$gt: 10, $lt: 20}})</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6ecc2b2978f4bd9becb01&quot;), &quot;name&quot; : &quot;热狗&quot;, &quot;count&quot; : 12 }
+</code></pre></div><blockquote><p>查询 name 不等于 炸鸡
+db.food.find({&quot;name&quot;: {$ne: &quot;炸鸡&quot;}})</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6ec90b2978f4bd9becaff&quot;), &quot;count&quot; : 30, &quot;name&quot; : &quot;薯条&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5cd6ecc2b2978f4bd9becb01&quot;), &quot;name&quot; : &quot;热狗&quot;, &quot;count&quot; : 12 }
+</code></pre></div><blockquote><p>查询 name 属于在热狗、薯条之中的
+db.food.find({&quot;name&quot;: {$in: [&quot;热狗&quot;, &quot;薯条&quot;]}})</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6ec90b2978f4bd9becaff&quot;), &quot;count&quot; : 30, &quot;name&quot; : &quot;薯条&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5cd6ecc2b2978f4bd9becb01&quot;), &quot;name&quot; : &quot;热狗&quot;, &quot;count&quot; : 12 }
+</code></pre></div><blockquote><p>查询 name 为薯条或炸鸡
+db.food.find({$or: [{&quot;name&quot;: &quot;薯条&quot;}, {&quot;name&quot;: &quot;炸鸡&quot;}]})</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6ec90b2978f4bd9becaff&quot;), &quot;count&quot; : 30, &quot;name&quot; : &quot;薯条&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;5cd6ecb8b2978f4bd9becb00&quot;), &quot;name&quot; : &quot;炸鸡&quot;, &quot;count&quot; : 8 }
+</code></pre></div><blockquote><p>db.food2.find()</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6ec90b2978f4bd9becaff&quot;), &quot;count&quot; : 30, &quot;name&quot; : &quot;薯条&quot;, &quot;style&quot; : [ &quot;微辣&quot;, &quot;香辣&quot; ] }
+{ &quot;_id&quot; : ObjectId(&quot;5cd6ecb8b2978f4bd9becb00&quot;), &quot;name&quot; : &quot;炸鸡&quot;, &quot;count&quot; : 8, &quot;style&quot; : [ &quot;微辣&quot;, &quot;香辣&quot; ] }
+{ &quot;_id&quot; : ObjectId(&quot;5cd6ecc2b2978f4bd9becb01&quot;), &quot;name&quot; : &quot;热狗&quot;, &quot;count&quot; : 12, &quot;style&quot; : [ &quot;原味&quot; ] }
+</code></pre></div><blockquote><p>查询 style 包含香辣及微辣的
+db.food2.find({&quot;style&quot;: {$all: [&quot;香辣&quot;, &quot;微辣&quot;]}})</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6ec90b2978f4bd9becaff&quot;), &quot;count&quot; : 30, &quot;name&quot; : &quot;薯条&quot;, &quot;style&quot; : [ &quot;微辣&quot;, &quot;香辣&quot; ] }
+{ &quot;_id&quot; : ObjectId(&quot;5cd6ecb8b2978f4bd9becb00&quot;), &quot;name&quot; : &quot;炸鸡&quot;, &quot;count&quot; : 8, &quot;style&quot; : [ &quot;微辣&quot;, &quot;香辣&quot; ] }
+</code></pre></div><blockquote><p>查询 style 只有 1 个
+db.food.find({&quot;style&quot;: {$size: 1}})</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6ecc2b2978f4bd9becb01&quot;), &quot;name&quot; : &quot;热狗&quot;, &quot;count&quot; : 12, &quot;style&quot; : [ &quot;原味&quot; ] }
+</code></pre></div><blockquote><p>按 count 倒序排
+db.food.find().sort({&quot;count&quot;: -1})</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6ec90b2978f4bd9becaff&quot;), &quot;count&quot; : 30, &quot;name&quot; : &quot;薯条&quot;, &quot;style&quot; : [ &quot;微辣&quot;, &quot;香辣&quot; ] }
+{ &quot;_id&quot; : ObjectId(&quot;5cd6ecc2b2978f4bd9becb01&quot;), &quot;name&quot; : &quot;热狗&quot;, &quot;count&quot; : 12, &quot;style&quot; : [ &quot;原味&quot; ] }
+{ &quot;_id&quot; : ObjectId(&quot;5cd6ecb8b2978f4bd9becb00&quot;), &quot;name&quot; : &quot;炸鸡&quot;, &quot;count&quot; : 8, &quot;style&quot; : [ &quot;微辣&quot;, &quot;香辣&quot; ] }
+</code></pre></div><blockquote><p>按 count 倒序排，跳过第 1 个，输出 1 个
+db.food.find().sort({&quot;count&quot;: -1}).skip(1).limit(1)</p></blockquote> <div class="language- extra-class"><pre><code>{ &quot;_id&quot; : ObjectId(&quot;5cd6ecc2b2978f4bd9becb01&quot;), &quot;name&quot; : &quot;热狗&quot;, &quot;count&quot; : 12, &quot;style&quot; : [ &quot;原味&quot; ] }
+</code></pre></div><blockquote><p>格式化输出
+db.food2.find().pretty()</p></blockquote> <div class="language- extra-class"><pre><code>{
+        &quot;_id&quot; : ObjectId(&quot;5cd6ec90b2978f4bd9becaff&quot;),
+        &quot;count&quot; : 30,
+        &quot;name&quot; : &quot;薯条&quot;,
+        &quot;style&quot; : [
+                &quot;微辣&quot;,
+                &quot;香辣&quot;
+        ]
+}
+{
+        &quot;_id&quot; : ObjectId(&quot;5cd6ecb8b2978f4bd9becb00&quot;),
+        &quot;name&quot; : &quot;炸鸡&quot;,
+        &quot;count&quot; : 8,
+        &quot;style&quot; : [
+                &quot;微辣&quot;,
+                &quot;香辣&quot;
+        ]
+}
+{
+        &quot;_id&quot; : ObjectId(&quot;5cd6ecc2b2978f4bd9becb01&quot;),
+        &quot;name&quot; : &quot;热狗&quot;,
+        &quot;count&quot; : 12,
+        &quot;style&quot; : [
+                &quot;原味&quot;
+        ]
+}
+</code></pre></div><h4 id="参考"><a href="#参考" class="header-anchor">#</a> 参考</h4> <ul><li>https://www.runoob.com/mongodb/mongodb-update.html</li> <li>https://github.com/qianjiahao/MongoDB</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/ODPS.html" class="prev">
+        阿里云 ODPS 笔记
+      </a></span> <span class="next"><a href="/MongoBegin.html">
+        Mongo 基础
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.679d03e9.js" defer></script><script src="/assets/js/2.d26c1986.js" defer></script><script src="/assets/js/7.1cc03740.js" defer></script>
+  </body>
+</html>

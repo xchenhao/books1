@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>阿里云 ODPS 笔记 | 不可思议</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    
+    <meta name="description" content="books1.cn">
+    <link rel="preload" href="/assets/css/0.styles.7ff0489b.css" as="style"><link rel="preload" href="/assets/js/app.679d03e9.js" as="script"><link rel="preload" href="/assets/js/2.d26c1986.js" as="script"><link rel="preload" href="/assets/js/9.3a330e87.js" as="script"><link rel="prefetch" href="/assets/js/10.3cd66de6.js"><link rel="prefetch" href="/assets/js/11.398fabc2.js"><link rel="prefetch" href="/assets/js/12.2de171eb.js"><link rel="prefetch" href="/assets/js/13.458a9e5c.js"><link rel="prefetch" href="/assets/js/3.b12edfa9.js"><link rel="prefetch" href="/assets/js/4.4c7a5221.js"><link rel="prefetch" href="/assets/js/5.8e0f96c5.js"><link rel="prefetch" href="/assets/js/6.e150a42e.js"><link rel="prefetch" href="/assets/js/7.1cc03740.js"><link rel="prefetch" href="/assets/js/8.f450415a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.7ff0489b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">不可思议</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/Hive.html" class="sidebar-link">Hive 笔记</a></li><li><a href="/ODPS.html" aria-current="page" class="active sidebar-link">阿里云 ODPS 笔记</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/MongoBasis.html" class="sidebar-link">Mongo 起步</a></li><li><a href="/MongoBegin.html" class="sidebar-link">Mongo 基础</a></li><li><a href="/WebTorrent.html" class="sidebar-link">WebTorrent</a></li><li><a href="/JetBrainsCrack.html" class="sidebar-link">JetBrains 破解</a></li><li><a href="/Python.html" class="sidebar-link">/Python.html</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h3 id="阿里云-odps-笔记"><a href="#阿里云-odps-笔记" class="header-anchor">#</a> 阿里云 ODPS 笔记</h3> <h3 id="odps"><a href="#odps" class="header-anchor">#</a> ODPS</h3> <ul><li>Open Data Processing Service</li> <li>ODPS SQL 与 Hive SQL 语法基本一致，语法是标准语法 ANSI SQL92 的一个子集，并有自己的扩展</li></ul> <h3 id="创建表"><a href="#创建表" class="header-anchor">#</a> 创建表</h3> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token comment">-- 表名与列名均无所谓大小写</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token punctuation">[</span><span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span><span class="token punctuation">]</span> table_name
+ <span class="token punctuation">[</span><span class="token punctuation">(</span>col_name data_type <span class="token punctuation">[</span><span class="token keyword">COMMENT</span> col_comment<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+ <span class="token punctuation">[</span><span class="token keyword">COMMENT</span> table_comment<span class="token punctuation">]</span>
+ <span class="token punctuation">[</span>PARTITIONED <span class="token keyword">BY</span> <span class="token punctuation">(</span>col_name data_type <span class="token punctuation">[</span><span class="token keyword">COMMENT</span> col_comment<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token comment">-- 分区表：根据各分区的LastDataModifiedTime判断该分区是否该被回收。</span>
+<span class="token comment">-- 不同于非分区表，分区表的最后一个分区被回收后，该表不会被删除。</span>
+
+<span class="token comment">-- 生命周期只能设定到表级别，不能在分区级设置生命周期。</span>
+<span class="token comment">-- days参数为生命周期时间，只接受正整数。单位：天。</span>
+ <span class="token punctuation">[</span>LIFECYCLE days<span class="token punctuation">]</span>
+ <span class="token punctuation">[</span><span class="token keyword">AS</span> select_statement<span class="token punctuation">]</span>
+
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token punctuation">[</span><span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span><span class="token punctuation">]</span> table_name
+ <span class="token operator">LIKE</span> existing_table_name
+</code></pre></div><h4 id="示例"><a href="#示例" class="header-anchor">#</a> 示例</h4> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> sale_detail<span class="token punctuation">(</span>
+      shop_name     STRING<span class="token punctuation">,</span>
+      customer_id   STRING<span class="token punctuation">,</span>
+      total_price   <span class="token keyword">DOUBLE</span><span class="token punctuation">)</span>
+PARTITIONED <span class="token keyword">BY</span> <span class="token punctuation">(</span>sale_date STRING<span class="token punctuation">,</span>region STRING<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">-- 添加分区</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> sale_detail <span class="token keyword">add</span> <span class="token keyword">partition</span> <span class="token punctuation">(</span>sale_date<span class="token operator">=</span><span class="token string">'201312'</span><span class="token punctuation">,</span> region<span class="token operator">=</span><span class="token string">'hangzhou'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="查看分区"><a href="#查看分区" class="header-anchor">#</a> 查看分区</h3> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">DESC</span> meta<span class="token punctuation">.</span>m_security_users <span class="token keyword">partition</span> <span class="token punctuation">(</span>ds<span class="token operator">=</span><span class="token string">'20191224'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">SHOW</span> PARTITIONS m_security_users<span class="token punctuation">;</span>
+</code></pre></div><h3 id="查询"><a href="#查询" class="header-anchor">#</a> 查询</h3> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">READ</span> tableName <span class="token keyword">PARTITION</span> <span class="token punctuation">(</span>partitionName <span class="token operator">=</span> <span class="token string">'xxx'</span><span class="token punctuation">)</span> <span class="token number">10</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="select"><a href="#select" class="header-anchor">#</a> SELECT</h4> <ul><li>SELECT 分区表时禁止全表扫描（需指定分区）</li> <li>实在需全表扫描：</li></ul> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SET</span> odps<span class="token punctuation">.</span><span class="token keyword">sql</span><span class="token punctuation">.</span>allow<span class="token punctuation">.</span>fullscan <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>  <span class="token comment">-- 对分区表</span>
+
+SETPROJECT odps<span class="token punctuation">.</span><span class="token keyword">sql</span><span class="token punctuation">.</span>allow<span class="token punctuation">.</span>fullscan <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">-- 对整个项目</span>
+</code></pre></div><h3 id="更新（insert-语句）"><a href="#更新（insert-语句）" class="header-anchor">#</a> 更新（INSERT 语句）</h3> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token comment">-- 注意与 MySQL 区别（有 TABLE 关键字）</span>
+
+<span class="token keyword">INSERT</span> OVERWRITE<span class="token operator">|</span><span class="token keyword">INTO</span> <span class="token keyword">TABLE</span> tablename <span class="token punctuation">[</span><span class="token keyword">PARTITION</span> <span class="token punctuation">(</span>partcol1<span class="token operator">=</span>val1<span class="token punctuation">,</span> partcol2<span class="token operator">=</span>val2 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">(</span>col1<span class="token punctuation">,</span>col2 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+select_statement
+<span class="token keyword">FROM</span> from_statement<span class="token punctuation">;</span>
+</code></pre></div><h4 id="示例-2"><a href="#示例-2" class="header-anchor">#</a> 示例</h4> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token comment">-- 覆盖更新（不支持指定列）</span>
+<span class="token keyword">INSERT</span> OVERWRITE <span class="token keyword">TABLE</span> a <span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> b<span class="token punctuation">;</span>
+<span class="token comment">-- 追加更新</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token keyword">TABLE</span> a <span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> b<span class="token punctuation">;</span>
+
+
+<span class="token comment">-- 创建目标表sale_detail_insert。</span>
+<span class="token keyword">create</span> <span class="token keyword">table</span> sale_detail_insert <span class="token operator">like</span> sale_detail<span class="token punctuation">;</span>
+<span class="token comment">-- 给目标表增加分区。</span>
+<span class="token keyword">alter</span> <span class="token keyword">table</span> sale_detail_insert <span class="token keyword">add</span> <span class="token keyword">partition</span><span class="token punctuation">(</span>sale_date<span class="token operator">=</span><span class="token string">'2013'</span><span class="token punctuation">,</span> region<span class="token operator">=</span><span class="token string">'china'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">-- 从源表sale_detail中取出数据插入目标表sale_detail_insert。</span>
+<span class="token keyword">insert</span> overwrite <span class="token keyword">table</span> sale_detail_insert <span class="token keyword">partition</span> <span class="token punctuation">(</span>sale_date<span class="token operator">=</span><span class="token string">'2013'</span><span class="token punctuation">,</span> region<span class="token operator">=</span><span class="token string">'china'</span><span class="token punctuation">)</span>
+  <span class="token keyword">select</span> shop_name<span class="token punctuation">,</span> customer_id<span class="token punctuation">,</span>total_price <span class="token keyword">from</span> sale_detail<span class="token punctuation">;</span>
+</code></pre></div><h3 id="参考"><a href="#参考" class="header-anchor">#</a> 参考</h3> <ul><li>SQL概述 https://help.aliyun.com/document_detail/27860.html</li> <li>更新表数据 INSERT OVERWRITE|INSERT INTO  https://help.aliyun.com/document_detail/73775.html</li> <li>ODPS语句集锦 https://blog.csdn.net/b2222505/article/details/79978131</li> <li>基于ODPS的SQL语句 https://blog.csdn.net/dream_catcher_10/article/details/48826639</li> <li>如何理解maxcompute常见报错信息？https://blog.csdn.net/xstardust/article/details/81222555</li> <li>2.3 阿里云ODPS常用SQL操作 https://www.jianshu.com/p/ca4189482409</li> <li>2.2 阿里云ODPS常用命令总结 https://www.jianshu.com/p/65378f022edd</li> <li>2.1 阿里云ODPS数据上传与下载 https://www.jianshu.com/p/a88d72afb3f0</li> <li>相关
+<ul><li>一文快速了解MaxCompute
+https://blog.csdn.net/weixin_33696106/article/details/91484823</li> <li>阿里巴巴大数据计算平台MaxCompute（原名ODPS）全套攻略 https://blog.csdn.net/qq_36510261/article/details/78972037</li></ul></li></ul> <h3 id="记录"><a href="#记录" class="header-anchor">#</a> 记录</h3> <ul><li>2019/12/24 23:25 创建</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Hive.html" class="prev">
+        Hive 笔记
+      </a></span> <span class="next"><a href="/MongoBasis.html">
+        Mongo 起步
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.679d03e9.js" defer></script><script src="/assets/js/2.d26c1986.js" defer></script><script src="/assets/js/9.3a330e87.js" defer></script>
+  </body>
+</html>
