@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "vuepress dev .",
-    "build": "vuepress build ."
+    "dev": "sudo vuepress dev ./articles",
+    "build": "sudo vuepress build ./articles -d ./docs"
   }
 }
