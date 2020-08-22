@@ -2,4 +2,4 @@
 _book/
 files/
 node_modules/
-#.vuepress/dist/
+.vuepress/dist/
