@@ -4,13 +4,13 @@ module.exports = {
   themeConfig: {
     sidebar: {
       '/': [
-	 'Hive',
-	 'ODPS',
-	 'MongoBasis',
-	 'MongoBegin',
-	 'WebTorrent',
-	 'JetBrainsCrack',
-	 'docs/Python',
+	 'articles/Hive',
+	 'articles/ODPS',
+	 'articles/MongoBasis',
+	 'articles/MongoBegin',
+	 'articles/WebTorrent',
+	 'articles/JetBrainsCrack',
+	 'articles/Python',
       ],
     }
   }
