@@ -10,6 +10,7 @@ module.exports = {
 	 'MongoBegin',
 	 'WebTorrent',
 	 'JetBrainsCrack',
+	 'Python',
       ],
     }
   }
