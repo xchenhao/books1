@@ -2,7 +2,7 @@ module.exports = {
   title: '不可思议',
   description: 'books1.cn',
   plugins: [
-    'flowchart'
+    'flowchart'  // https://flowchart.vuepress.ulivz.com/
   ],
   // 文档 https://www.vuepress.cn/theme/default-theme-config.html
   // 主题 https://antdocs.seeyoz.cn/guide/
