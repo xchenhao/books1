@@ -2,5 +2,10 @@
   "scripts": {
     "dev": "sudo vuepress dev ./articles",
     "build": "sudo vuepress build ./articles -d ./docs"
+  },
+  "dependencies": {
+    "vuepress": "^1.5.3",
+    "vuepress-plugin-flowchart": "^1.4.3",
+    "vuepress-theme-antdocs": "^1.1.1"
   }
 }
