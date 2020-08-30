@@ -65,6 +65,7 @@ module.exports = {
         children: [
           {title: 'JetBrains IDE 破解教程', path: '/JetBrainsCrack'},
           {title: 'WebTorrent 下载磁力链接工具', path: '/WebTorrent'},
+          {title: 'HTTP 协议', path: '/HTTP-Protocol'},
         ]
       }
     ]
