@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>TDD 笔记 | 不可思议</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.5.2">
+    
+    <meta name="description" content="books1.cn">
+    <link rel="preload" href="/assets/css/0.styles.cade44ac.css" as="style"><link rel="preload" href="/assets/js/app.cd475b6f.js" as="script"><link rel="preload" href="/assets/js/3.7f8d87a5.js" as="script"><link rel="preload" href="/assets/js/12.3a872697.js" as="script"><link rel="prefetch" href="/assets/js/10.a635ddcf.js"><link rel="prefetch" href="/assets/js/11.f3fbfa13.js"><link rel="prefetch" href="/assets/js/13.89ebb42c.js"><link rel="prefetch" href="/assets/js/14.196d3302.js"><link rel="prefetch" href="/assets/js/15.51801e0b.js"><link rel="prefetch" href="/assets/js/16.8bf33524.js"><link rel="prefetch" href="/assets/js/17.c4ab0cd8.js"><link rel="prefetch" href="/assets/js/18.591a0905.js"><link rel="prefetch" href="/assets/js/19.403b4b74.js"><link rel="prefetch" href="/assets/js/20.b48409da.js"><link rel="prefetch" href="/assets/js/21.fd7b5e67.js"><link rel="prefetch" href="/assets/js/22.cf6842dd.js"><link rel="prefetch" href="/assets/js/23.f5e219a5.js"><link rel="prefetch" href="/assets/js/24.5fe577f1.js"><link rel="prefetch" href="/assets/js/25.d1b885bc.js"><link rel="prefetch" href="/assets/js/26.0164c392.js"><link rel="prefetch" href="/assets/js/27.cdb21f51.js"><link rel="prefetch" href="/assets/js/28.9557f55f.js"><link rel="prefetch" href="/assets/js/4.b967356d.js"><link rel="prefetch" href="/assets/js/5.dace55af.js"><link rel="prefetch" href="/assets/js/6.c9a8fb0b.js"><link rel="prefetch" href="/assets/js/7.25c72b7b.js"><link rel="prefetch" href="/assets/js/8.4fa6e053.js"><link rel="prefetch" href="/assets/js/9.6221842d.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.230bb6c7.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.cade44ac.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">不可思议</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          数据库
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          语言
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>数据库</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Hive.html" title="Hive" class="sidebar-link">Hive</a></li><li><a href="/ODPS.html" title="ODPS" class="sidebar-link">ODPS</a></li><li><a href="/mysql-note-1.html" title="MySQL 笔记 1" class="sidebar-link">MySQL 笔记 1</a></li><li><a href="/mongodb/MongoBasis.html" title="MongoDB 基础" class="sidebar-link">MongoDB 基础</a></li><li><a href="/mongodb/MongoBegin.html" title="MongoDB 起步" class="sidebar-link">MongoDB 起步</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>语言</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Python.html" title="Python 基础" class="sidebar-link">Python 基础</a></li><li><a href="/python-note-1.html" title="Python 笔记 1" class="sidebar-link">Python 笔记 1</a></li><li><a href="/python-note-2.html" title="Python 笔记 2" class="sidebar-link">Python 笔记 2</a></li><li><a href="/python-note-3.html" title="Python 笔记 3" class="sidebar-link">Python 笔记 3</a></li><li><a href="/python-note-4.html" title="Python 笔记 4" class="sidebar-link">Python 笔记 4</a></li><li><a href="/python-note-5.html" title="Python 笔记 5" class="sidebar-link">Python 笔记 5</a></li><li><a href="/shell-learning-1.html" title="Shell 脚本笔记 1" class="sidebar-link">Shell 脚本笔记 1</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>其它</span> <span class="arrow down"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JetBrainsCrack.html" title="JetBrains IDE 破解教程" class="sidebar-link">JetBrains IDE 破解教程</a></li><li><a href="/WebTorrent.html" title="WebTorrent 下载磁力链接工具" class="sidebar-link">WebTorrent 下载磁力链接工具</a></li><li><a href="/HTTP-Protocol.html" title="HTTP 协议" class="sidebar-link">HTTP 协议</a></li><li><a href="/TDD-note.html" aria-current="page" title="TDD 笔记" class="active sidebar-link">TDD 笔记</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/TDD-note.html#tdd-笔记" title="TDD 笔记" class="sidebar-link">TDD 笔记</a></li></ul></li><li><a href="/vim-note.html" title="Vim 笔记" class="sidebar-link">Vim 笔记</a></li><li><a href="/network-note-1.html" title="网络笔记" class="sidebar-link">网络笔记</a></li><li><a href="/grep-sed-awk.html" title="grep &amp; sed &amp; awk" class="sidebar-link">grep &amp; sed &amp; awk</a></li><li><a href="/Git.html" title="Git" class="sidebar-link">Git</a></li><li><a href="/Docker-note.html" title="Docker" class="sidebar-link">Docker</a></li></ul></section></li><li><a href="/update_log.html" title="更新记录" class="sidebar-link">更新记录</a></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h2 id="tdd-笔记"><a href="#tdd-笔记" class="header-anchor">#</a> TDD 笔记</h2> <h3 id="测试驱动开发-tdd-test-driven-development"><a href="#测试驱动开发-tdd-test-driven-development" class="header-anchor">#</a> 测试驱动开发 TDD(Test Driven Development)</h3> <h4 id="是什么"><a href="#是什么" class="header-anchor">#</a> 是什么</h4> <ul><li>一种开发流程</li> <li>理念：以终为始，通过测试出期望的结果来推动开发的进行</li></ul> <h4 id="有什么用"><a href="#有什么用" class="header-anchor">#</a> 有什么用</h4> <ul><li>在测试的保护下改善既有的代码设计</li> <li>减少手工直觉测试的遗漏（扩大测试覆盖面）</li> <li>及时反馈</li></ul> <h4 id="执行步骤"><a href="#执行步骤" class="header-anchor">#</a> 执行步骤</h4> <p><img src="/assets/img/tdd-note.169e61cb.png" alt="开发流程"></p> <ol><li>先写测试，并运行测试</li> <li>测试失败</li> <li>写刚好的（最少的）代码修复错误，再运行测试</li> <li>测试通过</li> <li>重构代码，并运行测试，测试失败</li> <li>重复 3</li></ol> <h4 id="例子"><a href="#例子" class="header-anchor">#</a> 例子</h4> <h5 id="先写测试"><a href="#先写测试" class="header-anchor">#</a> 先写测试</h5> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// 先创建测试用例：$GOPATH/src/tdd/main_test.go</span>
+
+<span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;testing&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">TestAdd</span><span class="token punctuation">(</span>t <span class="token operator">*</span>testing<span class="token punctuation">.</span>T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+	<span class="token keyword">var</span> actual <span class="token builtin">int</span>
+	actual <span class="token operator">=</span> <span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+	expected <span class="token operator">:=</span> <span class="token number">8</span>
+	<span class="token keyword">if</span> expected <span class="token operator">!=</span> actual <span class="token punctuation">{</span>
+		t<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">&quot;expected %d, got %d&quot;</span><span class="token punctuation">,</span> expected<span class="token punctuation">,</span> actual<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h5 id="运行测试：测试失败"><a href="#运行测试：测试失败" class="header-anchor">#</a> 运行测试：测试失败</h5> <div class="language-sh extra-class"><pre class="language-sh"><code>go <span class="token builtin class-name">test</span> -v ./
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code># 输出结果
+
+# go_test [go_test.test]
+./main_test.go:10:11: undefined: Add
+FAIL    go_test [build failed]
+</code></pre></div><h5 id="修复：编写必要代码使测试通过"><a href="#修复：编写必要代码使测试通过" class="header-anchor">#</a> 修复：编写必要代码使测试通过</h5> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// 编写必要代码</span>
+<span class="token comment">// $GOPATH/src/tdd/main.go</span>
+
+<span class="token keyword">package</span> main
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">Add</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">{</span>
+	
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code># 再运行测试
+# go_test [go_test.test]
+./main_test.go:10:14: too many arguments in call to Add
+        have (number, number)
+        want ()
+./main_test.go:10:14: Add(3, 5) used as value
+FAIL    go_test [build failed]
+</code></pre></div><div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// 再编写必要代码</span>
+<span class="token comment">// $GOPATH/src/tdd/main.go</span>
+
+<span class="token keyword">func</span> <span class="token function">Add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token number">0</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code># 再运行测试
+=== RUN   TestAdd
+--- FAIL: TestAdd (0.00s)
+    main_test.go:13: expected 8, got 0
+FAIL
+FAIL    go_test 0.005s
+</code></pre></div><div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// 再编写必要代码</span>
+<span class="token comment">// $GOPATH/src/tdd/main.go</span>
+
+<span class="token keyword">func</span> <span class="token function">Add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token number">8</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>=== RUN   TestAdd
+--- PASS: TestAdd (0.00s)
+PASS
+ok      go_test 0.007s
+</code></pre></div><h5 id="重构"><a href="#重构" class="header-anchor">#</a> 重构</h5> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// $GOPATH/src/tdd/main_test.go</span>
+
+<span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+	<span class="token string">&quot;testing&quot;</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">TestAdd</span><span class="token punctuation">(</span>t <span class="token operator">*</span>testing<span class="token punctuation">.</span>T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+	t<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span><span class="token string">&quot;test func Add: 1&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>t <span class="token operator">*</span>testing<span class="token punctuation">.</span>T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">var</span> actual <span class="token builtin">int</span>
+		actual <span class="token operator">=</span> <span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+		expected <span class="token operator">:=</span> <span class="token number">8</span>
+		<span class="token keyword">if</span> expected <span class="token operator">!=</span> actual <span class="token punctuation">{</span>
+			t<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">&quot;expected %d, got %d&quot;</span><span class="token punctuation">,</span> expected<span class="token punctuation">,</span> actual<span class="token punctuation">)</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+	t<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span><span class="token string">&quot;test func Add: 2&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>t <span class="token operator">*</span>testing<span class="token punctuation">.</span>T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">var</span> actual <span class="token builtin">int</span>
+		actual <span class="token operator">=</span> <span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
+		expected <span class="token operator">:=</span> <span class="token number">9</span>
+		<span class="token keyword">if</span> expected <span class="token operator">!=</span> actual <span class="token punctuation">{</span>
+			t<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">&quot;expected %d, got %d&quot;</span><span class="token punctuation">,</span> expected<span class="token punctuation">,</span> actual<span class="token punctuation">)</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code># 运行测试
+=== RUN   TestAdd
+=== RUN   TestAdd/test_func_Add:_1
+=== RUN   TestAdd/test_func_Add:_2
+--- FAIL: TestAdd (0.00s)
+    --- PASS: TestAdd/test_func_Add:_1 (0.00s)
+    --- FAIL: TestAdd/test_func_Add:_2 (0.00s)
+        main_test.go:24: expected 9, got 8
+FAIL
+FAIL    go_test 0.005s
+</code></pre></div><div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// 再编写必要代码</span>
+<span class="token comment">// $GOPATH/src/tdd/main.go</span>
+
+<span class="token keyword">func</span> <span class="token function">Add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> b <span class="token operator">==</span> <span class="token number">6</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token number">9</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">8</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code># 再测试
+=== RUN   TestAdd
+=== RUN   TestAdd/test_func_Add:_1
+=== RUN   TestAdd/test_func_Add:_2
+--- PASS: TestAdd (0.00s)
+    --- PASS: TestAdd/test_func_Add:_1 (0.00s)
+    --- PASS: TestAdd/test_func_Add:_2 (0.00s)
+PASS
+ok      go_test 0.006s
+</code></pre></div><div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// 重构</span>
+<span class="token comment">// $GOPATH/src/tdd/main.go</span>
+
+<span class="token keyword">func</span> <span class="token function">Add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> a <span class="token operator">+</span> b
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code># 测试重构的代码
+=== RUN   TestAdd
+=== RUN   TestAdd/test_func_Add:_1
+=== RUN   TestAdd/test_func_Add:_2
+--- PASS: TestAdd (0.00s)
+    --- PASS: TestAdd/test_func_Add:_1 (0.00s)
+    --- PASS: TestAdd/test_func_Add:_2 (0.00s)
+PASS
+ok      go_test (cached)  ## 缓存？
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>js:tdd chenhao$ go test --count=1 -v ./
+=== RUN   TestAdd
+=== RUN   TestAdd/test_func_Add:_1
+=== RUN   TestAdd/test_func_Add:_2
+--- PASS: TestAdd (0.00s)
+    --- PASS: TestAdd/test_func_Add:_1 (0.00s)
+    --- PASS: TestAdd/test_func_Add:_2 (0.00s)
+PASS
+ok      go_test 0.006s
+</code></pre></div><div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// 重构测试代码：$GOPATH/src/tdd/main_test.go</span>
+
+<span class="token keyword">func</span> <span class="token function">TestAdd</span><span class="token punctuation">(</span>t <span class="token operator">*</span>testing<span class="token punctuation">.</span>T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+	t<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span><span class="token string">&quot;test func Add: 1&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>t <span class="token operator">*</span>testing<span class="token punctuation">.</span>T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">var</span> actual <span class="token builtin">int</span>
+		actual <span class="token operator">=</span> <span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+		expected <span class="token operator">:=</span> <span class="token number">8</span>
+
+		<span class="token function">assertEqual</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> expected<span class="token punctuation">,</span> actual<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+	t<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span><span class="token string">&quot;test func Add: 2&quot;</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>t <span class="token operator">*</span>testing<span class="token punctuation">.</span>T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">var</span> actual <span class="token builtin">int</span>
+		actual <span class="token operator">=</span> <span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
+		expected <span class="token operator">:=</span> <span class="token number">9</span>
+
+		<span class="token function">assertEqual</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> expected<span class="token punctuation">,</span> actual<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">assertEqual</span><span class="token punctuation">(</span>t <span class="token operator">*</span>testing<span class="token punctuation">.</span>T<span class="token punctuation">,</span> expected<span class="token punctuation">,</span> actual <span class="token builtin">int</span><span class="token punctuation">)</span>  <span class="token punctuation">{</span>
+	t<span class="token punctuation">.</span><span class="token function">Helper</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+	<span class="token keyword">if</span> expected <span class="token operator">!=</span> actual <span class="token punctuation">{</span>
+		t<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">&quot;expected %d, got %d&quot;</span><span class="token punctuation">,</span> expected<span class="token punctuation">,</span> actual<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code># 运行测试
+=== RUN   TestAdd
+=== RUN   TestAdd/test_func_Add:_1
+=== RUN   TestAdd/test_func_Add:_2
+--- PASS: TestAdd (0.00s)
+    --- PASS: TestAdd/test_func_Add:_1 (0.00s)
+    --- PASS: TestAdd/test_func_Add:_2 (0.00s)
+PASS
+ok      go_test 0.005s
+</code></pre></div><h4 id="参考"><a href="#参考" class="header-anchor">#</a> 参考</h4> <ul><li><p>TDD 百度百科<br>
+https://baike.baidu.com/item/TDD/9064369?fr=aladdin</p></li> <li><p>深度解读 - TDD（测试驱动开发）<br>
+https://www.jianshu.com/p/62f16cd4fef3</p></li> <li><p>「Live Coding」TDD - Word Frequency<br>
+https://www.bilibili.com/video/av9208705</p></li> <li><p>《测试驱动开发--Kent Beck》阅读心得<br>
+https://www.jianshu.com/p/dfa00fe2d40b</p></li> <li><p>一个实例搞懂 TDD（测试驱动开发）<br>
+http://blog.51cto.com/2681882/2120480</p></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/HTTP-Protocol.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        HTTP 协议
+      </a></span> <span class="next"><a href="/vim-note.html">
+        Vim 笔记
+        <i aria-label="icon: right" class="anticon anticon-right"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i></a></span></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.cd475b6f.js" defer></script><script src="/assets/js/3.7f8d87a5.js" defer></script><script src="/assets/js/12.3a872697.js" defer></script>
+  </body>
+</html>

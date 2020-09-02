@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Linux 三剑客：grep/sed/awk | 不可思议</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.5.2">
+    
+    <meta name="description" content="books1.cn">
+    <link rel="preload" href="/assets/css/0.styles.cade44ac.css" as="style"><link rel="preload" href="/assets/js/app.cd475b6f.js" as="script"><link rel="preload" href="/assets/js/3.7f8d87a5.js" as="script"><link rel="preload" href="/assets/js/20.b48409da.js" as="script"><link rel="prefetch" href="/assets/js/10.a635ddcf.js"><link rel="prefetch" href="/assets/js/11.f3fbfa13.js"><link rel="prefetch" href="/assets/js/12.3a872697.js"><link rel="prefetch" href="/assets/js/13.89ebb42c.js"><link rel="prefetch" href="/assets/js/14.196d3302.js"><link rel="prefetch" href="/assets/js/15.51801e0b.js"><link rel="prefetch" href="/assets/js/16.8bf33524.js"><link rel="prefetch" href="/assets/js/17.c4ab0cd8.js"><link rel="prefetch" href="/assets/js/18.591a0905.js"><link rel="prefetch" href="/assets/js/19.403b4b74.js"><link rel="prefetch" href="/assets/js/21.fd7b5e67.js"><link rel="prefetch" href="/assets/js/22.cf6842dd.js"><link rel="prefetch" href="/assets/js/23.f5e219a5.js"><link rel="prefetch" href="/assets/js/24.5fe577f1.js"><link rel="prefetch" href="/assets/js/25.d1b885bc.js"><link rel="prefetch" href="/assets/js/26.0164c392.js"><link rel="prefetch" href="/assets/js/27.cdb21f51.js"><link rel="prefetch" href="/assets/js/28.9557f55f.js"><link rel="prefetch" href="/assets/js/4.b967356d.js"><link rel="prefetch" href="/assets/js/5.dace55af.js"><link rel="prefetch" href="/assets/js/6.c9a8fb0b.js"><link rel="prefetch" href="/assets/js/7.25c72b7b.js"><link rel="prefetch" href="/assets/js/8.4fa6e053.js"><link rel="prefetch" href="/assets/js/9.6221842d.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.230bb6c7.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.cade44ac.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">不可思议</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          数据库
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          语言
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>数据库</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Hive.html" title="Hive" class="sidebar-link">Hive</a></li><li><a href="/ODPS.html" title="ODPS" class="sidebar-link">ODPS</a></li><li><a href="/mysql-note-1.html" title="MySQL 笔记 1" class="sidebar-link">MySQL 笔记 1</a></li><li><a href="/mongodb/MongoBasis.html" title="MongoDB 基础" class="sidebar-link">MongoDB 基础</a></li><li><a href="/mongodb/MongoBegin.html" title="MongoDB 起步" class="sidebar-link">MongoDB 起步</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>语言</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Python.html" title="Python 基础" class="sidebar-link">Python 基础</a></li><li><a href="/python-note-1.html" title="Python 笔记 1" class="sidebar-link">Python 笔记 1</a></li><li><a href="/python-note-2.html" title="Python 笔记 2" class="sidebar-link">Python 笔记 2</a></li><li><a href="/python-note-3.html" title="Python 笔记 3" class="sidebar-link">Python 笔记 3</a></li><li><a href="/python-note-4.html" title="Python 笔记 4" class="sidebar-link">Python 笔记 4</a></li><li><a href="/python-note-5.html" title="Python 笔记 5" class="sidebar-link">Python 笔记 5</a></li><li><a href="/shell-learning-1.html" title="Shell 脚本笔记 1" class="sidebar-link">Shell 脚本笔记 1</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>其它</span> <span class="arrow down"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JetBrainsCrack.html" title="JetBrains IDE 破解教程" class="sidebar-link">JetBrains IDE 破解教程</a></li><li><a href="/WebTorrent.html" title="WebTorrent 下载磁力链接工具" class="sidebar-link">WebTorrent 下载磁力链接工具</a></li><li><a href="/HTTP-Protocol.html" title="HTTP 协议" class="sidebar-link">HTTP 协议</a></li><li><a href="/TDD-note.html" title="TDD 笔记" class="sidebar-link">TDD 笔记</a></li><li><a href="/vim-note.html" title="Vim 笔记" class="sidebar-link">Vim 笔记</a></li><li><a href="/network-note-1.html" title="网络笔记" class="sidebar-link">网络笔记</a></li><li><a href="/grep-sed-awk.html" aria-current="page" title="grep &amp; sed &amp; awk" class="active sidebar-link">grep &amp; sed &amp; awk</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/grep-sed-awk.html#linux-三剑客：grep-sed-awk" title="Linux 三剑客：grep/sed/awk" class="sidebar-link">Linux 三剑客：grep/sed/awk</a></li></ul></li><li><a href="/Git.html" title="Git" class="sidebar-link">Git</a></li><li><a href="/Docker-note.html" title="Docker" class="sidebar-link">Docker</a></li></ul></section></li><li><a href="/update_log.html" title="更新记录" class="sidebar-link">更新记录</a></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h2 id="linux-三剑客：grep-sed-awk"><a href="#linux-三剑客：grep-sed-awk" class="header-anchor">#</a> Linux 三剑客：grep/sed/awk</h2> <ul><li>grep 更适合单纯的查找或匹配文本</li> <li>sed 更适合编辑匹配到的文本</li> <li>awk 更适合格式化文本，对文本进行较复杂格式处理</li></ul> <h3 id="grep"><a href="#grep" class="header-anchor">#</a> grep</h3> <ul><li>格式：grep &lt;参数&gt; &lt;匹配模式&gt; &lt;文件&gt;</li> <li>参数：
+<ul><li>-v 反向过滤（排除）</li> <li>-n 显示匹配行及行号</li> <li>-i 忽略大小写</li> <li>-c 统计匹配的行数</li> <li>-E 扩展（支持正则），同 egrep</li> <li>--color=auto 对匹配内容突出颜色</li> <li>-w 按单词查找</li> <li>-o 只输出匹配内容</li> <li>-A 附加显示匹配行后的内容</li> <li>-B 附加显示匹配行前的内容</li> <li>-C 附加显示匹配行上下间的内容</li> <li>-r 递归查找</li></ul></li> <li>场景：更适合单纯的查找或匹配文本</li> <li>试例：</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">grep</span> -v <span class="token string">&quot;books1&quot;</span> test1.txt
+<span class="token function">grep</span> -n <span class="token string">&quot;books1&quot;</span> test1.txt
+<span class="token function">grep</span> -n <span class="token string">&quot;.&quot;</span> test1.txt <span class="token comment"># 类型于 cat -n test1.txt</span>
+<span class="token function">grep</span> -i <span class="token string">&quot;chenhao&quot;</span> test2.txt
+<span class="token function">grep</span> -Ei <span class="token string">&quot;chenhao|books1&quot;</span> test2.txt
+<span class="token function">grep</span> -c <span class="token string">&quot;chenhao&quot;</span> test2.txt <span class="token comment"># 统计数量</span>
+<span class="token function">grep</span> -o <span class="token string">&quot;books1&quot;</span> test2.txt <span class="token comment"># 只输出匹配的内容</span>
+<span class="token function">grep</span> -w chenhao /etc/passwd <span class="token comment"># 只匹配单词</span>
+<span class="token function">grep</span> -Ev <span class="token string">&quot;^$|#&quot;</span> nginx.conf <span class="token comment"># 过滤空行及注释行</span>
+<span class="token function">grep</span> <span class="token string">'linux'</span> test.txt test2.txt
+<span class="token function">grep</span> -r <span class="token string">&quot;update&quot;</span> /etc/acpi/ <span class="token comment">#以递归的方式查找</span>
+
+<span class="token function">grep</span> <span class="token string">'[a-z]\{7\}'</span> *.txt <span class="token comment"># 过滤出每个字符串至少有7个连续小写字符的字符串的行</span>
+
+<span class="token function">grep</span> chenhao$ test.txt <span class="token comment"># 过滤出以 chenhao 结尾的行</span>
+<span class="token function">grep</span> ^chenhao test.txt <span class="token comment"># 过滤出以 chenhao 开头的行</span>
+<span class="token function">grep</span> ^<span class="token punctuation">[</span>^c<span class="token punctuation">]</span> test.txt <span class="token comment"># 过滤出非 c 开头的行</span>
+
+<span class="token comment"># 过滤出 IP</span>
+<span class="token function">ifconfig</span> eth0<span class="token operator">|</span><span class="token function">grep</span> <span class="token string">&quot;[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}&quot;</span>
+<span class="token function">ifconfig</span> eth0<span class="token operator">|</span><span class="token function">grep</span> -E <span class="token string">&quot;([0-9]{1,3}\.){3}[0-9]&quot;</span>
+
+<span class="token function">ps</span> aux <span class="token operator">|</span> <span class="token function">grep</span> <span class="token function">ssh</span> <span class="token operator">|</span> <span class="token function">grep</span> -v <span class="token string">&quot;grep&quot;</span> <span class="token comment"># grep不显示本身进程</span>
+<span class="token function">ps</span> aux<span class="token operator">|</span><span class="token function">grep</span> <span class="token punctuation">\</span><span class="token punctuation">[</span>s<span class="token punctuation">]</span>sh
+<span class="token function">ps</span> -ef<span class="token operator">|</span><span class="token function">grep</span> -c nginx
+
+</code></pre></div><hr> <h3 id="sed"><a href="#sed" class="header-anchor">#</a> sed</h3> <ul><li>格式：sed &lt;参数&gt; &lt;内置命令&gt; &lt;文件&gt;</li> <li>参数：
+<ul><li>-n 取消默认输出（常与内置命令 p 连用）</li> <li>-i 直接修改文件内容（危险动作）</li> <li>-e 多点编辑</li></ul></li> <li>内置命令：
+<ul><li>a 行后追加</li> <li>d 删除匹配行</li> <li>i 行前插入</li> <li>p 打印匹配行</li> <li>c 取代内容</li> <li>s/regexp/replacement/ 替换</li></ul></li> <li>场景：更适合编辑匹配到的文本</li> <li>试例：</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">sed</span> <span class="token string">'2a 106,dandan,CSO'</span> persons.txt
+<span class="token function">sed</span> <span class="token string">'2i 106,dandan,CSO'</span> persons.txt
+<span class="token function">sed</span> -i <span class="token string">'<span class="token variable">$a</span> # This is a test'</span> regular_express.txt <span class="token comment"># 在最后一行追加（直接改写文件）</span>
+<span class="token function">sed</span> <span class="token string">'2a 106,dandan,CSO<span class="token entity" title="\n">\n</span>107,bingbing,CCO'</span> person.txt
+<span class="token function">sed</span> <span class="token string">'2d'</span> person.txt
+<span class="token function">sed</span> <span class="token string">'2,5d'</span> person.txt
+<span class="token function">sed</span> <span class="token string">'s#zhangyao#dandan#g'</span> person.txt
+<span class="token function">sed</span> <span class="token string">'2p'</span> person.txt
+<span class="token function">sed</span> -n <span class="token string">'2p'</span> person.txt
+<span class="token function">sed</span> -n <span class="token string">'2,3p'</span> person.txt
+<span class="token function">sed</span> -i <span class="token string">'13i Port 52113<span class="token entity" title="\n">\n</span>PermitRootLogin no<span class="token entity" title="\n">\n</span>PermitEmptyPasswords no<span class="token entity" title="\n">\n</span>UseDNS no<span class="token entity" title="\n">\n</span>GSSAPIAuthentication no'</span> /etc/ssh/sshd_config
+<span class="token function">sed</span> -n <span class="token string">'13,17p'</span> /etc/ssh/sshd_config
+<span class="token function">sed</span> -i <span class="token string">'s/\.$/\!/g'</span> regular_express.txt <span class="token comment"># 将 regular_express.txt 内每一行结尾若为 . 则换成 !</span>
+<span class="token function">sed</span> <span class="token string">'1,20s/old/new/g'</span> aa.txt
+
+<span class="token comment"># 在第 4 行后添加内容</span>
+<span class="token function">sed</span> -e 4a<span class="token punctuation">\</span>baidu test.txt
+
+<span class="token function">nl</span> /etc/passwd <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'2a Drink tea or \
+drink beer ?'</span>
+
+<span class="token comment"># 将第 2~5 行的内容取代成为 test content</span>
+<span class="token function">nl</span> /etc/passwd <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'2,5c test content'</span>
+
+<span class="token comment"># 搜索有 root 关键字的行并输出</span>
+<span class="token function">nl</span> /etc/passwd <span class="token operator">|</span> <span class="token function">sed</span> -n <span class="token string">'/root/p'</span>
+
+<span class="token comment"># 删除 /etc/passwd 所有包含 root 的行，其他行输出</span>
+<span class="token function">nl</span> /etc/passwd <span class="token operator">|</span> <span class="token function">sed</span>  <span class="token string">'/root/d'</span>
+
+<span class="token comment"># -e 表示多点编辑，第一个编辑命令删除 /etc/passwd 第三行到末尾的数据，第二条命令搜索 bash 替换为 blueshell</span>
+<span class="token function">nl</span> /etc/passwd <span class="token operator">|</span> <span class="token function">sed</span> -e <span class="token string">'3,<span class="token variable">$d</span>'</span> -e <span class="token string">'s/bash/blueshell/'</span>
+
+<span class="token comment"># 过滤出 IP</span>
+/sbin/ifconfig eth0 <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'inet addr'</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'s/^.*addr://g'</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'s/Bcast.*$//g'</span>
+
+<span class="token comment"># 找到 root 对应的行，执行后面花括号中的一组命令，每个命令之间用分号分隔，这里把 bash 替换为 blueshell，再输出这行，最后的 q 是退出</span>
+<span class="token function">nl</span> /etc/passwd <span class="token operator">|</span> <span class="token function">sed</span> -n <span class="token string">'/root/{s/bash/blueshell/;p;q}'</span>   
+
+</code></pre></div><hr> <h3 id="awk"><a href="#awk" class="header-anchor">#</a> awk</h3> <ul><li>格式：awk &lt;参数&gt; &lt;模式 {动作}&gt; 文件</li> <li>参数：
+<ul><li>-F 指定字段分隔符</li> <li>-v 定义或个性一个 awk 内部的变量</li> <li>-f 指定脚本文件</li></ul></li> <li>运算符：
+<ul><li>= += -= *= /= %= ^= **= 赋值</li> <li>?: C 条件表达式</li> <li>&amp;&amp; || ! 逻辑与/或/非</li> <li>~ ~! 匹配正则 不匹配正则</li> <li>&lt; &lt;= &gt; &gt;= != == 关系运算符</li> <li>空格  连接</li> <li>% / + - *</li> <li>^ *** 求幂</li> <li>++ --</li> <li>$ 字段引用</li> <li>数组成员</li></ul></li> <li>内建变量：
+<ul><li>$0 表示整个当前行</li> <li>$1 第 1 列</li> <li>NF 当前行的字段的个数(列数)</li> <li>NR 当前处理的文本行的行号，多文件记录递增</li> <li>FNR 各文件分别计数的行号，多文件记录不递增</li> <li>FS 输入字段分隔符(默认为空白字符)</li> <li>OFS 输出字段分隔符(默认为空白字符)</li> <li>RS 输入记录分隔符(输入换行符)</li> <li>ORS 输出记录分隔符(输出换行符)</li> <li>ARGC 命令行参数的个数</li> <li>ARGV 数组，保存的是命令行所给定的各参数</li></ul></li> <li>场景：更适合格式化文本，对文本进行较复杂格式处理</li> <li>试例：</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">awk</span> -F <span class="token string">&quot;GET|HTTP&quot;</span> <span class="token string">'print <span class="token variable">$2</span>'</span> access.log
+<span class="token function">awk</span> <span class="token string">'<span class="token variable">$6</span>~/Failed/{print <span class="token variable">$11</span>}'</span> /var/log/secure
+<span class="token function">awk</span> <span class="token string">'NR==20,NR==30'</span> filename
+<span class="token function">awk</span> <span class="token string">'{sum+=<span class="token variable">$0</span>}END{print sum}'</span> ett.txt
+<span class="token function">awk</span> <span class="token string">'{array[<span class="token variable">$1</span>]++}END{for(key in array)print key,array[key]}'</span> access.log
+
+<span class="token function">awk</span> <span class="token string">'{print}'</span> /etc/passwd
+<span class="token function">awk</span> <span class="token string">'{print <span class="token variable">$0</span>}'</span> /etc/passwd
+
+<span class="token function">awk</span> <span class="token string">'{print <span class="token variable">$1</span>,<span class="token variable">$4</span>}'</span> log.txt <span class="token comment"># 输出第 1 及 第 4 列（默认以空格或 Tab 来分隔列）</span>
+<span class="token function">awk</span> <span class="token string">'{printf &quot;%-8s %-10s<span class="token entity" title="\n">\n</span>&quot;,<span class="token variable">$1</span>,<span class="token variable">$4</span>}'</span> log.txt <span class="token comment"># 格式化输出</span>
+<span class="token function">awk</span> -F: <span class="token string">'{print <span class="token variable">$1</span>,<span class="token variable">$3</span>,<span class="token variable">$6</span>}'</span> <span class="token assign-left variable">OFS</span><span class="token operator">=</span><span class="token string">&quot;<span class="token entity" title="\t">\t</span>&quot;</span> /etc/passwd
+
+<span class="token function">awk</span> -F, <span class="token string">'{print <span class="token variable">$1</span>,<span class="token variable">$2</span>}'</span> log.txt
+<span class="token function">awk</span> <span class="token string">'BEGIN{FS=&quot;,&quot;} {print <span class="token variable">$1</span>,<span class="token variable">$2</span>}'</span> log.txt
+<span class="token function">awk</span> -F <span class="token string">'[ ,]'</span>  <span class="token string">'{print <span class="token variable">$1</span>,<span class="token variable">$2</span>,<span class="token variable">$5</span>}'</span> log.txt <span class="token comment">#使用空格及 , 作为分割符</span>
+
+<span class="token function">awk</span> -va<span class="token operator">=</span><span class="token number">1</span> <span class="token string">'{print <span class="token variable">$1</span>,<span class="token variable">$1</span>+a}'</span> log.txt <span class="token comment"># 设置变量并调用</span>
+<span class="token function">awk</span> -va<span class="token operator">=</span><span class="token number">1</span> -vb<span class="token operator">=</span>s <span class="token string">'{print <span class="token variable">$1</span>,<span class="token variable">$1</span>+a,<span class="token variable">$1b</span>}'</span> log.txt
+
+<span class="token function">awk</span> <span class="token string">'<span class="token variable">$1</span>&gt;2'</span> log.txt <span class="token comment"># 过滤第一列大于 2 的行</span>
+<span class="token function">awk</span> <span class="token string">'<span class="token variable">$1</span>==2 {print <span class="token variable">$1</span>,<span class="token variable">$3</span>}'</span> log.txt 
+<span class="token function">awk</span> <span class="token string">'<span class="token variable">$1</span>&gt;2 &amp;&amp; <span class="token variable">$2</span>==&quot;Are&quot; {print <span class="token variable">$1</span>,<span class="token variable">$2</span>,<span class="token variable">$3</span>}'</span> log.txt
+
+<span class="token function">awk</span> <span class="token string">'NR==5'</span> test.txt
+<span class="token function">awk</span> <span class="token string">'NR==2,NR==6'</span> test.txt
+<span class="token function">awk</span> <span class="token string">'{print NR,<span class="token variable">$0</span>}'</span> test.txt <span class="token comment"># 类似 cat -n test.txt</span>
+<span class="token function">awk</span> <span class="token string">'NR==2,NR==6 {print NR,<span class="token variable">$0</span>}'</span> test.txt
+<span class="token function">awk</span> -F <span class="token string">&quot;:&quot;</span> <span class="token string">'{print <span class="token variable">$1</span>,<span class="token variable">$3</span>,<span class="token variable">$NF</span>}'</span> test.txt
+<span class="token function">awk</span> <span class="token string">'{gsub(&quot;/sbin/nologin&quot;, &quot;/bin/bash&quot;, <span class="token variable">$0</span>);print <span class="token variable">$0</span>}'</span> test.txt <span class="token comment">#将 /sbin/nologin 替换为 /bin/bash</span>
+<span class="token function">ifconfig</span> eth0<span class="token operator">|</span><span class="token function">awk</span> -F <span class="token string">&quot;(addr:)|( Bcase:)&quot;</span> <span class="token string">'NR==2{print <span class="token variable">$2</span>}'</span> <span class="token comment"># 取 IP地址</span>
+<span class="token function">ifconfig</span> eth0<span class="token operator">|</span><span class="token function">awk</span> -F <span class="token string">&quot;[ :]+&quot;</span> <span class="token string">'NR==2{print <span class="token variable">$4</span>}'</span>
+<span class="token function">awk</span> -F <span class="token string">'/'</span> <span class="token string">'{print <span class="token variable">$3</span>}'</span> books1.txt<span class="token operator">|</span><span class="token function">sort</span><span class="token operator">|</span><span class="token function">uniq</span> -c
+<span class="token function">awk</span> -F <span class="token string">'/'</span> <span class="token string">'{hotel[<span class="token variable">$3</span>]++;print <span class="token variable">$3</span>,hotel[<span class="token variable">$3</span>]}'</span> books1.txt
+<span class="token function">awk</span> -F <span class="token string">'/'</span> <span class="token string">'{array[<span class="token variable">$3</span>]++}END{
+  print &quot;www.books1.cn&quot;, array[&quot;www.books1.cn&quot;]
+  print &quot;www.baidu.com&quot;, array[&quot;www.baidu.com&quot;]
+  print &quot;www.qq.com&quot;, array[&quot;www.qq.com&quot;]
+}'</span> books1.txt
+<span class="token function">awk</span> -F <span class="token string">'/'</span> <span class="token string">'{hotel[<span class="token variable">$3</span>]++}END{for(domain in hotel)print domain,hotel[domain]}'</span> books1.txt
+
+<span class="token function">awk</span> <span class="token string">'<span class="token variable">$2</span> ~ /th/ {print <span class="token variable">$2</span>,<span class="token variable">$4</span>}'</span> log.txt <span class="token comment"># 输出包含 &quot;th&quot; 的第二列，并打印第二列与第四列</span>
+<span class="token function">awk</span> <span class="token string">'/re/ '</span> log.txt <span class="token comment"># 输出包含 re 的行</span>
+<span class="token function">awk</span> <span class="token string">'BEGIN{IGNORECASE=1} /this/'</span> log.txt <span class="token comment"># 忽略大小写</span>
+<span class="token function">awk</span> <span class="token string">'!/th/ {print <span class="token variable">$2</span>,<span class="token variable">$4</span>}'</span> log.txt <span class="token comment"># 在包含 th 的行中输出第 2，4 列</span>
+
+<span class="token function">awk</span> <span class="token string">'BEGIN{X=0} /^$/{ X+=1 } END{print &quot;I find&quot;,X,&quot;blank lines.&quot;}'</span> test.txt <span class="token comment"># 统计空行数 </span>
+<span class="token function">ls</span> -l<span class="token operator">|</span><span class="token function">awk</span> <span class="token string">'BEGIN{sum=0} !/^d/{sum+=<span class="token variable">$5</span>} END{print &quot;total size is&quot;,sum}'</span> <span class="token comment"># 计算文件大小</span>
+
+route -n<span class="token operator">|</span><span class="token function">awk</span> <span class="token string">'NR!=1{print}'</span> <span class="token comment"># 不显示第一行</span>
+
+<span class="token function">awk</span> <span class="token string">'!/mysql|mail/{print}'</span> /etc/passwd
+<span class="token function">awk</span> -F: <span class="token string">'/mail/,/mysql/{print}'</span> /etc/passwd <span class="token comment"># 区间匹配</span>
+
+<span class="token function">awk</span> -F: <span class="token string">'<span class="token variable">$1</span>~/mail/{print <span class="token variable">$1</span>}'</span> /etc/passwd  <span class="token comment"># $1 匹配指定内容才显示</span>
+<span class="token function">awk</span> -F: <span class="token string">'{if(<span class="token variable">$1</span>~/mail/) print <span class="token variable">$1</span>}'</span> /etc/passwd  <span class="token comment"># 与上面相同，if 必须用在 {} 中，且比较内容用 () 括起来</span>
+</code></pre></div><hr> <h3 id="参考"><a href="#参考" class="header-anchor">#</a> 参考</h3> <p>https://www.cnblogs.com/forestwolf/p/6413916.html<br>
+http://www.runoob.com/linux/linux-comm-sed.html<br>
+http://www.runoob.com/linux/linux-comm-awk.html<br>
+https://www.cnblogs.com/xudong-bupt/p/3721210.html<br></p> <h3 id="编辑记录"><a href="#编辑记录" class="header-anchor">#</a> 编辑记录</h3> <p>创建：12-16-2018 21:00 周日<br>
+编辑：12-22-2018 16:48 周六</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/network-note-1.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        网络笔记
+      </a></span> <span class="next"><a href="/Git.html">
+        Git
+        <i aria-label="icon: right" class="anticon anticon-right"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i></a></span></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.cd475b6f.js" defer></script><script src="/assets/js/3.7f8d87a5.js" defer></script><script src="/assets/js/20.b48409da.js" defer></script>
+  </body>
+</html>

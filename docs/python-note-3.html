@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Python 笔记 3（网络相关） | 不可思议</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.5.2">
+    
+    <meta name="description" content="books1.cn">
+    <link rel="preload" href="/assets/css/0.styles.cade44ac.css" as="style"><link rel="preload" href="/assets/js/app.cd475b6f.js" as="script"><link rel="preload" href="/assets/js/3.7f8d87a5.js" as="script"><link rel="preload" href="/assets/js/25.d1b885bc.js" as="script"><link rel="prefetch" href="/assets/js/10.a635ddcf.js"><link rel="prefetch" href="/assets/js/11.f3fbfa13.js"><link rel="prefetch" href="/assets/js/12.3a872697.js"><link rel="prefetch" href="/assets/js/13.89ebb42c.js"><link rel="prefetch" href="/assets/js/14.196d3302.js"><link rel="prefetch" href="/assets/js/15.51801e0b.js"><link rel="prefetch" href="/assets/js/16.8bf33524.js"><link rel="prefetch" href="/assets/js/17.c4ab0cd8.js"><link rel="prefetch" href="/assets/js/18.591a0905.js"><link rel="prefetch" href="/assets/js/19.403b4b74.js"><link rel="prefetch" href="/assets/js/20.b48409da.js"><link rel="prefetch" href="/assets/js/21.fd7b5e67.js"><link rel="prefetch" href="/assets/js/22.cf6842dd.js"><link rel="prefetch" href="/assets/js/23.f5e219a5.js"><link rel="prefetch" href="/assets/js/24.5fe577f1.js"><link rel="prefetch" href="/assets/js/26.0164c392.js"><link rel="prefetch" href="/assets/js/27.cdb21f51.js"><link rel="prefetch" href="/assets/js/28.9557f55f.js"><link rel="prefetch" href="/assets/js/4.b967356d.js"><link rel="prefetch" href="/assets/js/5.dace55af.js"><link rel="prefetch" href="/assets/js/6.c9a8fb0b.js"><link rel="prefetch" href="/assets/js/7.25c72b7b.js"><link rel="prefetch" href="/assets/js/8.4fa6e053.js"><link rel="prefetch" href="/assets/js/9.6221842d.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.230bb6c7.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.cade44ac.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">不可思议</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          数据库
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          语言
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>数据库</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Hive.html" title="Hive" class="sidebar-link">Hive</a></li><li><a href="/ODPS.html" title="ODPS" class="sidebar-link">ODPS</a></li><li><a href="/mysql-note-1.html" title="MySQL 笔记 1" class="sidebar-link">MySQL 笔记 1</a></li><li><a href="/mongodb/MongoBasis.html" title="MongoDB 基础" class="sidebar-link">MongoDB 基础</a></li><li><a href="/mongodb/MongoBegin.html" title="MongoDB 起步" class="sidebar-link">MongoDB 起步</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>语言</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Python.html" title="Python 基础" class="sidebar-link">Python 基础</a></li><li><a href="/python-note-1.html" title="Python 笔记 1" class="sidebar-link">Python 笔记 1</a></li><li><a href="/python-note-2.html" title="Python 笔记 2" class="sidebar-link">Python 笔记 2</a></li><li><a href="/python-note-3.html" aria-current="page" title="Python 笔记 3" class="active sidebar-link">Python 笔记 3</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/python-note-3.html#python-笔记-3（网络相关）" title="Python 笔记 3（网络相关）" class="sidebar-link">Python 笔记 3（网络相关）</a></li></ul></li><li><a href="/python-note-4.html" title="Python 笔记 4" class="sidebar-link">Python 笔记 4</a></li><li><a href="/python-note-5.html" title="Python 笔记 5" class="sidebar-link">Python 笔记 5</a></li><li><a href="/shell-learning-1.html" title="Shell 脚本笔记 1" class="sidebar-link">Shell 脚本笔记 1</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>其它</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><a href="/update_log.html" title="更新记录" class="sidebar-link">更新记录</a></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h2 id="python-笔记-3（网络相关）"><a href="#python-笔记-3（网络相关）" class="header-anchor">#</a> Python 笔记 3（网络相关）</h2> <h3 id="socket"><a href="#socket" class="header-anchor">#</a> socket</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> socket
+
+<span class="token comment"># 创建一个 tcp socket</span>
+s1 <span class="token operator">=</span> socket<span class="token punctuation">.</span>socket<span class="token punctuation">(</span>socket<span class="token punctuation">.</span>AF_INET<span class="token punctuation">,</span> socket<span class="token punctuation">.</span>SOCK_STREAM<span class="token punctuation">)</span>
+<span class="token comment"># 创建一个 udp socket</span>
+s2 <span class="token operator">=</span> socket<span class="token punctuation">.</span>socket<span class="token punctuation">(</span>socket<span class="token punctuation">.</span>AF_INET<span class="token punctuation">,</span> socket<span class="token punctuation">.</span>SOCK_DGRAM<span class="token punctuation">)</span>
+</code></pre></div><h3 id="udp"><a href="#udp" class="header-anchor">#</a> <a href="/2019/01/08/network-note-1/#udp-网络通过过程">UDP</a></h3> <h4 id="客户端收发数据"><a href="#客户端收发数据" class="header-anchor">#</a> 客户端收发数据</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token triple-quoted-string string">'''
+创建客户端套接字
+发送/接收数据
+关闭套接字
+'''</span>
+
+<span class="token comment">#coding=utf-8</span>
+
+<span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+
+<span class="token comment">#1. 创建套接字</span>
+udpSocket <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_DGRAM<span class="token punctuation">)</span>
+
+<span class="token comment">#2. 准备接收方的地址（服务端）</span>
+sendAddr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">'192.168.1.103'</span><span class="token punctuation">,</span> <span class="token number">8080</span><span class="token punctuation">)</span>
+
+<span class="token comment">#3. 从键盘获取数据</span>
+sendData <span class="token operator">=</span> <span class="token builtin">raw_input</span><span class="token punctuation">(</span><span class="token string">&quot;请输入要发送的数据:&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment">#4. 发送数据到指定的电脑上</span>
+udpSocket<span class="token punctuation">.</span>sendto<span class="token punctuation">(</span>sendData<span class="token punctuation">,</span> sendAddr<span class="token punctuation">)</span>
+
+<span class="token comment">#5. 等待接收对方发送的数据</span>
+recvData <span class="token operator">=</span> udpSocket<span class="token punctuation">.</span>recvfrom<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span> <span class="token comment"># 1024 表示本次接收的最大字节数</span>
+
+<span class="token comment">#6. 显示对方发送的数据</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>recvData<span class="token punctuation">)</span>
+
+<span class="token comment">#7. 关闭套接字</span>
+udpSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="服务端"><a href="#服务端" class="header-anchor">#</a> 服务端</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+
+<span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+
+<span class="token comment">#1. 创建套接字</span>
+udpSocket <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_DGRAM<span class="token punctuation">)</span>
+
+<span class="token comment">#2. 绑定本地的相关信息，如果一个网络程序不绑定，则系统会随机分配</span>
+bindAddr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">7788</span><span class="token punctuation">)</span> <span class="token comment"># ip地址和端口号，ip一般不用写，表示本机的任何一个ip</span>
+udpSocket<span class="token punctuation">.</span>bind<span class="token punctuation">(</span>bindAddr<span class="token punctuation">)</span>
+
+<span class="token comment">#3. 等待接收对方发送的数据</span>
+recvData <span class="token operator">=</span> udpSocket<span class="token punctuation">.</span>recvfrom<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span> <span class="token comment"># 1024表示本次接收的最大字节数</span>
+
+<span class="token comment">#4. 显示接收到的数据</span>
+<span class="token keyword">print</span> recvData
+
+<span class="token comment">#5. 关闭套接字</span>
+udpSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="echo-服务器"><a href="#echo-服务器" class="header-anchor">#</a> echo 服务器</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+
+<span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+
+<span class="token comment">#1. 创建套接字</span>
+udpSocket <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_DGRAM<span class="token punctuation">)</span>
+
+<span class="token comment">#2. 绑定本地的相关信息</span>
+bindAddr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">7788</span><span class="token punctuation">)</span> <span class="token comment"># ip地址和端口号，ip一般不用写，表示本机的任何一个ip</span>
+udpSocket<span class="token punctuation">.</span>bind<span class="token punctuation">(</span>bindAddr<span class="token punctuation">)</span>
+
+num <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+
+    <span class="token comment">#3. 等待接收对方发送的数据</span>
+    recvData <span class="token operator">=</span> udpSocket<span class="token punctuation">.</span>recvfrom<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span> <span class="token comment"># 1024表示本次接收的最大字节数</span>
+
+    <span class="token comment">#4. 将接收到的数据再发送给对方</span>
+    udpSocket<span class="token punctuation">.</span>sendto<span class="token punctuation">(</span>recvData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> recvData<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token comment">#5. 统计信息</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'已经将接收到的第%d个数据返回给对方,内容为:%s'</span><span class="token operator">%</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span>recvData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    num<span class="token operator">+=</span><span class="token number">1</span>
+
+
+<span class="token comment">#5. 关闭套接字</span>
+udpSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="聊天室"><a href="#聊天室" class="header-anchor">#</a> 聊天室</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+
+<span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> time <span class="token keyword">import</span> ctime
+
+<span class="token comment">#1. 创建套接字</span>
+udpSocket <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_DGRAM<span class="token punctuation">)</span>
+
+<span class="token comment">#2. 绑定本地的相关信息</span>
+bindAddr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">7788</span><span class="token punctuation">)</span> <span class="token comment"># ip地址和端口号，ip一般不用写，表示本机的任何一个ip</span>
+udpSocket<span class="token punctuation">.</span>bind<span class="token punctuation">(</span>bindAddr<span class="token punctuation">)</span>
+
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+
+    <span class="token comment">#3. 等待接收对方发送的数据</span>
+    recvData <span class="token operator">=</span> udpSocket<span class="token punctuation">.</span>recvfrom<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span> <span class="token comment"># 1024表示本次接收的最大字节数</span>
+
+    <span class="token comment">#4. 打印信息</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'【%s】%s:%s'</span><span class="token operator">%</span><span class="token punctuation">(</span>ctime<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>recvData<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>recvData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token comment">#5. 关闭套接字</span>
+udpSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="广播"><a href="#广播" class="header-anchor">#</a> 广播</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+
+<span class="token keyword">import</span> socket<span class="token punctuation">,</span> sys
+
+dest <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">'&lt;broadcast&gt;'</span><span class="token punctuation">,</span> <span class="token number">7788</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 创建udp套接字</span>
+s <span class="token operator">=</span> socket<span class="token punctuation">.</span>socket<span class="token punctuation">(</span>socket<span class="token punctuation">.</span>AF_INET<span class="token punctuation">,</span> socket<span class="token punctuation">.</span>SOCK_DGRAM<span class="token punctuation">)</span>
+<span class="token comment"># 对这个需要发送广播数据的套接字进行修改设置，否则不能发送广播数据</span>
+s<span class="token punctuation">.</span>setsockopt<span class="token punctuation">(</span>socket<span class="token punctuation">.</span>SOL_SOCKET<span class="token punctuation">,</span> socket<span class="token punctuation">.</span>SO_BROADCAST<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 以广播的形式发送数据到本网络的所有电脑中</span>
+s<span class="token punctuation">.</span>sendto<span class="token punctuation">(</span><span class="token string">&quot;Hi&quot;</span><span class="token punctuation">,</span> dest<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span> <span class="token string">&quot;等待对方回复（按ctrl+c退出）&quot;</span>
+
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    <span class="token punctuation">(</span>buf<span class="token punctuation">,</span> address<span class="token punctuation">)</span> <span class="token operator">=</span> s<span class="token punctuation">.</span>recvfrom<span class="token punctuation">(</span><span class="token number">2048</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span> <span class="token string">&quot;Received from %s: %s&quot;</span> <span class="token operator">%</span> <span class="token punctuation">(</span>address<span class="token punctuation">,</span> buf<span class="token punctuation">)</span>
+</code></pre></div><h3 id="tftp"><a href="#tftp" class="header-anchor">#</a> <a href="/2019/01/08/network-note-1/#tftp">TFTP</a></h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+
+<span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">import</span> struct
+<span class="token keyword">import</span> sys
+
+<span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">2</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'-'</span><span class="token operator">*</span><span class="token number">30</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;tips:&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;python xxxx.py 192.168.1.1&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'-'</span><span class="token operator">*</span><span class="token number">30</span><span class="token punctuation">)</span>
+    exit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    ip <span class="token operator">=</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+<span class="token comment"># 创建udp套接字</span>
+udpSocket <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_DGRAM<span class="token punctuation">)</span>
+
+<span class="token comment">#构造下载请求数据</span>
+cmd_buf <span class="token operator">=</span> struct<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token string">&quot;!H8sb5sb&quot;</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">&quot;test.jpg&quot;</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token string">&quot;octet&quot;</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+<span class="token comment">#发送下载文件请求数据到指定服务器</span>
+sendAddr <span class="token operator">=</span> <span class="token punctuation">(</span>ip<span class="token punctuation">,</span> <span class="token number">69</span><span class="token punctuation">)</span>
+udpSocket<span class="token punctuation">.</span>sendto<span class="token punctuation">(</span>cmd_buf<span class="token punctuation">,</span> sendAddr<span class="token punctuation">)</span>
+
+p_num <span class="token operator">=</span> <span class="token number">0</span>
+
+recvFile <span class="token operator">=</span> <span class="token string">''</span>
+
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    recvData<span class="token punctuation">,</span>recvAddr <span class="token operator">=</span> udpSocket<span class="token punctuation">.</span>recvfrom<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
+
+    recvDataLen <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>recvData<span class="token punctuation">)</span>
+
+    <span class="token comment"># print recvAddr # for test</span>
+
+    <span class="token comment"># print len(recvData) # for test</span>
+
+    cmdTuple <span class="token operator">=</span> struct<span class="token punctuation">.</span>unpack<span class="token punctuation">(</span><span class="token string">&quot;!HH&quot;</span><span class="token punctuation">,</span> recvData<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># print cmdTuple # for test</span>
+
+    cmd <span class="token operator">=</span> cmdTuple<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    currentPackNum <span class="token operator">=</span> cmdTuple<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>        
+
+    <span class="token keyword">if</span> cmd <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span> <span class="token comment">#是否为数据包</span>
+
+        <span class="token comment"># 如果是第一次接收到数据，那么就创建文件</span>
+        <span class="token keyword">if</span> currentPackNum <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+            recvFile <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">&quot;test.jpg&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;a&quot;</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># 包编号是否和上次相等</span>
+        <span class="token keyword">if</span> p_num<span class="token operator">+</span><span class="token number">1</span> <span class="token operator">==</span> currentPackNum<span class="token punctuation">:</span>
+            recvFile<span class="token punctuation">.</span>write<span class="token punctuation">(</span>recvData<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            p_num <span class="token operator">+=</span><span class="token number">1</span>
+            <span class="token keyword">print</span> <span class="token string">'(%d)次接收到的数据'</span><span class="token operator">%</span><span class="token punctuation">(</span>p_num<span class="token punctuation">)</span>
+
+            ackBuf <span class="token operator">=</span> struct<span class="token punctuation">.</span>pack<span class="token punctuation">(</span><span class="token string">&quot;!HH&quot;</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span>p_num<span class="token punctuation">)</span>
+
+            udpSocket<span class="token punctuation">.</span>sendto<span class="token punctuation">(</span>ackBuf<span class="token punctuation">,</span> recvAddr<span class="token punctuation">)</span>
+        <span class="token comment"># 如果收到的数据小于516则认为出错</span>
+        <span class="token keyword">if</span> recvDataLen<span class="token operator">&lt;</span><span class="token number">516</span><span class="token punctuation">:</span>
+            recvFile<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span> <span class="token string">'已经成功下载！！！'</span>
+            <span class="token keyword">break</span>
+
+    <span class="token keyword">elif</span> cmd <span class="token operator">==</span> <span class="token number">5</span><span class="token punctuation">:</span> <span class="token comment">#是否为错误应答</span>
+        <span class="token keyword">print</span> <span class="token string">&quot;error num:%d&quot;</span><span class="token operator">%</span>currentPackNum
+        <span class="token keyword">break</span>
+
+udpSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="tcp"><a href="#tcp" class="header-anchor">#</a> TCP</h3> <h4 id="服务器"><a href="#服务器" class="header-anchor">#</a> 服务器</h4> <ol><li>socket创建一个套接字</li> <li>bind绑定ip和port</li> <li>listen使套接字变为可以被动链接</li> <li>accept等待客户端的链接</li> <li>recv/send接收发送数据</li></ol> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+
+<span class="token comment"># 创建socket</span>
+tcpSerSocket <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_STREAM<span class="token punctuation">)</span>
+
+<span class="token comment"># 绑定本地信息</span>
+address <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">7788</span><span class="token punctuation">)</span>
+tcpSerSocket<span class="token punctuation">.</span>bind<span class="token punctuation">(</span>address<span class="token punctuation">)</span>
+
+<span class="token comment"># 使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了</span>
+tcpSerSocket<span class="token punctuation">.</span>listen<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务器</span>
+<span class="token comment"># newSocket用来为这个客户端服务</span>
+<span class="token comment"># tcpSerSocket就可以省下来专门等待其他新客户端的链接</span>
+newSocket<span class="token punctuation">,</span> clientAddr <span class="token operator">=</span> tcpSerSocket<span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 接收对方发送过来的数据，最大接收1024个字节</span>
+recvData <span class="token operator">=</span> newSocket<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> <span class="token string">'接收到的数据为:'</span><span class="token punctuation">,</span>recvData
+
+<span class="token comment"># 发送一些数据到客户端</span>
+newSocket<span class="token punctuation">.</span>send<span class="token punctuation">(</span><span class="token string">&quot;thank you !&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 关闭为这个客户端服务的套接字，只要关闭了，就意味着为不能再为这个客户端服务了，如果还需要服务，只能再次重新连接</span>
+newSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 关闭监听套接字，只要这个套接字关闭了，就意味着整个程序不能再接收任何新的客户端的连接</span>
+tcpSerSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="客户端"><a href="#客户端" class="header-anchor">#</a> 客户端</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+
+<span class="token comment"># 创建socket</span>
+tcpClientSocket <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_STREAM<span class="token punctuation">)</span>
+
+<span class="token comment"># 链接服务器</span>
+serAddr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">'192.168.1.102'</span><span class="token punctuation">,</span> <span class="token number">7788</span><span class="token punctuation">)</span>
+tcpClientSocket<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>serAddr<span class="token punctuation">)</span>
+
+<span class="token comment"># 提示用户输入数据</span>
+sendData <span class="token operator">=</span> <span class="token builtin">raw_input</span><span class="token punctuation">(</span><span class="token string">&quot;请输入要发送的数据：&quot;</span><span class="token punctuation">)</span>
+
+tcpClientSocket<span class="token punctuation">.</span>send<span class="token punctuation">(</span>sendData<span class="token punctuation">)</span>
+
+<span class="token comment"># 接收对方发送过来的数据，最大接收1024个字节</span>
+recvData <span class="token operator">=</span> tcpClientSocket<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> <span class="token string">'接收到的数据为:'</span><span class="token punctuation">,</span>recvData
+
+<span class="token comment"># 关闭套接字</span>
+tcpClientSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="模拟聊天"><a href="#模拟聊天" class="header-anchor">#</a> 模拟聊天</h4> <h5 id="客户端-2"><a href="#客户端-2" class="header-anchor">#</a> 客户端</h5> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+
+<span class="token comment"># 创建socket</span>
+tcpClientSocket <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_STREAM<span class="token punctuation">)</span>
+
+<span class="token comment"># 链接服务器</span>
+serAddr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">'192.168.1.102'</span><span class="token punctuation">,</span> <span class="token number">7788</span><span class="token punctuation">)</span>
+tcpClientSocket<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>serAddr<span class="token punctuation">)</span>
+
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+
+    <span class="token comment"># 提示用户输入数据</span>
+    sendData <span class="token operator">=</span> <span class="token builtin">raw_input</span><span class="token punctuation">(</span><span class="token string">&quot;send：&quot;</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>sendData<span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">:</span>
+        tcpClientSocket<span class="token punctuation">.</span>send<span class="token punctuation">(</span>sendData<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+
+    <span class="token comment"># 接收对方发送过来的数据，最大接收1024个字节</span>
+    recvData <span class="token operator">=</span> tcpClientSocket<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span> <span class="token string">'recv:'</span><span class="token punctuation">,</span>recvData
+
+<span class="token comment"># 关闭套接字</span>
+tcpClientSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h5 id="服务端-2"><a href="#服务端-2" class="header-anchor">#</a> 服务端</h5> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+
+<span class="token comment"># 创建socket</span>
+tcpSerSocket <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_STREAM<span class="token punctuation">)</span>
+
+<span class="token comment"># 绑定本地信息</span>
+address <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">7788</span><span class="token punctuation">)</span>
+tcpSerSocket<span class="token punctuation">.</span>bind<span class="token punctuation">(</span>address<span class="token punctuation">)</span>
+
+<span class="token comment"># 使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了</span>
+tcpSerSocket<span class="token punctuation">.</span>listen<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+
+    <span class="token comment"># 如果有新的客户端来链接服务器，那么就产生一个信心的套接字专门为这个客户端服务器</span>
+    <span class="token comment"># newSocket用来为这个客户端服务</span>
+    <span class="token comment"># tcpSerSocket就可以省下来专门等待其他新客户端的链接</span>
+    newSocket<span class="token punctuation">,</span> clientAddr <span class="token operator">=</span> tcpSerSocket<span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+
+        <span class="token comment"># 接收对方发送过来的数据，最大接收1024个字节</span>
+        recvData <span class="token operator">=</span> newSocket<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># 如果接收的数据的长度为0，则意味着客户端关闭了链接</span>
+        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>recvData<span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span> <span class="token string">'recv:'</span><span class="token punctuation">,</span>recvData
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+
+        <span class="token comment"># 发送一些数据到客户端</span>
+        sendData <span class="token operator">=</span> <span class="token builtin">raw_input</span><span class="token punctuation">(</span><span class="token string">&quot;send:&quot;</span><span class="token punctuation">)</span>
+        newSocket<span class="token punctuation">.</span>send<span class="token punctuation">(</span>sendData<span class="token punctuation">)</span>
+
+    <span class="token comment"># 关闭为这个客户端服务的套接字，只要关闭了，就意味着为不能再为这个客户端服务了，如果还需要服务，只能再次重新连接</span>
+    newSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 关闭监听套接字，只要这个套接字关闭了，就意味着整个程序不能再接收任何新的客户端的连接</span>
+tcpSerSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="listen-的队列长度"><a href="#listen-的队列长度" class="header-anchor">#</a> Listen 的队列长度</h3> <h4 id="服务端-3"><a href="#服务端-3" class="header-anchor">#</a> 服务端</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> time <span class="token keyword">import</span> sleep
+
+<span class="token comment"># 创建socket</span>
+tcpSerSocket <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_STREAM<span class="token punctuation">)</span>
+
+<span class="token comment"># 绑定本地信息</span>
+address <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">7788</span><span class="token punctuation">)</span>
+tcpSerSocket<span class="token punctuation">.</span>bind<span class="token punctuation">(</span>address<span class="token punctuation">)</span>
+
+connNum <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">raw_input</span><span class="token punctuation">(</span><span class="token string">&quot;请输入要最大的链接数:&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 使用socket创建的套接字默认的属性是主动的，使用listen将其变为被动的，这样就可以接收别人的链接了</span>
+tcpSerSocket<span class="token punctuation">.</span>listen<span class="token punctuation">(</span>connNum<span class="token punctuation">)</span>
+
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+
+    <span class="token comment"># 如果有新的客户端来链接服务器，那么就产生一个新的套接字专门为这个客户端服务器</span>
+    newSocket<span class="token punctuation">,</span> clientAddr <span class="token operator">=</span> tcpSerSocket<span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span> clientAddr
+    sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="客户端-3"><a href="#客户端-3" class="header-anchor">#</a> 客户端</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+
+connNum <span class="token operator">=</span> <span class="token builtin">raw_input</span><span class="token punctuation">(</span><span class="token string">&quot;请输入要链接服务器的次数:&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>connNum<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    s <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_STREAM<span class="token punctuation">)</span>
+    s<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">&quot;192.168.1.102&quot;</span><span class="token punctuation">,</span> <span class="token number">7788</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+</code></pre></div><h3 id="并发服务器"><a href="#并发服务器" class="header-anchor">#</a> 并发服务器</h3> <h4 id="单进程服务器"><a href="#单进程服务器" class="header-anchor">#</a> 单进程服务器</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+
+serSocket <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_STREAM<span class="token punctuation">)</span>
+
+<span class="token comment"># 重复使用绑定的信息</span>
+serSocket<span class="token punctuation">.</span>setsockopt<span class="token punctuation">(</span>SOL_SOCKET<span class="token punctuation">,</span> SO_REUSEADDR  <span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+localAddr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">7788</span><span class="token punctuation">)</span>
+
+serSocket<span class="token punctuation">.</span>bind<span class="token punctuation">(</span>localAddr<span class="token punctuation">)</span>
+
+serSocket<span class="token punctuation">.</span>listen<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'-----主进程，，等待新客户端的到来------'</span><span class="token punctuation">)</span>
+
+    newSocket<span class="token punctuation">,</span>destAddr <span class="token operator">=</span> serSocket<span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'-----主进程，，接下来负责数据处理[%s]-----'</span><span class="token operator">%</span><span class="token builtin">str</span><span class="token punctuation">(</span>destAddr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+            recvData <span class="token operator">=</span> newSocket<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>recvData<span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'recv[%s]:%s'</span><span class="token operator">%</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>destAddr<span class="token punctuation">)</span><span class="token punctuation">,</span> recvData<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'[%s]客户端已经关闭'</span><span class="token operator">%</span><span class="token builtin">str</span><span class="token punctuation">(</span>destAddr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">break</span>
+    <span class="token keyword">finally</span><span class="token punctuation">:</span>
+        newSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+serSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="多进程服务器"><a href="#多进程服务器" class="header-anchor">#</a> 多进程服务器</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> multiprocessing <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> time <span class="token keyword">import</span> sleep
+
+<span class="token comment"># 处理客户端的请求并为其服务</span>
+<span class="token keyword">def</span> <span class="token function">dealWithClient</span><span class="token punctuation">(</span>newSocket<span class="token punctuation">,</span>destAddr<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        recvData <span class="token operator">=</span> newSocket<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>recvData<span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'recv[%s]:%s'</span><span class="token operator">%</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>destAddr<span class="token punctuation">)</span><span class="token punctuation">,</span> recvData<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'[%s]客户端已经关闭'</span><span class="token operator">%</span><span class="token builtin">str</span><span class="token punctuation">(</span>destAddr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+
+    newSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    serSocket <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_STREAM<span class="token punctuation">)</span>
+    serSocket<span class="token punctuation">.</span>setsockopt<span class="token punctuation">(</span>SOL_SOCKET<span class="token punctuation">,</span> SO_REUSEADDR  <span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    localAddr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">7788</span><span class="token punctuation">)</span>
+    serSocket<span class="token punctuation">.</span>bind<span class="token punctuation">(</span>localAddr<span class="token punctuation">)</span>
+    serSocket<span class="token punctuation">.</span>listen<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'-----主进程，，等待新客户端的到来------'</span><span class="token punctuation">)</span>
+            newSocket<span class="token punctuation">,</span>destAddr <span class="token operator">=</span> serSocket<span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'-----主进程，，接下来创建一个新的进程负责数据处理[%s]-----'</span><span class="token operator">%</span><span class="token builtin">str</span><span class="token punctuation">(</span>destAddr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            client <span class="token operator">=</span> Process<span class="token punctuation">(</span>target<span class="token operator">=</span>dealWithClient<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span>newSocket<span class="token punctuation">,</span>destAddr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            client<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+            <span class="token comment">#因为已经向子进程中copy了一份（引用），并且父进程中这个套接字也没有用处了</span>
+            <span class="token comment">#所以关闭</span>
+            newSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">finally</span><span class="token punctuation">:</span>
+        <span class="token comment">#当为所有的客户端服务完之后再进行关闭，表示不再接收新的客户端的链接</span>
+        serSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="多进程服务器-2"><a href="#多进程服务器-2" class="header-anchor">#</a> 多进程服务器 2</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> threading <span class="token keyword">import</span> Thread
+<span class="token keyword">from</span> time <span class="token keyword">import</span> sleep
+
+<span class="token comment"># 处理客户端的请求并执行事情</span>
+<span class="token keyword">def</span> <span class="token function">dealWithClient</span><span class="token punctuation">(</span>newSocket<span class="token punctuation">,</span>destAddr<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        recvData <span class="token operator">=</span> newSocket<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>recvData<span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'recv[%s]:%s'</span><span class="token operator">%</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>destAddr<span class="token punctuation">)</span><span class="token punctuation">,</span> recvData<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'[%s]客户端已经关闭'</span><span class="token operator">%</span><span class="token builtin">str</span><span class="token punctuation">(</span>destAddr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+
+    newSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    serSocket <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_STREAM<span class="token punctuation">)</span>
+    serSocket<span class="token punctuation">.</span>setsockopt<span class="token punctuation">(</span>SOL_SOCKET<span class="token punctuation">,</span> SO_REUSEADDR  <span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    localAddr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">7788</span><span class="token punctuation">)</span>
+    serSocket<span class="token punctuation">.</span>bind<span class="token punctuation">(</span>localAddr<span class="token punctuation">)</span>
+    serSocket<span class="token punctuation">.</span>listen<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'-----主进程，，等待新客户端的到来------'</span><span class="token punctuation">)</span>
+            newSocket<span class="token punctuation">,</span>destAddr <span class="token operator">=</span> serSocket<span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'-----主进程，，接下来创建一个新的进程负责数据处理[%s]-----'</span><span class="token operator">%</span><span class="token builtin">str</span><span class="token punctuation">(</span>destAddr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            client <span class="token operator">=</span> Thread<span class="token punctuation">(</span>target<span class="token operator">=</span>dealWithClient<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span>newSocket<span class="token punctuation">,</span>destAddr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            client<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+            <span class="token comment">#因为线程中共享这个套接字，如果关闭了会导致这个套接字不可用，</span>
+            <span class="token comment">#但是此时在线程中这个套接字可能还在收数据，因此不能关闭</span>
+            <span class="token comment">#newSocket.close() </span>
+    <span class="token keyword">finally</span><span class="token punctuation">:</span>
+        serSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="单进程服务器-非堵塞模式"><a href="#单进程服务器-非堵塞模式" class="header-anchor">#</a> 单进程服务器-非堵塞模式</h4> <h5 id="服务端-4"><a href="#服务端-4" class="header-anchor">#</a> 服务端</h5> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">import</span> time
+
+<span class="token comment"># 用来存储所有的新链接的socket</span>
+g_socketList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    serSocket <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_STREAM<span class="token punctuation">)</span>
+    serSocket<span class="token punctuation">.</span>setsockopt<span class="token punctuation">(</span>SOL_SOCKET<span class="token punctuation">,</span> SO_REUSEADDR  <span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    localAddr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">7788</span><span class="token punctuation">)</span>
+    serSocket<span class="token punctuation">.</span>bind<span class="token punctuation">(</span>localAddr<span class="token punctuation">)</span>
+    <span class="token comment">#可以适当修改listen中的值来看看不同的现象</span>
+    serSocket<span class="token punctuation">.</span>listen<span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span>
+    <span class="token comment">#将套接字设置为非堵塞</span>
+    <span class="token comment">#设置为非堵塞后，如果accept时，恰巧没有客户端connect，那么accept会</span>
+    <span class="token comment">#产生一个异常，所以需要try来进行处理</span>
+    serSocket<span class="token punctuation">.</span>setblocking<span class="token punctuation">(</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+
+        <span class="token comment">#用来测试</span>
+        <span class="token comment">#time.sleep(0.5)</span>
+
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            newClientInfo <span class="token operator">=</span> serSocket<span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">except</span> Exception <span class="token keyword">as</span> result<span class="token punctuation">:</span>
+            <span class="token keyword">pass</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;一个新的客户端到来:%s&quot;</span><span class="token operator">%</span><span class="token builtin">str</span><span class="token punctuation">(</span>newClientInfo<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            newClientInfo<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>setblocking<span class="token punctuation">(</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+            g_socketList<span class="token punctuation">.</span>append<span class="token punctuation">(</span>newClientInfo<span class="token punctuation">)</span>
+
+        <span class="token comment"># 用来存储需要删除的客户端信息</span>
+        needDelClientInfoList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+        <span class="token keyword">for</span> clientSocket<span class="token punctuation">,</span>clientAddr <span class="token keyword">in</span> g_socketList<span class="token punctuation">:</span>
+            <span class="token keyword">try</span><span class="token punctuation">:</span>
+                recvData <span class="token operator">=</span> clientSocket<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
+                <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>recvData<span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">:</span>
+                    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'recv[%s]:%s'</span><span class="token operator">%</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>clientAddr<span class="token punctuation">)</span><span class="token punctuation">,</span> recvData<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">else</span><span class="token punctuation">:</span>
+                    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'[%s]客户端已经关闭'</span><span class="token operator">%</span><span class="token builtin">str</span><span class="token punctuation">(</span>clientAddr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    clientSocket<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    g_needDelClientInfoList<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>clientSocket<span class="token punctuation">,</span>clientAddr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">except</span> Exception <span class="token keyword">as</span> result<span class="token punctuation">:</span>
+                <span class="token keyword">pass</span>
+
+        <span class="token keyword">for</span> needDelClientInfo <span class="token keyword">in</span> needDelClientInfoList<span class="token punctuation">:</span>
+            g_socketList<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>needDelClientInfo<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h5 id="客户端-4"><a href="#客户端-4" class="header-anchor">#</a> 客户端</h5> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">from</span> socket <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">import</span> random
+<span class="token keyword">import</span> time
+
+serverIp <span class="token operator">=</span> <span class="token builtin">raw_input</span><span class="token punctuation">(</span><span class="token string">&quot;请输入服务器的ip:&quot;</span><span class="token punctuation">)</span>
+connNum <span class="token operator">=</span> <span class="token builtin">raw_input</span><span class="token punctuation">(</span><span class="token string">&quot;请输入要链接服务器的次数(例如1000):&quot;</span><span class="token punctuation">)</span>
+g_socketList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>connNum<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    s <span class="token operator">=</span> socket<span class="token punctuation">(</span>AF_INET<span class="token punctuation">,</span> SOCK_STREAM<span class="token punctuation">)</span>
+    s<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token punctuation">(</span>serverIp<span class="token punctuation">,</span> <span class="token number">7788</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    g_socketList<span class="token punctuation">.</span>append<span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> s <span class="token keyword">in</span> g_socketList<span class="token punctuation">:</span>
+        s<span class="token punctuation">.</span>send<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># 用来测试用</span>
+    <span class="token comment">#time.sleep(1)</span>
+</code></pre></div><h3 id="select-版-tcp-服务器"><a href="#select-版-tcp-服务器" class="header-anchor">#</a> select 版 - TCP 服务器</h3> <h4 id="select-回显服务器"><a href="#select-回显服务器" class="header-anchor">#</a> select 回显服务器</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> select
+<span class="token keyword">import</span> socket
+<span class="token keyword">import</span> sys
+
+
+server <span class="token operator">=</span> socket<span class="token punctuation">.</span>socket<span class="token punctuation">(</span>socket<span class="token punctuation">.</span>AF_INET<span class="token punctuation">,</span> socket<span class="token punctuation">.</span>SOCK_STREAM<span class="token punctuation">)</span>
+server<span class="token punctuation">.</span>bind<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">7788</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+server<span class="token punctuation">.</span>listen<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+inputs <span class="token operator">=</span> <span class="token punctuation">[</span>server<span class="token punctuation">,</span> sys<span class="token punctuation">.</span>stdin<span class="token punctuation">]</span>
+
+running <span class="token operator">=</span> <span class="token boolean">True</span>
+
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+
+    <span class="token comment"># 调用 select 函数，阻塞等待</span>
+    readable<span class="token punctuation">,</span> writeable<span class="token punctuation">,</span> exceptional <span class="token operator">=</span> select<span class="token punctuation">.</span>select<span class="token punctuation">(</span>inputs<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># 数据抵达，循环</span>
+    <span class="token keyword">for</span> sock <span class="token keyword">in</span> readable<span class="token punctuation">:</span>
+
+        <span class="token comment"># 监听到有新的连接</span>
+        <span class="token keyword">if</span> sock <span class="token operator">==</span> server<span class="token punctuation">:</span>
+            conn<span class="token punctuation">,</span> addr <span class="token operator">=</span> server<span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token comment"># select 监听的socket</span>
+            inputs<span class="token punctuation">.</span>append<span class="token punctuation">(</span>conn<span class="token punctuation">)</span>
+
+        <span class="token comment"># 监听到键盘有输入</span>
+        <span class="token keyword">elif</span> sock <span class="token operator">==</span> sys<span class="token punctuation">.</span>stdin<span class="token punctuation">:</span>
+            cmd <span class="token operator">=</span> sys<span class="token punctuation">.</span>stdin<span class="token punctuation">.</span>readline<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            running <span class="token operator">=</span> <span class="token boolean">False</span>
+            <span class="token keyword">break</span>
+
+        <span class="token comment"># 有数据到达</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token comment"># 读取客户端连接发送的数据</span>
+            data <span class="token operator">=</span> sock<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> data<span class="token punctuation">:</span>
+                sock<span class="token punctuation">.</span>send<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token comment"># 移除select监听的socket</span>
+                inputs<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>sock<span class="token punctuation">)</span>
+                sock<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># 如果检测到用户输入敲击键盘，那么就退出</span>
+    <span class="token keyword">if</span> <span class="token keyword">not</span> running<span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+
+server<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="另外一个服务器（包含-writelist）"><a href="#另外一个服务器（包含-writelist）" class="header-anchor">#</a> 另外一个服务器（包含 writeList）</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">import</span> socket  
+<span class="token keyword">import</span> Queue
+<span class="token keyword">from</span> select <span class="token keyword">import</span> select  
+
+SERVER_IP <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">9999</span><span class="token punctuation">)</span>  
+
+<span class="token comment"># 保存客户端发送过来的消息,将消息放入队列中  </span>
+message_queue <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>  
+input_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>  
+output_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>  
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">&quot;__main__&quot;</span><span class="token punctuation">:</span>  
+    server <span class="token operator">=</span> socket<span class="token punctuation">.</span>socket<span class="token punctuation">(</span><span class="token punctuation">)</span>  
+    server<span class="token punctuation">.</span>bind<span class="token punctuation">(</span>SERVER_IP<span class="token punctuation">)</span>  
+    server<span class="token punctuation">.</span>listen<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>  
+    <span class="token comment"># 设置为非阻塞  </span>
+    server<span class="token punctuation">.</span>setblocking<span class="token punctuation">(</span><span class="token boolean">False</span><span class="token punctuation">)</span>  
+
+    <span class="token comment"># 初始化将服务端加入监听列表  </span>
+    input_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>server<span class="token punctuation">)</span>  
+
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>  
+        <span class="token comment"># 开始 select 监听,对input_list中的服务端server进行监听  </span>
+        stdinput<span class="token punctuation">,</span> stdoutput<span class="token punctuation">,</span> stderr <span class="token operator">=</span> select<span class="token punctuation">(</span>input_list<span class="token punctuation">,</span> output_list<span class="token punctuation">,</span> input_list<span class="token punctuation">)</span>  
+
+        <span class="token comment"># 循环判断是否有客户端连接进来,当有客户端连接进来时select将触发  </span>
+        <span class="token keyword">for</span> obj <span class="token keyword">in</span> stdinput<span class="token punctuation">:</span>  
+            <span class="token comment"># 判断当前触发的是不是服务端对象, 当触发的对象是服务端对象时,说明有新客户端连接进来了  </span>
+            <span class="token keyword">if</span> obj <span class="token operator">==</span> server<span class="token punctuation">:</span>  
+                <span class="token comment"># 接收客户端的连接, 获取客户端对象和客户端地址信息  </span>
+                conn<span class="token punctuation">,</span> addr <span class="token operator">=</span> server<span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span>  
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;Client %s connected! &quot;</span><span class="token operator">%</span><span class="token builtin">str</span><span class="token punctuation">(</span>addr<span class="token punctuation">)</span><span class="token punctuation">)</span>  
+                <span class="token comment"># 将客户端对象也加入到监听的列表中, 当客户端发送消息时 select 将触发  </span>
+                input_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>conn<span class="token punctuation">)</span>  
+                <span class="token comment"># 为连接的客户端单独创建一个消息队列，用来保存客户端发送的消息  </span>
+                message_queue<span class="token punctuation">[</span>conn<span class="token punctuation">]</span> <span class="token operator">=</span> Queue<span class="token punctuation">.</span>Queue<span class="token punctuation">(</span><span class="token punctuation">)</span>  
+
+            <span class="token keyword">else</span><span class="token punctuation">:</span>  
+                <span class="token comment"># 由于客户端连接进来时服务端接收客户端连接请求，将客户端加入到了监听列表中(input_list)，客户端发送消息将触发  </span>
+                <span class="token comment"># 所以判断是否是客户端对象触发  </span>
+                <span class="token keyword">try</span><span class="token punctuation">:</span>  
+                    recv_data <span class="token operator">=</span> obj<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>  
+                    <span class="token comment"># 客户端未断开  </span>
+                    <span class="token keyword">if</span> recv_data<span class="token punctuation">:</span>  
+                        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;received %s from client %s&quot;</span><span class="token operator">%</span><span class="token punctuation">(</span>recv_data<span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">(</span>addr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  
+                        <span class="token comment"># 将收到的消息放入到各客户端的消息队列中  </span>
+                        message_queue<span class="token punctuation">[</span>obj<span class="token punctuation">]</span><span class="token punctuation">.</span>put<span class="token punctuation">(</span>recv_data<span class="token punctuation">)</span>  
+
+                        <span class="token comment"># 将回复操作放到output列表中，让select监听  </span>
+                        <span class="token keyword">if</span> obj <span class="token keyword">not</span> <span class="token keyword">in</span> output_list<span class="token punctuation">:</span>  
+                            output_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>obj<span class="token punctuation">)</span>  
+
+                <span class="token keyword">except</span> ConnectionResetError<span class="token punctuation">:</span>  
+                    <span class="token comment"># 客户端断开连接了，将客户端的监听从input列表中移除  </span>
+                    input_list<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>obj<span class="token punctuation">)</span>  
+                    <span class="token comment"># 移除客户端对象的消息队列  </span>
+                    <span class="token keyword">del</span> message_queue<span class="token punctuation">[</span>obj<span class="token punctuation">]</span>  
+                    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;\n[input] Client %s disconnected&quot;</span><span class="token operator">%</span><span class="token builtin">str</span><span class="token punctuation">(</span>addr<span class="token punctuation">)</span><span class="token punctuation">)</span>  
+
+        <span class="token comment"># 如果现在没有客户端请求,也没有客户端发送消息时，开始对发送消息列表进行处理，是否需要发送消息  </span>
+        <span class="token keyword">for</span> sendobj <span class="token keyword">in</span> output_list<span class="token punctuation">:</span>  
+            <span class="token keyword">try</span><span class="token punctuation">:</span>  
+                <span class="token comment"># 如果消息队列中有消息,从消息队列中获取要发送的消息  </span>
+                <span class="token keyword">if</span> <span class="token keyword">not</span> message_queue<span class="token punctuation">[</span>sendobj<span class="token punctuation">]</span><span class="token punctuation">.</span>empty<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  
+                    <span class="token comment"># 从该客户端对象的消息队列中获取要发送的消息  </span>
+                    send_data <span class="token operator">=</span> message_queue<span class="token punctuation">[</span>sendobj<span class="token punctuation">]</span><span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token punctuation">)</span>  
+                    sendobj<span class="token punctuation">.</span>send<span class="token punctuation">(</span>send_data<span class="token punctuation">)</span>  
+                <span class="token keyword">else</span><span class="token punctuation">:</span>  
+                    <span class="token comment"># 将监听移除等待下一次客户端发送消息  </span>
+                    output_list<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>sendobj<span class="token punctuation">)</span>  
+
+            <span class="token keyword">except</span> ConnectionResetError<span class="token punctuation">:</span>  
+                <span class="token comment"># 客户端连接断开了  </span>
+                <span class="token keyword">del</span> message_queue<span class="token punctuation">[</span>sendobj<span class="token punctuation">]</span>  
+                output_list<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>sendobj<span class="token punctuation">)</span>  
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;\n[output] Client  %s disconnected&quot;</span><span class="token operator">%</span><span class="token builtin">str</span><span class="token punctuation">(</span>addr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="epoll-版-tcp-服务器"><a href="#epoll-版-tcp-服务器" class="header-anchor">#</a> epoll 版 - TCP 服务器</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> socket
+<span class="token keyword">import</span> select
+
+<span class="token comment"># 创建套接字</span>
+s <span class="token operator">=</span> socket<span class="token punctuation">.</span>socket<span class="token punctuation">(</span>socket<span class="token punctuation">.</span>AF_INET<span class="token punctuation">,</span>socket<span class="token punctuation">.</span>SOCK_STREAM<span class="token punctuation">)</span>
+
+<span class="token comment"># 设置可以重复使用绑定的信息</span>
+s<span class="token punctuation">.</span>setsockopt<span class="token punctuation">(</span>socket<span class="token punctuation">.</span>SOL_SOCKET<span class="token punctuation">,</span>socket<span class="token punctuation">.</span>SO_REUSEADDR<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 绑定本机信息</span>
+s<span class="token punctuation">.</span>bind<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">&quot;&quot;</span><span class="token punctuation">,</span><span class="token number">7788</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 变为被动</span>
+s<span class="token punctuation">.</span>listen<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 创建一个epoll对象</span>
+epoll<span class="token operator">=</span>select<span class="token punctuation">.</span>epoll<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 测试，用来打印套接字对应的文件描述符</span>
+<span class="token comment"># print s.fileno()</span>
+<span class="token comment"># print select.EPOLLIN|select.EPOLLET</span>
+
+<span class="token comment"># 注册事件到epoll中</span>
+<span class="token comment"># epoll.register(fd[, eventmask])</span>
+<span class="token comment"># 注意，如果fd已经注册过，则会发生异常</span>
+<span class="token comment"># 将创建的套接字添加到epoll的事件监听中</span>
+epoll<span class="token punctuation">.</span>register<span class="token punctuation">(</span>s<span class="token punctuation">.</span>fileno<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>select<span class="token punctuation">.</span>EPOLLIN<span class="token operator">|</span>select<span class="token punctuation">.</span>EPOLLET<span class="token punctuation">)</span>
+
+
+connections <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+addresses <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment"># 循环等待客户端的到来或者对方发送数据</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+
+    <span class="token comment"># epoll 进行 fd 扫描的地方 -- 未指定超时时间则为阻塞等待</span>
+    epoll_list<span class="token operator">=</span>epoll<span class="token punctuation">.</span>poll<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># 对事件进行判断</span>
+    <span class="token keyword">for</span> fd<span class="token punctuation">,</span>events <span class="token keyword">in</span> epoll_list<span class="token punctuation">:</span>
+
+        <span class="token comment"># print fd</span>
+        <span class="token comment"># print events</span>
+
+        <span class="token comment"># 如果是socket创建的套接字被激活</span>
+        <span class="token keyword">if</span> fd <span class="token operator">==</span> s<span class="token punctuation">.</span>fileno<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            conn<span class="token punctuation">,</span>addr<span class="token operator">=</span>s<span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'有新的客户端到来%s'</span><span class="token operator">%</span><span class="token builtin">str</span><span class="token punctuation">(</span>addr<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+            <span class="token comment"># 将 conn 和 addr 信息分别保存起来</span>
+            connections<span class="token punctuation">[</span>conn<span class="token punctuation">.</span>fileno<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> conn
+            addresses<span class="token punctuation">[</span>conn<span class="token punctuation">.</span>fileno<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> addr
+
+            <span class="token comment"># 向 epoll 中注册 连接 socket 的 可读 事件</span>
+            epoll<span class="token punctuation">.</span>register<span class="token punctuation">(</span>conn<span class="token punctuation">.</span>fileno<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> select<span class="token punctuation">.</span>EPOLLIN <span class="token operator">|</span> select<span class="token punctuation">.</span>EPOLLET<span class="token punctuation">)</span>
+
+
+        <span class="token keyword">elif</span> events <span class="token operator">==</span> select<span class="token punctuation">.</span>EPOLLIN<span class="token punctuation">:</span>
+            <span class="token comment"># 从激活 fd 上接收</span>
+            recvData <span class="token operator">=</span> connections<span class="token punctuation">[</span>fd<span class="token punctuation">]</span><span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
+
+            <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>recvData<span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'recv:%s'</span><span class="token operator">%</span>recvData<span class="token punctuation">)</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token comment"># 从 epoll 中移除该 连接 fd</span>
+                epoll<span class="token punctuation">.</span>unregister<span class="token punctuation">(</span>fd<span class="token punctuation">)</span>
+
+                <span class="token comment"># server 侧主动关闭该 连接 fd</span>
+                connections<span class="token punctuation">[</span>fd<span class="token punctuation">]</span><span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;%s---offline---&quot;</span><span class="token operator">%</span><span class="token builtin">str</span><span class="token punctuation">(</span>addresses<span class="token punctuation">[</span>fd<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="协程"><a href="#协程" class="header-anchor">#</a> 协程</h3> <h4 id="简单实现"><a href="#简单实现" class="header-anchor">#</a> 简单实现</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> time
+
+<span class="token keyword">def</span> <span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;----A---&quot;</span><span class="token punctuation">)</span>
+        <span class="token keyword">yield</span>
+        time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">B</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;----B---&quot;</span><span class="token punctuation">)</span>
+        c<span class="token punctuation">.</span><span class="token builtin">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__<span class="token operator">==</span><span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    a <span class="token operator">=</span> A<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    B<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+</code></pre></div><h4 id="greenlet-版"><a href="#greenlet-版" class="header-anchor">#</a> greenlet 版</h4> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">sudo</span> pip <span class="token function">install</span> greenlet
+</code></pre></div><div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+
+<span class="token keyword">from</span> greenlet <span class="token keyword">import</span> greenlet
+<span class="token keyword">import</span> time
+
+<span class="token keyword">def</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span> <span class="token string">&quot;---A--&quot;</span>
+        gr2<span class="token punctuation">.</span>switch<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">test2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span> <span class="token string">&quot;---B--&quot;</span>
+        gr1<span class="token punctuation">.</span>switch<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span>
+
+gr1 <span class="token operator">=</span> greenlet<span class="token punctuation">(</span>test1<span class="token punctuation">)</span>
+gr2 <span class="token operator">=</span> greenlet<span class="token punctuation">(</span>test2<span class="token punctuation">)</span>
+
+<span class="token comment">#切换到gr1中运行</span>
+gr1<span class="token punctuation">.</span>switch<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="gevent-版"><a href="#gevent-版" class="header-anchor">#</a> gevent 版</h4> <h5 id="gevent-的使用"><a href="#gevent-的使用" class="header-anchor">#</a> gevent 的使用</h5> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+
+<span class="token comment">#请使用python 2 来执行此程序</span>
+
+<span class="token keyword">import</span> gevent
+
+<span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span> gevent<span class="token punctuation">.</span>getcurrent<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> i
+
+g1 <span class="token operator">=</span> gevent<span class="token punctuation">.</span>spawn<span class="token punctuation">(</span>f<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+g2 <span class="token operator">=</span> gevent<span class="token punctuation">.</span>spawn<span class="token punctuation">(</span>f<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+g3 <span class="token operator">=</span> gevent<span class="token punctuation">.</span>spawn<span class="token punctuation">(</span>f<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+g1<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+g2<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+g3<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h5 id="gevent-切换执行"><a href="#gevent-切换执行" class="header-anchor">#</a> gevent 切换执行</h5> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> gevent
+
+<span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span> gevent<span class="token punctuation">.</span>getcurrent<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> i
+        <span class="token comment">#用来模拟一个耗时操作，注意不是time模块中的sleep</span>
+        gevent<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+g1 <span class="token operator">=</span> gevent<span class="token punctuation">.</span>spawn<span class="token punctuation">(</span>f<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+g2 <span class="token operator">=</span> gevent<span class="token punctuation">.</span>spawn<span class="token punctuation">(</span>f<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+g3 <span class="token operator">=</span> gevent<span class="token punctuation">.</span>spawn<span class="token punctuation">(</span>f<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+g1<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+g2<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+g3<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h5 id="gevent-并发下载器"><a href="#gevent-并发下载器" class="header-anchor">#</a> gevent 并发下载器</h5> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+
+<span class="token keyword">from</span> gevent <span class="token keyword">import</span> monkey<span class="token punctuation">;</span> 
+<span class="token keyword">import</span> gevent
+<span class="token keyword">import</span> urllib2
+
+<span class="token comment">#有IO才做时需要这一句</span>
+monkey<span class="token punctuation">.</span>patch_all<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">myDownLoad</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'GET: %s'</span> <span class="token operator">%</span> url<span class="token punctuation">)</span>
+    resp <span class="token operator">=</span> urllib2<span class="token punctuation">.</span>urlopen<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+    data <span class="token operator">=</span> resp<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'%d bytes received from %s.'</span> <span class="token operator">%</span> <span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+gevent<span class="token punctuation">.</span>joinall<span class="token punctuation">(</span><span class="token punctuation">[</span>
+        gevent<span class="token punctuation">.</span>spawn<span class="token punctuation">(</span>myDownLoad<span class="token punctuation">,</span> <span class="token string">'http://www.baidu.com/'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        gevent<span class="token punctuation">.</span>spawn<span class="token punctuation">(</span>myDownLoad<span class="token punctuation">,</span> <span class="token string">'http://www.itcast.cn/'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        gevent<span class="token punctuation">.</span>spawn<span class="token punctuation">(</span>myDownLoad<span class="token punctuation">,</span> <span class="token string">'http://www.itheima.com/'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre></div><h5 id="gevent-版-tcp-服务器"><a href="#gevent-版-tcp-服务器" class="header-anchor">#</a> gevent 版 - TCP 服务器</h5> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> sys
+<span class="token keyword">import</span> time
+<span class="token keyword">import</span> gevent
+
+<span class="token keyword">from</span> gevent <span class="token keyword">import</span> socket<span class="token punctuation">,</span>monkey
+monkey<span class="token punctuation">.</span>patch_all<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">handle_request</span><span class="token punctuation">(</span>conn<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        data <span class="token operator">=</span> conn<span class="token punctuation">.</span>recv<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> data<span class="token punctuation">:</span>
+            conn<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;recv:&quot;</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
+        conn<span class="token punctuation">.</span>send<span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">server</span><span class="token punctuation">(</span>port<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    s <span class="token operator">=</span> socket<span class="token punctuation">.</span>socket<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    s<span class="token punctuation">.</span>bind<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">,</span> port<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    s<span class="token punctuation">.</span>listen<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        cli<span class="token punctuation">,</span> addr <span class="token operator">=</span> s<span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        gevent<span class="token punctuation">.</span>spawn<span class="token punctuation">(</span>handle_request<span class="token punctuation">,</span> cli<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    server<span class="token punctuation">(</span><span class="token number">7788</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="相关链接"><a href="#相关链接" class="header-anchor">#</a> 相关链接</h3> <p><a href="/2019/01/08/network-note-1/">网络笔记 1</a></p> <h3 id="编辑记录"><a href="#编辑记录" class="header-anchor">#</a> 编辑记录</h3> <p>创建：01-08-2019 22:55 周二<br>
+编辑：01-09-2019 22:00 周三<br>
+编辑：01-12-2019 18:47 周六<br></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/python-note-2.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        Python 笔记 2
+      </a></span> <span class="next"><a href="/python-note-4.html">
+        Python 笔记 4
+        <i aria-label="icon: right" class="anticon anticon-right"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i></a></span></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.cd475b6f.js" defer></script><script src="/assets/js/3.7f8d87a5.js" defer></script><script src="/assets/js/25.d1b885bc.js" defer></script>
+  </body>
+</html>

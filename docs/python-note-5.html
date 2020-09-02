@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Python 笔记 5（正则表达式） | 不可思议</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.5.2">
+    
+    <meta name="description" content="books1.cn">
+    <link rel="preload" href="/assets/css/0.styles.cade44ac.css" as="style"><link rel="preload" href="/assets/js/app.cd475b6f.js" as="script"><link rel="preload" href="/assets/js/3.7f8d87a5.js" as="script"><link rel="preload" href="/assets/js/26.0164c392.js" as="script"><link rel="prefetch" href="/assets/js/10.a635ddcf.js"><link rel="prefetch" href="/assets/js/11.f3fbfa13.js"><link rel="prefetch" href="/assets/js/12.3a872697.js"><link rel="prefetch" href="/assets/js/13.89ebb42c.js"><link rel="prefetch" href="/assets/js/14.196d3302.js"><link rel="prefetch" href="/assets/js/15.51801e0b.js"><link rel="prefetch" href="/assets/js/16.8bf33524.js"><link rel="prefetch" href="/assets/js/17.c4ab0cd8.js"><link rel="prefetch" href="/assets/js/18.591a0905.js"><link rel="prefetch" href="/assets/js/19.403b4b74.js"><link rel="prefetch" href="/assets/js/20.b48409da.js"><link rel="prefetch" href="/assets/js/21.fd7b5e67.js"><link rel="prefetch" href="/assets/js/22.cf6842dd.js"><link rel="prefetch" href="/assets/js/23.f5e219a5.js"><link rel="prefetch" href="/assets/js/24.5fe577f1.js"><link rel="prefetch" href="/assets/js/25.d1b885bc.js"><link rel="prefetch" href="/assets/js/27.cdb21f51.js"><link rel="prefetch" href="/assets/js/28.9557f55f.js"><link rel="prefetch" href="/assets/js/4.b967356d.js"><link rel="prefetch" href="/assets/js/5.dace55af.js"><link rel="prefetch" href="/assets/js/6.c9a8fb0b.js"><link rel="prefetch" href="/assets/js/7.25c72b7b.js"><link rel="prefetch" href="/assets/js/8.4fa6e053.js"><link rel="prefetch" href="/assets/js/9.6221842d.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.230bb6c7.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.cade44ac.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">不可思议</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          数据库
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          语言
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>数据库</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Hive.html" title="Hive" class="sidebar-link">Hive</a></li><li><a href="/ODPS.html" title="ODPS" class="sidebar-link">ODPS</a></li><li><a href="/mysql-note-1.html" title="MySQL 笔记 1" class="sidebar-link">MySQL 笔记 1</a></li><li><a href="/mongodb/MongoBasis.html" title="MongoDB 基础" class="sidebar-link">MongoDB 基础</a></li><li><a href="/mongodb/MongoBegin.html" title="MongoDB 起步" class="sidebar-link">MongoDB 起步</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>语言</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Python.html" title="Python 基础" class="sidebar-link">Python 基础</a></li><li><a href="/python-note-1.html" title="Python 笔记 1" class="sidebar-link">Python 笔记 1</a></li><li><a href="/python-note-2.html" title="Python 笔记 2" class="sidebar-link">Python 笔记 2</a></li><li><a href="/python-note-3.html" title="Python 笔记 3" class="sidebar-link">Python 笔记 3</a></li><li><a href="/python-note-4.html" title="Python 笔记 4" class="sidebar-link">Python 笔记 4</a></li><li><a href="/python-note-5.html" aria-current="page" title="Python 笔记 5" class="active sidebar-link">Python 笔记 5</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/python-note-5.html#python-笔记-5（正则表达式）" title="Python 笔记 5（正则表达式）" class="sidebar-link">Python 笔记 5（正则表达式）</a></li></ul></li><li><a href="/shell-learning-1.html" title="Shell 脚本笔记 1" class="sidebar-link">Shell 脚本笔记 1</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>其它</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><a href="/update_log.html" title="更新记录" class="sidebar-link">更新记录</a></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h2 id="python-笔记-5（正则表达式）"><a href="#python-笔记-5（正则表达式）" class="header-anchor">#</a> Python 笔记 5（正则表达式）</h2> <h3 id="用法"><a href="#用法" class="header-anchor">#</a> 用法</h3> <div class="language-python extra-class"><pre class="language-python"><code>    <span class="token comment">#coding=utf-8</span>
+
+    <span class="token comment"># 导入re模块</span>
+    <span class="token keyword">import</span> re
+
+    <span class="token comment"># 使用match方法进行匹配操作</span>
+    result <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span>正则表达式<span class="token punctuation">,</span>要匹配的字符串<span class="token punctuation">)</span>
+
+    <span class="token comment"># 如果上一步匹配到数据的话，可以使用group方法来提取数据</span>
+    result<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="表示字符"><a href="#表示字符" class="header-anchor">#</a> 表示字符</h3> <table><thead><tr><th>字符</th> <th>功能</th></tr></thead> <tbody><tr><td>.</td> <td>匹配任意1个字符（除了\n）</td></tr> <tr><td>[ ]</td> <td>匹配[ ]中列举的字符</td></tr> <tr><td>\d</td> <td>匹配数字，即0-9</td></tr> <tr><td>\D</td> <td>匹配非数字，即不是数字</td></tr> <tr><td>\s</td> <td>匹配空白，即 空格，tab键</td></tr> <tr><td>\S</td> <td>匹配非空白</td></tr> <tr><td>\w</td> <td>匹配单词字符，即a-z、A-Z、0-9、_</td></tr> <tr><td>\W</td> <td>匹配非单词字符</td></tr></tbody></table> <h4 id="示例"><a href="#示例" class="header-anchor">#</a> 示例</h4> <div class="language-python extra-class"><pre class="language-python"><code>    <span class="token comment">#coding=utf-8</span>
+
+    <span class="token keyword">import</span> re
+
+    <span class="token comment"># 如果hello的首字符小写，那么正则表达式需要小写的h</span>
+    ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;h&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;hello Python&quot;</span><span class="token punctuation">)</span>
+    ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+    <span class="token comment"># 如果hello的首字符大写，那么正则表达式需要大写的H</span>
+    ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;H&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Hello Python&quot;</span><span class="token punctuation">)</span>
+    ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># 大小写h都可以的情况</span>
+    ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[hH]&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;hello Python&quot;</span><span class="token punctuation">)</span>
+    ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[hH]&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Hello Python&quot;</span><span class="token punctuation">)</span>
+    ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># 匹配0到9第一种写法</span>
+    ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[0123456789]&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;7Hello Python&quot;</span><span class="token punctuation">)</span>
+    ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># 匹配0到9第二种写法</span>
+    ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[0-9]&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;7Hello Python&quot;</span><span class="token punctuation">)</span>
+    ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="原始字符串"><a href="#原始字符串" class="header-anchor">#</a> 原始字符串</h3> <div class="language- extra-class"><pre class="language-text"><code>&gt;&gt;&gt; mm = &quot;c:\\a\\b\\c&quot;
+&gt;&gt;&gt; mm
+'c:\\a\\b\\c'
+&gt;&gt;&gt; print(mm)
+c:\a\b\c
+&gt;&gt;&gt; print(mm)
+c:\a\b\c
+&gt;&gt;&gt; re.match(&quot;c:\\\\&quot;,mm).group()
+'c:\\'
+&gt;&gt;&gt; ret = re.match(&quot;c:\\\\&quot;,mm).group()
+&gt;&gt;&gt; print(ret)
+c:\
+&gt;&gt;&gt; ret = re.match(&quot;c:\\\\a&quot;,mm).group()
+&gt;&gt;&gt; print(ret)
+c:\a
+&gt;&gt;&gt; ret = re.match(r&quot;c:\\a&quot;,mm).group()
+&gt;&gt;&gt; print(ret)
+c:\a
+&gt;&gt;&gt; ret = re.match(r&quot;c:\a&quot;,mm).group()
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+AttributeError: 'NoneType' object has no attribute 'group'
+&gt;&gt;&gt;
+
+
+# Python中字符串前面加上 r 表示原生字符串
+&gt;&gt;&gt; ret = re.match(r&quot;c:\\a&quot;,mm).group()
+&gt;&gt;&gt; print(ret)
+c:\a
+</code></pre></div><h3 id="表示数量"><a href="#表示数量" class="header-anchor">#</a> 表示数量</h3> <table><thead><tr><th>字符</th> <th>功能</th></tr></thead> <tbody><tr><td>*</td> <td>匹配前一个字符出现0次或者无限次，即可有可无</td></tr> <tr><td>+</td> <td>匹配前一个字符出现1次或者无限次，即至少有1次</td></tr> <tr><td>?</td> <td>匹配前一个字符出现1次或者0次，即要么有1次，要么没有</td></tr> <tr><td>{m}</td> <td>匹配前一个字符出现m次</td></tr> <tr><td>{m,}</td> <td>匹配前一个字符至少出现m次</td></tr> <tr><td>{m,n}</td> <td>匹配前一个字符出现从m到n次</td></tr></tbody></table> <h4 id="示例："><a href="#示例：" class="header-anchor">#</a> 示例：*</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">import</span> re
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[A-Z][a-z]*&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Mm&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[A-Z][a-z]*&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;Aabcdef&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="示例：-2"><a href="#示例：-2" class="header-anchor">#</a> 示例：+</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">import</span> re
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[a-zA-Z_]+[\w_]*&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;name1&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[a-zA-Z_]+[\w_]*&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;_name&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[a-zA-Z_]+[\w_]*&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;2_name&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="示例：-3"><a href="#示例：-3" class="header-anchor">#</a> 示例：?</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">import</span> re
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[1-9]?[0-9]&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;7&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[1-9]?[0-9]&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;33&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[1-9]?[0-9]&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;09&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="示例：-m"><a href="#示例：-m" class="header-anchor">#</a> 示例：{m}</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">import</span> re
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[a-zA-Z0-9_]{6}&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;12a3g45678&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[a-zA-Z0-9_]{8,20}&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;1ad12f23s34455ff66&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="表示边界"><a href="#表示边界" class="header-anchor">#</a> 表示边界</h3> <table><thead><tr><th>字符</th> <th>功能</th></tr></thead> <tbody><tr><td>^</td> <td>匹配字符串开头</td></tr> <tr><td>$</td> <td>匹配字符串结尾</td></tr> <tr><td>\b</td> <td>匹配一个单词的边界</td></tr> <tr><td>\B</td> <td>匹配非单词边界</td></tr></tbody></table> <h4 id="示例：-4"><a href="#示例：-4" class="header-anchor">#</a> 示例：$</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+
+<span class="token keyword">import</span> re
+
+<span class="token comment"># 正确的地址</span>
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[\w]{4,20}@163\.com&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;xiaoWang@163.com&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 不正确的地址</span>
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[\w]{4,20}@163\.com&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;xiaoWang@163.comheihei&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 通过$来确定末尾</span>
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[\w]{4,20}@163\.com$&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;xiaoWang@163.comheihei&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="示例：-b"><a href="#示例：-b" class="header-anchor">#</a> 示例：\b</h4> <div class="language- extra-class"><pre class="language-text"><code>&gt;&gt;&gt; re.match(r&quot;.*\bver\b&quot;, &quot;ho ver abc&quot;).group()
+'ho ver'
+
+&gt;&gt;&gt; re.match(r&quot;.*\bver\b&quot;, &quot;ho verabc&quot;).group()
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+AttributeError: 'NoneType' object has no attribute 'group'
+
+&gt;&gt;&gt; re.match(r&quot;.*\bver\b&quot;, &quot;hover abc&quot;).group()
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+AttributeError: 'NoneType' object has no attribute 'group'
+&gt;&gt;&gt;
+</code></pre></div><h4 id="示例：-b-2"><a href="#示例：-b-2" class="header-anchor">#</a> 示例：\B</h4> <div class="language- extra-class"><pre class="language-text"><code>&gt;&gt;&gt; re.match(r&quot;.*\Bver\B&quot;, &quot;hoverabc&quot;).group()
+'hover'
+
+&gt;&gt;&gt; re.match(r&quot;.*\Bver\B&quot;, &quot;ho verabc&quot;).group()
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+AttributeError: 'NoneType' object has no attribute 'group'
+
+&gt;&gt;&gt; re.match(r&quot;.*\Bver\B&quot;, &quot;hover abc&quot;).group()
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+AttributeError: 'NoneType' object has no attribute 'group'
+
+&gt;&gt;&gt; re.match(r&quot;.*\Bver\B&quot;, &quot;ho ver abc&quot;).group()
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+AttributeError: 'NoneType' object has no attribute 'group'
+</code></pre></div><h3 id="匹配分组"><a href="#匹配分组" class="header-anchor">#</a> 匹配分组</h3> <table><thead><tr><th>字符</th> <th>功能</th></tr></thead> <tbody><tr><td>|</td> <td>匹配左右任意一个表达式</td></tr> <tr><td>(ab)</td> <td>将括号中字符作为一个分组</td></tr> <tr><td>\num</td> <td>引用分组num匹配到的字符串</td></tr> <tr><td>(?P<name>)</name></td> <td>分组起别名</td></tr> <tr><td>(?P=name)</td> <td>引用别名为name分组匹配到的字符串</td></tr></tbody></table> <h4 id="示例：-5"><a href="#示例：-5" class="header-anchor">#</a> 示例：|</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+
+<span class="token keyword">import</span> re
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[1-9]?\d&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;8&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[1-9]?\d&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;78&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 不正确的情况</span>
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[1-9]?\d&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;08&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 修正之后的</span>
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[1-9]?\d$&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;08&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 添加|</span>
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[1-9]?\d$|100&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;8&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[1-9]?\d$|100&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;78&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[1-9]?\d$|100&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;08&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;[1-9]?\d$|100&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;100&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="示例：-6"><a href="#示例：-6" class="header-anchor">#</a> 示例：()</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+
+<span class="token keyword">import</span> re
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;\w{4,20}@163\.com&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;test@163.com&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;\w{4,20}@(163|126|qq)\.com&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;test@126.com&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;\w{4,20}@(163|126|qq)\.com&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;test@qq.com&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;\w{4,20}@(163|126|qq)\.com&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;test@gmail.com&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>&gt;&gt;&gt; ret = re.match(&quot;([^-]*)-(\d+)&quot;,&quot;010-12345678&quot;)
+&gt;&gt;&gt; ret.group()
+'010-12345678'
+&gt;&gt;&gt; ret.group(1)
+'010'
+&gt;&gt;&gt; ret.group(2)
+'12345678'
+</code></pre></div><h4 id="示例：-7"><a href="#示例：-7" class="header-anchor">#</a> 示例：\</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+
+<span class="token keyword">import</span> re
+
+<span class="token comment"># 能够完成对正确的字符串的匹配</span>
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;&lt;[a-zA-Z]*&gt;\w*&lt;/[a-zA-Z]*&gt;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&lt;html&gt;hh&lt;/html&gt;&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 如果遇到非正常的html格式字符串，匹配出错</span>
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;&lt;[a-zA-Z]*&gt;\w*&lt;/[a-zA-Z]*&gt;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&lt;html&gt;hh&lt;/htmlbalabala&gt;&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 正确的理解思路：如果在第一对&lt;&gt;中是什么，按理说在后面的那对&lt;&gt;中就应该是什么</span>
+
+<span class="token comment"># 通过引用分组中匹配到的数据即可，但是要注意是元字符串，即类似 r&quot;&quot;这种格式</span>
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">r&quot;&lt;([a-zA-Z]*)&gt;\w*&lt;/\1&gt;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&lt;html&gt;hh&lt;/html&gt;&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 因为2对&lt;&gt;中的数据不一致，所以没有匹配出来</span>
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">r&quot;&lt;([a-zA-Z]*)&gt;\w*&lt;/\1&gt;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&lt;html&gt;hh&lt;/htmlbalabala&gt;&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+
+<span class="token keyword">import</span> re
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">r&quot;&lt;(\w*)&gt;&lt;(\w*)&gt;.*&lt;/\2&gt;&lt;/\1&gt;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&lt;html&gt;&lt;h1&gt;www.itcast.cn&lt;/h1&gt;&lt;/html&gt;&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">r&quot;&lt;(\w*)&gt;&lt;(\w*)&gt;.*&lt;/\2&gt;&lt;/\1&gt;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&lt;html&gt;&lt;h1&gt;www.itcast.cn&lt;/h2&gt;&lt;/html&gt;&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="示例：-p-name-p-name"><a href="#示例：-p-name-p-name" class="header-anchor">#</a> 示例：<code>(?P&lt;name&gt;)</code>, <code>(?P=name)</code></h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+
+<span class="token keyword">import</span> re
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">r&quot;&lt;(?P&lt;name1&gt;\w*)&gt;&lt;(?P&lt;name2&gt;\w*)&gt;.*&lt;/(?P=name2)&gt;&lt;/(?P=name1)&gt;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&lt;html&gt;&lt;h1&gt;www.itcast.cn&lt;/h1&gt;&lt;/html&gt;&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">r&quot;&lt;(?P&lt;name1&gt;\w*)&gt;&lt;(?P&lt;name2&gt;\w*)&gt;.*&lt;/(?P=name2)&gt;&lt;/(?P=name1)&gt;&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;&lt;html&gt;&lt;h1&gt;www.itcast.cn&lt;/h2&gt;&lt;/html&gt;&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="reg-模块高级用法"><a href="#reg-模块高级用法" class="header-anchor">#</a> reg 模块高级用法</h3> <h4 id="search"><a href="#search" class="header-anchor">#</a> search</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">import</span> re
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">r&quot;\d+&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;阅读次数为 9999&quot;</span><span class="token punctuation">)</span>
+ret<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># '9999'</span>
+</code></pre></div><h4 id="finall"><a href="#finall" class="header-anchor">#</a> finall</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">import</span> re
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">r&quot;\d+&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;python = 9999, c = 7890, c++ = 12345&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> ret  <span class="token comment"># ['9999', '7890', '12345']</span>
+</code></pre></div><h4 id="sub-将匹配到的数据进行替换"><a href="#sub-将匹配到的数据进行替换" class="header-anchor">#</a> sub 将匹配到的数据进行替换</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">import</span> re
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>sub<span class="token punctuation">(</span><span class="token string">r&quot;\d+&quot;</span><span class="token punctuation">,</span> <span class="token string">'998'</span><span class="token punctuation">,</span> <span class="token string">&quot;python = 997&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> ret  <span class="token comment"># 998</span>
+</code></pre></div><div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">import</span> re
+
+<span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    strNum <span class="token operator">=</span> temp<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    num <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>strNum<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">return</span> <span class="token builtin">str</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span>
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>sub<span class="token punctuation">(</span><span class="token string">r&quot;\d+&quot;</span><span class="token punctuation">,</span> add<span class="token punctuation">,</span> <span class="token string">&quot;python = 997&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> ret  <span class="token comment"># 998</span>
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>sub<span class="token punctuation">(</span><span class="token string">r&quot;\d+&quot;</span><span class="token punctuation">,</span> add<span class="token punctuation">,</span> <span class="token string">&quot;python = 99&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> ret  <span class="token comment"># 100</span>
+</code></pre></div><h4 id="split-根据匹配进行切割字符串，并返回一个列表"><a href="#split-根据匹配进行切割字符串，并返回一个列表" class="header-anchor">#</a> split 根据匹配进行切割字符串，并返回一个列表</h4> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#coding=utf-8</span>
+<span class="token keyword">import</span> re
+
+ret <span class="token operator">=</span> re<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">r&quot;:| &quot;</span><span class="token punctuation">,</span><span class="token string">&quot;info:xiaoZhang 33 shandong&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> ret  <span class="token comment"># ['info', 'xiaoZhang', '33', 'shandong']</span>
+</code></pre></div><h3 id="贪婪和非贪婪"><a href="#贪婪和非贪婪" class="header-anchor">#</a> 贪婪和非贪婪</h3> <div class="language-python extra-class"><pre class="language-python"><code>s<span class="token operator">=</span><span class="token string">&quot;This is a number 234-235-22-423&quot;</span>
+r<span class="token operator">=</span>re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;.+(\d+-\d+-\d+-\d+)&quot;</span><span class="token punctuation">,</span>s<span class="token punctuation">)</span>
+<span class="token keyword">print</span> r<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># '4-235-22-423'</span>
+
+r<span class="token operator">=</span>re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">&quot;.+?(\d+-\d+-\d+-\d+)&quot;</span><span class="token punctuation">,</span>s<span class="token punctuation">)</span>
+r<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment">#  '234-235-22-423'</span>
+
+re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">r&quot;aa(\d+)&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;aa2343ddd&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># '2343'</span>
+re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">r&quot;aa(\d+?)&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;aa2343ddd&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># '2'</span>
+re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">r&quot;aa(\d+)ddd&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;aa2343ddd&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># '2343'</span>
+re<span class="token punctuation">.</span>match<span class="token punctuation">(</span><span class="token string">r&quot;aa(\d+?)ddd&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;aa2343ddd&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># '2343'</span>
+</code></pre></div><h3 id="编辑记录"><a href="#编辑记录" class="header-anchor">#</a> 编辑记录</h3> <p>创建：01-13-2019 11:53 周日<br></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/python-note-4.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        Python 笔记 4
+      </a></span> <span class="next"><a href="/shell-learning-1.html">
+        Shell 脚本笔记 1
+        <i aria-label="icon: right" class="anticon anticon-right"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i></a></span></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.cd475b6f.js" defer></script><script src="/assets/js/3.7f8d87a5.js" defer></script><script src="/assets/js/26.0164c392.js" defer></script>
+  </body>
+</html>

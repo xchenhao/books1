@@ -45,6 +45,7 @@ module.exports = {
           // 或 {title: <title>, path: <path>}
           {title: 'Hive', path: '/Hive'},
           {title: 'ODPS', path: '/ODPS'},
+          {title: 'MySQL 笔记 1', path: '/mysql-note-1'},
           {title: 'MongoDB 基础', path: '/mongodb/MongoBasis'},
           {title: 'MongoDB 起步', path: '/mongodb/MongoBegin'},
         ]
@@ -53,21 +54,37 @@ module.exports = {
         title: '语言',
         collapsable: false,
         children: [
-          {title: 'Python 基础', path: '/Python'}
+          {title: 'Python 基础', path: '/Python'},
+          {title: 'Python 笔记 1', path: '/python-note-1'},
+          {title: 'Python 笔记 2', path: '/python-note-2'},
+          {title: 'Python 笔记 3', path: '/python-note-3'},
+          {title: 'Python 笔记 4', path: '/python-note-4'},
+          {title: 'Python 笔记 5', path: '/python-note-5'},
+          {title: 'Shell 脚本笔记 1', path: '/shell-learning-1'},
         ]
       },
-      {
-        title: 'Git',
-        path: '/Git',
-      },
+      // {
+      //   title: 'Git',
+      //   path: '/Git',
+      // },
       {
         title: '其它',
         children: [
           {title: 'JetBrains IDE 破解教程', path: '/JetBrainsCrack'},
           {title: 'WebTorrent 下载磁力链接工具', path: '/WebTorrent'},
           {title: 'HTTP 协议', path: '/HTTP-Protocol'},
+          {title: 'TDD 笔记', path: '/TDD-note'},
+          {title: 'Vim 笔记', path: '/vim-note'},
+          {title: '网络笔记', path: '/network-note-1'},
+          {title: 'grep & sed & awk', path: '/grep-sed-awk'},
+          {title: 'Git', path: '/Git'},
+          {title: 'Docker', path: '/Docker-note'},
         ]
-      }
+      },
+      {
+        title: '更新记录',
+        path: '/update_log',
+      },
     ]
   }
 }
