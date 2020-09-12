@@ -82,6 +82,10 @@ module.exports = {
         ]
       },
       {
+        title: '读书笔记',
+        path: '/books-note',
+      },
+      {
         title: '更新记录',
         path: '/update_log',
       },
