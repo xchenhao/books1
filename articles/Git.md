@@ -6,6 +6,9 @@ git push -u origin :test
 # 或
 git push origin --delete test
 
+# 推送本地分支 localbranch 至远程分支 remotebranch
+git push origin localbranch:remotebranch
+
 
 # 打包
 git bundle create myrepo.bundle HEAD master
