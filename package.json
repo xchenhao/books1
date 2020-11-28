@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "dev": "sudo vuepress dev ./articles",
-    "build": "sudo vuepress build ./articles -d ./docs"
+    "dev": "node_modules/vuepress/cli.js dev ./articles",
+    "build": "rm -rf ./docs/* && node_modules/vuepress/cli.js build ./articles -d ./docs"
   },
   "dependencies": {
     "vuepress": "^1.5.3",

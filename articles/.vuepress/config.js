@@ -1,6 +1,6 @@
 module.exports = {
   title: '不可思议',
-  description: 'books1.cn',
+  description: 'xchenhao.gitee.io',
   plugins: [
     'flowchart'  // https://flowchart.vuepress.ulivz.com/
   ],
@@ -67,6 +67,12 @@ module.exports = {
       //   title: 'Git',
       //   path: '/Git',
       // },
+      {
+        title: '工具',
+        children: [
+          {title: 'JSON 格式化', path: 'https://xchenhao.gitee.io/jsonformatter/'},
+        ]
+      },
       {
         title: '其它',
         children: [

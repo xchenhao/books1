@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <!-- when using the mode "code", it's important to specify charset utf-8 -->
+    <meta charset="utf-8">
+    <link href="./dist/jsoneditor.min.css" rel="stylesheet" type="text/css">
+    <script src="./dist/jsoneditor.min.js"></script>
+    <title>JSON Formatter</title>
+</head>
+<style>
+  body {
+    display: flex;
+    margin: 0;
+    height: 1000px;
+  }
+  .editor-box {
+    margin: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #e9e9e9;
+  }
+</style>
+<body style="display: flex">
+<div id="jsoneditor" class="editor-box"></div>
+<div id="jsoneditor-view" class="editor-box"></div>
+</body>
+<script>
+  // https://github.com/josdejong/jsoneditor
+
+  // read only
+  const editorView = new JSONEditor(document.getElementById("jsoneditor-view"), {
+    mode: 'view',
+    modes: ['code', 'form', 'text', 'tree', 'view', 'preview'], // allowed modes
+    onError: function (err) {
+      alert(err.toString())
+    },
+    onModeChange: function (newMode, oldMode) {
+      console.log('Mode switched from', oldMode, 'to', newMode)
+    },
+    onEditable: function (node) {
+      if (!node.path) {
+        // In modes code and text, node is empty: no path, field, or value
+        // returning false makes the text area read-only
+        return false;
+      }
+    },
+  })
+  editorView.set({
+    "Array": [1, 2, 3],
+    "Boolean": true,
+    "Null": null,
+    "Number": 123,
+    "Object": {"a": "b", "c": "d"},
+    "String": "Hello World"
+  })
+  const updatedJsonView = editorView.get()
+
+
+  // writable
+  const editor = new JSONEditor(document.getElementById("jsoneditor"), {
+    mode: 'code',
+    modes: ['code', 'form', 'text', 'tree', 'view', 'preview'], // allowed modes
+    onError: function (err) {
+      alert(err.toString())
+    },
+    onModeChange: function (newMode, oldMode) {
+      console.log('Mode switched from', oldMode, 'to', newMode)
+    },
+    onChangeText: function (newJSON) {
+      editorView.setText(newJSON)
+    }
+  })
+  editor.set({
+    "Array": [1, 2, 3],
+    "Boolean": true,
+    "Null": null,
+    "Number": 123,
+    "Object": {"a": "b", "c": "d"},
+    "String": "Hello World"
+  })
+  const updatedJson = editor.get()
+</script>
+</html>
