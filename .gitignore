@@ -3,4 +3,3 @@ _book/
 files/
 node_modules/
 .vuepress/dist/
-dist/
