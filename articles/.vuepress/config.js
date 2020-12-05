@@ -38,21 +38,31 @@ module.exports = {
       {
         title: '数据库',
         // path: '/foo/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
-        collapsable: false, // 可选的, 默认值是 true,
+        collapsable: true, // 可选的, 默认值是 true,
         sidebarDepth: 2,    // 可选的, 默认值是 1
         children: [
           // [<link>, <title>] 格式：['/Hive', 'Hive'],
           // 或 {title: <title>, path: <path>}
           {title: 'Hive', path: '/Hive'},
           {title: 'ODPS', path: '/ODPS'},
-          {title: 'MySQL 笔记 1', path: '/mysql-note-1'},
+
           {title: 'MongoDB 基础', path: '/mongodb/MongoBasis'},
           {title: 'MongoDB 起步', path: '/mongodb/MongoBegin'},
         ]
       },
       {
+        title: 'MySQL',
+        collapsable: true,
+        children: [
+          {title: 'MySQL 笔记 1', path: '/mysql/note1'},
+          {title: '版本类问题', path: '/mysql/about_version'},
+          {title: '用户管理类问题', path: '/mysql/about_user'},
+          {title: '服务器配置类问题', path: '/mysql/about_config'},
+        ]
+      },
+      {
         title: '语言',
-        collapsable: false,
+        collapsable: true,
         children: [
           {title: 'Python 基础', path: '/Python'},
           {title: 'Python 笔记 1', path: '/python-note-1'},
@@ -69,6 +79,7 @@ module.exports = {
       // },
       {
         title: '工具',
+        collapsable: true,
         children: [
           {title: '时间戳与日期转换', path: 'https://xchenhao.gitee.io/time.html'},
           {title: 'JSON 格式化', path: 'https://xchenhao.gitee.io/jsonformatter/'},
@@ -76,6 +87,7 @@ module.exports = {
       },
       {
         title: '其它',
+        collapsable: true,
         children: [
           {title: 'JetBrains IDE 破解教程', path: '/JetBrainsCrack'},
           {title: 'WebTorrent 下载磁力链接工具', path: '/WebTorrent'},

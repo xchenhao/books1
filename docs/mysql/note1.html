@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>MySQL 笔记 1 | 不可思议</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.7.1">
+    
+    <meta name="description" content="xchenhao.gitee.io">
+    <link rel="preload" href="/assets/css/0.styles.dcdd4981.css" as="style"><link rel="preload" href="/assets/js/app.d27ffea8.js" as="script"><link rel="preload" href="/assets/js/3.e8b8d8a4.js" as="script"><link rel="preload" href="/assets/js/8.b8da02e2.js" as="script"><link rel="prefetch" href="/assets/js/10.2e637e9f.js"><link rel="prefetch" href="/assets/js/11.337b06bc.js"><link rel="prefetch" href="/assets/js/12.27811774.js"><link rel="prefetch" href="/assets/js/13.5f093fae.js"><link rel="prefetch" href="/assets/js/14.1a82e8e9.js"><link rel="prefetch" href="/assets/js/15.a64b3072.js"><link rel="prefetch" href="/assets/js/16.cf7c36d7.js"><link rel="prefetch" href="/assets/js/17.3214180a.js"><link rel="prefetch" href="/assets/js/18.edf3cc3a.js"><link rel="prefetch" href="/assets/js/19.4c511e27.js"><link rel="prefetch" href="/assets/js/20.93e8e7ba.js"><link rel="prefetch" href="/assets/js/21.43f36607.js"><link rel="prefetch" href="/assets/js/22.84c0f4d0.js"><link rel="prefetch" href="/assets/js/23.69a9d3d6.js"><link rel="prefetch" href="/assets/js/24.5a154f6d.js"><link rel="prefetch" href="/assets/js/25.457bbc59.js"><link rel="prefetch" href="/assets/js/26.33e882f8.js"><link rel="prefetch" href="/assets/js/27.57ebc4ca.js"><link rel="prefetch" href="/assets/js/28.9995b9d4.js"><link rel="prefetch" href="/assets/js/29.fb93f325.js"><link rel="prefetch" href="/assets/js/30.44302397.js"><link rel="prefetch" href="/assets/js/31.1211134a.js"><link rel="prefetch" href="/assets/js/32.a0a27db3.js"><link rel="prefetch" href="/assets/js/33.487dd495.js"><link rel="prefetch" href="/assets/js/34.25c0e68c.js"><link rel="prefetch" href="/assets/js/35.9810a2aa.js"><link rel="prefetch" href="/assets/js/4.4ac29603.js"><link rel="prefetch" href="/assets/js/5.db7cab44.js"><link rel="prefetch" href="/assets/js/6.9f3e728c.js"><link rel="prefetch" href="/assets/js/7.6a2e5068.js"><link rel="prefetch" href="/assets/js/9.139e0367.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.40e3c389.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.dcdd4981.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">不可思议</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          数据库
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          语言
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>数据库</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>MySQL</span> <span class="arrow down"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mysql/note1.html" aria-current="page" title="MySQL 笔记 1" class="active sidebar-link">MySQL 笔记 1</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/mysql/about_version.html" title="版本类问题" class="sidebar-link">版本类问题</a></li><li><a href="/mysql/about_user.html" title="用户管理类问题" class="sidebar-link">用户管理类问题</a></li><li><a href="/mysql/about_config.html" title="服务器配置类问题" class="sidebar-link">服务器配置类问题</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>语言</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>工具</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>其它</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><a href="/books-note.html" title="读书笔记" class="sidebar-link">读书笔记</a></li><li><a href="/update_log.html" title="更新记录" class="sidebar-link">更新记录</a></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h3 id="mysql-笔记-1"><a href="#mysql-笔记-1" class="header-anchor">#</a> MySQL 笔记 1</h3> <h4 id="sql"><a href="#sql" class="header-anchor">#</a> SQL</h4> <ul><li>DDL</li> <li>DML</li> <li>DQL</li> <li>DCL</li></ul> <h4 id="数据库存储引擎"><a href="#数据库存储引擎" class="header-anchor">#</a> 数据库存储引擎</h4> <ul><li>InnoDB</li> <li>MyISAM</li> <li>Memory</li> <li>Merge</li> <li>Archive</li> <li>Federated</li> <li>CSV</li> <li>BlackHole</li></ul> <h4 id="ddl"><a href="#ddl" class="header-anchor">#</a> DDL</h4> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token comment"># 创建数据库</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">DATABASE</span> <span class="token operator">&lt;</span>库名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token comment"># 删除数据库</span>
+<span class="token keyword">DROP</span> <span class="token keyword">DATABASE</span> <span class="token operator">&lt;</span>库名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token comment"># 查看数据库</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">DATABASES</span><span class="token punctuation">;</span>
+<span class="token comment"># 查看表</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">TABLES</span><span class="token punctuation">;</span>
+
+
+<span class="token comment"># 创建表</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span>
+<span class="token punctuation">(</span>
+   <span class="token operator">&lt;</span>列名<span class="token number">1</span><span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token punctuation">[</span>列级别约束条件<span class="token punctuation">]</span> <span class="token punctuation">[</span>默认值<span class="token punctuation">]</span> <span class="token punctuation">[</span>注释<span class="token punctuation">]</span><span class="token punctuation">,</span>
+   <span class="token operator">&lt;</span>列名<span class="token number">1</span><span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token punctuation">[</span>列级别约束条件<span class="token punctuation">]</span> <span class="token punctuation">[</span>默认值<span class="token punctuation">]</span> <span class="token punctuation">[</span>注释<span class="token punctuation">]</span><span class="token punctuation">,</span>
+   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+   <span class="token punctuation">[</span>表级别约束条件<span class="token punctuation">]</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*
+主键约束
+  单字段主键：字段名 数据类型 PRIMARY KEY [默认值]
+  多字段联合主键：PRIMARY KEY [字段1, 字段2, ..., 字段n]
+*/</span>
+
+<span class="token comment">/*
+外键约束
+  [CONSTRAINT &lt;外键名&gt;] FOREIGN KEY 列名1 [,列名2, ...]
+  REFERENCES &lt;主表名&gt; 主键列1 [,主键列2, ...]
+*/</span>
+
+<span class="token comment">/*
+非空约束
+  字段名 数据类型 NOT NULL
+*/</span>
+
+<span class="token comment">/*
+唯一性约束
+  字段名 数据类型 UNIQUE
+*/</span>
+
+<span class="token comment">/*
+默认约束
+  字段名 数据类型 DEFAULT 默认值
+*/</span>
+
+<span class="token comment">/*
+自增属性
+  字段名 数据类型 AUTO_INCREMENT
+*/</span>
+
+<span class="token comment"># 查看表结构</span>
+<span class="token keyword">DESCRIBE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token keyword">DESC</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 修改表结构</span>
+<span class="token comment">## 修改表名</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>旧表名<span class="token operator">&gt;</span> <span class="token keyword">RENAME</span> <span class="token punctuation">[</span><span class="token keyword">TO</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span>新表名<span class="token operator">&gt;</span><span class="token punctuation">;</span> 
+<span class="token comment">## 修改字段数据类型</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">MODIFY</span> <span class="token operator">&lt;</span>字段名<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span>
+<span class="token comment">## 修改字段名（类型）</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> CHANGE <span class="token operator">&lt;</span>旧字段名<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>新字段名<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>新数据类型<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token comment">## 添加字段</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">ADD</span> <span class="token operator">&lt;</span>新字段名<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token punctuation">[</span>约束条件<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token keyword">FIRST</span><span class="token operator">|</span><span class="token keyword">AFTER</span> 已存在字段名<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">## 删除字段</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">DROP</span> <span class="token operator">&lt;</span>字段名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token comment">## 修改字段的排列位置</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">MODIFY</span> <span class="token operator">&lt;</span>字段<span class="token number">1</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>数据类型<span class="token operator">&gt;</span> <span class="token keyword">FIRST</span><span class="token operator">|</span><span class="token keyword">AFTER</span> <span class="token operator">&lt;</span>字段<span class="token number">2</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token comment">## 更改表的存储引擎</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token operator">&lt;</span>新存储引擎名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token comment">## 删除表外键约束</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token operator">&lt;</span>表名<span class="token operator">&gt;</span> <span class="token keyword">DROP</span> FOREGIN <span class="token keyword">KEY</span> <span class="token operator">&lt;</span>外键约束名<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+<span class="token comment">## 删除表</span>
+<span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> <span class="token punctuation">[</span><span class="token keyword">IF</span> <span class="token keyword">EXISTS</span><span class="token punctuation">]</span> 表<span class="token number">1</span><span class="token punctuation">,</span> 表<span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> 表n<span class="token punctuation">;</span>
+</code></pre></div><h4 id="数据类型"><a href="#数据类型" class="header-anchor">#</a> 数据类型</h4> <ul><li>整数类型：TINYINT, SMALLINT, MEDIUMINT, INT(INTEGER), BIGINT</li> <li>浮点数类型：FLOAT, DOUBLE</li> <li>定点数类型：DECIMAL</li> <li>日期与时间类型：DATETIME, DATE, TIMESTAMP, TIME, YEAR</li> <li>字符串类型：CHAR, VARCHAR, BINARY, VARBINARY, BLOB, TEXT, ENUM, SET</li> <li>二进制类型：BIT, BINARY, VARBINARY, TINYBLOB, BLOB, MEDIUMBLOB, LONGBLOG</li></ul> <h4 id="运算符"><a href="#运算符" class="header-anchor">#</a> 运算符</h4> <ul><li>算术运算符
+<ul><li><code>+, -, *, /, %</code></li></ul></li> <li>比较运算符
+<ul><li>运算结果为 1, 0 或 NULL</li> <li><code>=, &lt;=&gt;, &lt;&gt;, !=, &lt;=, &gt;=, &gt;, IS NULL, IS NOT NULL, LEAST, GREATEST, BETWEEN ... AND ..., ISNULL, IN, NOT IN, LIKE, REGEXP</code></li></ul></li> <li>逻辑运算符
+<ul><li>运算结果为 TRUE, FALSE, NULL</li> <li><code>NOT, !, AND, &amp;&amp;, OR, ||, XOR</code></li></ul></li> <li>位操作运算符：<code>|, &amp;, ^, ~, &lt;&lt;, &gt;&gt;</code></li> <li>运算符的优先级</li></ul> <h4 id="函数"><a href="#函数" class="header-anchor">#</a> 函数</h4> <h5 id="数学函数"><a href="#数学函数" class="header-anchor">#</a> 数学函数</h5> <table><thead><tr><th>函数</th> <th>作用</th></tr></thead> <tbody><tr><td>ABS(x)</td> <td>取绝对值</td></tr> <tr><td>PI</td> <td>返回圆周率</td></tr> <tr><td>SORT(x)</td> <td>取平方根</td></tr> <tr><td>MOD(x, y)</td> <td>取余</td></tr> <tr><td>CEIL(x), CEILING(x)</td> <td>向上取整</td></tr> <tr><td>FLOOR(x)</td> <td>向下取整</td></tr> <tr><td>RAND(), RAND(x)</td> <td>取随机数</td></tr> <tr><td>ROUND(x), ROUND(x, y), TRUNCATE(x, y)</td> <td>四舍五入</td></tr> <tr><td>SIGN(x)</td> <td>符号函数（x 为负、零、正时依次返回 -1、0、1）</td></tr> <tr><td>POW(x, y), POWER(x, y), EXP(y)</td> <td>幂函数</td></tr> <tr><td>LOG(x), LOG10(x)</td> <td>对数函数</td></tr> <tr><td>RADIANS(x), DEGREES(x)</td> <td>角度与弧度转换</td></tr> <tr><td>SIN(x), ASIN(x), COS(x), ACOS(x), TAN(x), ATAN(x)</td> <td>三角与反三角函数</td></tr></tbody></table> <h5 id="字符串函数"><a href="#字符串函数" class="header-anchor">#</a> 字符串函数</h5> <table><thead><tr><th>函数</th> <th>作用</th></tr></thead> <tbody><tr><td>CHAR_LENGTH(str), LENGTH(str)</td> <td>获取字符串字符数/字节长度</td></tr> <tr><td>CONCAT(s1, s2, ...), CONCAT_WS(x, s1, s2, ...)</td> <td>合并字符串</td></tr> <tr><td>INSERT(s1, x, len, s2)</td> <td>替换字符串</td></tr> <tr><td>LOWER(str), LCASE(str), UPPER(str), UCASE(str)</td> <td>转换大小写</td></tr> <tr><td>LEFT(s, n), RIGHT(s, n)</td> <td>获取子字符串</td></tr> <tr><td>LPAD(s1, len, s2), RPAD(s1, len, s2)</td> <td>填充字符串</td></tr> <tr><td>LTRIM(s), RTRIM(s), TRIM(s)</td> <td>删除空格</td></tr> <tr><td>TRIM(s1 FROM s)</td> <td>删除两端指定字符串 s</td></tr> <tr><td>REPEAT(s, n)</td> <td>重复生成字符串</td></tr> <tr><td>SPACE(n)</td> <td>生成空格</td></tr> <tr><td>REPLACE(s, s1, s2)</td> <td>替换字符串</td></tr> <tr><td>STRCMP(s1, s2)</td> <td>比较字符串大小(s1 大于、等于、小于 s2 返回 1、0、-1)</td></tr> <tr><td>SUBSTRING(s, n, len), MID(s, n, len)</td> <td>获取子串</td></tr> <tr><td>LOCATE(str1, str), POSITION(str1 IN str), INSTR(str, str1)</td> <td>匹配子串 str1 在字符串 str 中开始位置</td></tr> <tr><td>REVERSE(x)</td> <td>字符串逆序</td></tr> <tr><td>ELT(n, str1, str2,  ..., strn)</td> <td>返回指定位置的字符串</td></tr> <tr><td>FILED(s, s1, s2, ...)</td> <td>返回指定字符串位置</td></tr> <tr><td>FIND_IN_SET(s1, s2)</td> <td>返回子串 s1 在字符串列表 s2 中的位置</td></tr> <tr><td>MAKE_SET(x, s1, s2, ...)</td> <td>返回 x 的二进制数指定的相应位字符串</td></tr></tbody></table> <h5 id="日期和时间函数"><a href="#日期和时间函数" class="header-anchor">#</a> 日期和时间函数</h5> <table><thead><tr><th>函数</th> <th>作用</th></tr></thead> <tbody><tr><td>CURDATE(), CURRENT_DATE(), CURRENT_TIMESTAMP(), LOCALTIME(), NOW(), SYSDATE()</td> <td>当前日期、时间、日期和时间</td></tr> <tr><td>UNIX_TIMESTAMP(), UNIX_TIMESTAMP(date)</td> <td>UNIX 时间戳</td></tr> <tr><td>UTC_DATE()</td> <td>返回 UTC 日期、时间</td></tr> <tr><td>MONTH(date), MONTHNAME(date)</td> <td>获取月份</td></tr> <tr><td>DAYNAME(d), DAYOFWEEK(d), WEEKDAY(d), WEEK(d), WEEKOFYEAR(d)</td> <td>获取星期</td></tr> <tr><td>DAYOFYEAR(d), DAYOFMONTH(d)</td> <td>获取天数</td></tr> <tr><td>QURTER(date), MINUTE(time), SECOND(time)</td> <td>获取年份、季度、小时、分钟、秒钟</td></tr> <tr><td>EXTRACT(type FROM d)</td> <td>获取日期的指定值</td></tr> <tr><td>TIME_TO_SEC(time), SEC_TO_TIME(seconds)</td> <td>时间和秒钟转换</td></tr> <tr><td>DATE_ADD(date, INTERVAL expr type), ADDDATE(date, INTERVAL expr type), DATE_SUB(date, INTERVAL expr type), SUBDATE(date, INTERVAL expr type), ADDTIME(date, expr), SUBTIME(date, expr)</td> <td>计算日期和时间</td></tr> <tr><td>DATE_FORMAT(date, format)</td> <td>将日期和时间格式式</td></tr></tbody></table> <h5 id="条件判断函数"><a href="#条件判断函数" class="header-anchor">#</a> 条件判断函数</h5> <table><thead><tr><th>函数</th> <th>作用</th></tr></thead> <tbody><tr><td>IF(expr, v1, v2)</td> <td>expr 为 TRUE 则返回 v1，否则为 v2</td></tr> <tr><td>IFNULL(v1, v2)</td> <td>v1 若为 NULL 则返回 v2，否则返回 v1</td></tr> <tr><td>CASE</td> <td>CASE expr WHEN v1 THEN r1 [WHEN v2 THEN r2] [ELSE rn] END<br>CASE WHEN v1 THEN r1 [WHEN v2 THEN r2] [ELSE rn] END</td></tr></tbody></table> <h5 id="系统信息函数"><a href="#系统信息函数" class="header-anchor">#</a> 系统信息函数</h5> <table><thead><tr><th>函数</th> <th>作用</th></tr></thead> <tbody><tr><td>VERION()</td> <td>获取 MySQL 版本号</td></tr> <tr><td>CONNECTION_ID()</td> <td>获取连接数</td></tr> <tr><td>DATABASE(), SCHEMA()</td> <td>获取数据库名</td></tr> <tr><td>USER(), CURRENT_USER, CURRENT_USER(), SYSTEM_USER(), SESSION_USER()</td> <td>获取用户名</td></tr> <tr><td>CHARSET(str), COLLATION(str)</td> <td>获取字符串的字符集和排序方式</td></tr> <tr><td>LAST_INSERT_ID()</td> <td>获取最后一个自动生成的 ID 值</td></tr></tbody></table> <h5 id="加密函数"><a href="#加密函数" class="header-anchor">#</a> 加密函数</h5> <table><thead><tr><th>函数</th> <th>作用</th></tr></thead> <tbody><tr><td>PASSWORD(str)</td> <td></td></tr> <tr><td>MD5(str)</td> <td></td></tr> <tr><td>ENCODE(str,pswd_str)</td> <td></td></tr> <tr><td>DECODE(crypt_str,pswd_str)</td> <td></td></tr></tbody></table> <h5 id="其他函数"><a href="#其他函数" class="header-anchor">#</a> 其他函数</h5> <table><thead><tr><th>函数</th> <th>作用</th></tr></thead> <tbody><tr><td>FORMAT(x,n)</td> <td>将数字 x 格式化并以四舍五入方式保留小数点后 n 位，结果以字符串形式返回</td></tr> <tr><td>CONV(n,from_base,to_base)</td> <td>不同进制数字转换</td></tr> <tr><td>INET_ATON(expr),INET_NTOA(expr)</td> <td>IP 地址与数字互转</td></tr> <tr><td>GET_LOCK(str,timeout),RELEASE_LOCK(str),IS_FREE_LOCK(str),IS_USED_LOCK(str)</td> <td>加锁和解锁</td></tr> <tr><td>BENCHMARK(count,expr)</td> <td>重复执行指定操作</td></tr> <tr><td>CONVERT(... USING ...)</td> <td>改变字符集</td></tr> <tr><td>CASE(x,AS type), CONVERT(x,type)</td> <td>改变数据类型，可转换的 type 有：BINARY, CHAR(N), DATE, TIME, DATETIME, DECIMAL, SIGNED, UNSIGNED</td></tr></tbody></table> <h4 id="dql"><a href="#dql" class="header-anchor">#</a> DQL</h4> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> 字段名<span class="token number">1</span><span class="token punctuation">,</span>字段名<span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>字段名n <span class="token keyword">FROM</span> 表名 <span class="token keyword">WHERE</span> 查询条件<span class="token punctuation">;</span>
+<span class="token comment">/*
+查询条件
+  IN, BETWEEN AND
+  LIKE: %, _
+  IS NULL
+  AND, OR
+去重
+  DISTINCT
+排序
+  ORDER BY 字段名 DESC/ASC LIMIT offset,n
+分组
+  GROUP BY 字段 HAVING 条件表达式
+  WITH ROLLUP?
+聚合函数
+  COUNT()
+  SUM()
+  AVG()
+  MAX()
+  MIN()
+*/</span>
+
+<span class="token comment">/*
+连接查询
+  INNER JOIN
+  LEFT JOIN, RIGHT JOIN
+子查询
+  ANY, SOME, ALL
+  EXISTS
+  IN
+  比较运算符
+合并查询结果
+  UNION [ALL]
+*/</span>
+
+<span class="token comment">/*
+别名 AS
+  表别名
+  字段别名
+*/</span>
+
+<span class="token comment">/*
+正则表达式
+  ^d 以 d 为开头
+  x$ 以 x 为结尾
+  ., *, +, [], [^], {M}, {M,N}, {M,}, |
+*/</span>
+</code></pre></div><h4 id="dml"><a href="#dml" class="header-anchor">#</a> DML</h4> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token comment"># 插入数据</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> table_name<span class="token punctuation">(</span>column_list<span class="token punctuation">)</span> <span class="token keyword">VALUES</span><span class="token punctuation">(</span>value_list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> table_name<span class="token punctuation">(</span>column_list<span class="token punctuation">)</span> <span class="token keyword">VALUES</span><span class="token punctuation">(</span>value_list1<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span>value_list2<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span><span class="token punctuation">(</span>value_listn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> table_name1<span class="token punctuation">(</span>column_list1<span class="token punctuation">)</span> <span class="token keyword">SELECT</span> <span class="token punctuation">(</span>column_list2<span class="token punctuation">)</span> <span class="token keyword">FROM</span> table_name2 <span class="token keyword">WHERE</span> <span class="token punctuation">(</span>condition<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 更新数据</span>
+<span class="token keyword">UPDATE</span> table_name <span class="token keyword">SET</span> column_name1 <span class="token operator">=</span> value1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> column_namen <span class="token operator">=</span> valuen <span class="token keyword">WHERE</span> <span class="token punctuation">(</span>condition<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 删除数据</span>
+<span class="token keyword">DELETE</span> <span class="token keyword">FROM</span> table_name <span class="token keyword">WHERE</span> <span class="token punctuation">(</span>condition<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="索引"><a href="#索引" class="header-anchor">#</a> 索引</h4> <h5 id="索引分类"><a href="#索引分类" class="header-anchor">#</a> 索引分类</h5> <ul><li>普通索引和唯一索引</li> <li>单列索引和组合索引</li> <li>全文索引</li> <li>空间索引</li></ul> <h5 id="索引设计原则"><a href="#索引设计原则" class="header-anchor">#</a> 索引设计原则</h5> <ul><li>索引并非越多越好</li> <li>避免对经常更新的表进行过多的索引，并且索引中的列尽可能少</li> <li>数据量小的表最好不要使用索引</li> <li>在条件表达式中经常用到的不同值较多的列上建立索引，在不同值少的列上不要建立索引</li> <li>当唯一性是某种数据本身的特征时，指定唯一索引</li> <li>在频繁进行排序或分组（即进行 group by 或 order by 操作）的列上建立索引</li></ul> <h5 id="索引操作"><a href="#索引操作" class="header-anchor">#</a> 索引操作</h5> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token comment"># 创建索引</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> table_name <span class="token punctuation">[</span>col_name data_type<span class="token punctuation">]</span>
+  <span class="token punctuation">[</span><span class="token keyword">UNIQUE</span><span class="token operator">|</span>FULLTEXT<span class="token operator">|</span>SPATIAL<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token keyword">INDEX</span><span class="token operator">|</span><span class="token keyword">KEY</span><span class="token punctuation">]</span> <span class="token punctuation">[</span>index_name<span class="token punctuation">]</span> <span class="token punctuation">(</span>col_name <span class="token punctuation">[</span>length<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token keyword">ASC</span><span class="token operator">|</span><span class="token keyword">DESC</span><span class="token punctuation">]</span>
+
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> <span class="token keyword">ADD</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">INDEX</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token comment"># 删除索引</span>
+<span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> table_name <span class="token keyword">DROP</span> <span class="token keyword">INDEX</span> index_name<span class="token punctuation">;</span>
+<span class="token keyword">DROP</span> <span class="token keyword">INDEX</span> index_name <span class="token keyword">ON</span> table_name<span class="token punctuation">;</span>
+</code></pre></div><h4 id="存储过程和函数"><a href="#存储过程和函数" class="header-anchor">#</a> 存储过程和函数</h4> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token comment"># 创建存储过程</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> sp_name<span class="token punctuation">(</span><span class="token punctuation">[</span>proc_parameter<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">[</span>characteristics<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>
+  rountine_body
+
+<span class="token comment"># 创存储函数</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">FUNCTION</span> func_name<span class="token punctuation">(</span><span class="token punctuation">[</span>func_parameter<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">RETURNS</span> <span class="token keyword">type</span> <span class="token punctuation">[</span>characteristics<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>
+  rountine_body
+
+<span class="token comment"># 变量的使用</span>
+<span class="token comment">## 定义变量</span>
+<span class="token keyword">DECLARE</span> var_name <span class="token punctuation">[</span><span class="token punctuation">,</span>var_name<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span> data_type <span class="token punctuation">[</span><span class="token keyword">DEFAULT</span> <span class="token keyword">value</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">## 为变量赋值</span>
+<span class="token keyword">SET</span> var_name <span class="token operator">=</span> expr <span class="token punctuation">[</span><span class="token punctuation">,</span>var_name <span class="token operator">=</span> expr<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">## 定义条件和处理程序</span>
+
+<span class="token comment"># 光标的使用</span>
+<span class="token comment">## 声明光标</span>
+<span class="token comment">## 打开光标</span>
+<span class="token comment">## 使用光标</span>
+<span class="token comment">## 关闭光标</span>
+
+<span class="token comment"># 流程控制的使用</span>
+<span class="token comment">## IF 语句</span>
+<span class="token comment">## CASE 语句</span>
+<span class="token comment">## LOOP 语句</span>
+<span class="token comment">## LEAVE 语句</span>
+<span class="token comment">## ITERATE 语句</span>
+<span class="token comment">## REPEAT 语句</span>
+<span class="token comment">## WHILE 语句</span>
+
+<span class="token comment"># 调用存储过程和函数</span>
+<span class="token keyword">CALL</span> sp_name<span class="token punctuation">(</span><span class="token punctuation">[</span>parameter<span class="token punctuation">[</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 查看存储过程和函数</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">PROCEDURE</span> <span class="token keyword">STATUS</span><span class="token punctuation">;</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">FUNCTION</span> <span class="token keyword">STATUS</span><span class="token punctuation">;</span>
+
+<span class="token keyword">SHOW</span> <span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> sp_name<span class="token punctuation">;</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">CREATE</span> <span class="token keyword">FUNCTION</span> sp_name<span class="token punctuation">;</span>
+
+<span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> information_schema<span class="token punctuation">.</span>Routines <span class="token keyword">WHERE</span> ROUTINE_NAME <span class="token operator">=</span> <span class="token string">'sp_name'</span><span class="token punctuation">;</span>
+
+<span class="token comment"># 修改存储过程和函数</span>
+<span class="token keyword">ALTER</span> {<span class="token keyword">PROCEDURE</span><span class="token operator">|</span><span class="token keyword">FUNCTION</span>} sp_name <span class="token punctuation">[</span>characteristic <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>
+
+<span class="token comment"># 删除存储过程和函数</span>
+<span class="token keyword">DROP</span> {<span class="token keyword">PROCEDURE</span><span class="token operator">|</span><span class="token keyword">FUNCTION</span>} <span class="token punctuation">[</span><span class="token keyword">IF</span> <span class="token keyword">EXISTS</span><span class="token punctuation">]</span> sp_name<span class="token punctuation">;</span>
+</code></pre></div><h4 id="视图"><a href="#视图" class="header-anchor">#</a> 视图</h4> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token comment"># 创建视图</span>
+<span class="token keyword">CREATE</span> <span class="token punctuation">[</span><span class="token operator">OR</span> <span class="token keyword">REPLACE</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token keyword">ALGORITHM</span><span class="token operator">=</span>{<span class="token keyword">UNDEFINED</span><span class="token operator">|</span><span class="token keyword">MERGE</span><span class="token operator">|</span><span class="token keyword">TEMPTABLE</span>}<span class="token punctuation">]</span> <span class="token keyword">VIEW</span> view_name <span class="token punctuation">[</span><span class="token punctuation">(</span>column_list<span class="token punctuation">)</span><span class="token punctuation">]</span>
+ <span class="token keyword">AS</span> <span class="token keyword">SELECT</span> _statement <span class="token punctuation">[</span><span class="token keyword">WITH</span> <span class="token punctuation">[</span><span class="token keyword">CASCADED</span><span class="token operator">|</span><span class="token keyword">LOCAL</span><span class="token punctuation">]</span> <span class="token keyword">CHECK</span> <span class="token keyword">OPTION</span><span class="token punctuation">]</span>
+
+<span class="token comment"># 查看视图</span>
+<span class="token keyword">DESCRIBE</span> 视图<span class="token punctuation">;</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">TABLE</span> <span class="token keyword">STATUS</span> <span class="token operator">LIKE</span> <span class="token string">'视图名'</span><span class="token punctuation">;</span>
+<span class="token keyword">SHOW</span> <span class="token keyword">CREATE</span> <span class="token keyword">VIEW</span> 视图名<span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> information&quot;_schema<span class="token punctuation">.</span>views<span class="token punctuation">;</span>
+
+<span class="token comment"># 修改视图</span>
+<span class="token keyword">CREATE</span> <span class="token punctuation">[</span><span class="token operator">OR</span> <span class="token keyword">REPLACE</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token keyword">ALGORITHM</span><span class="token operator">=</span>{<span class="token keyword">UNDEFINED</span><span class="token operator">|</span><span class="token keyword">MERGE</span><span class="token operator">|</span><span class="token keyword">TEMPTABLE</span>}<span class="token punctuation">]</span> <span class="token keyword">VIEW</span> view_name <span class="token punctuation">[</span><span class="token punctuation">(</span>column_list<span class="token punctuation">)</span><span class="token punctuation">]</span>
+ <span class="token keyword">AS</span> <span class="token keyword">SELECT</span> _statement <span class="token punctuation">[</span><span class="token keyword">WITH</span> <span class="token punctuation">[</span><span class="token keyword">CASCADED</span><span class="token operator">|</span><span class="token keyword">LOCAL</span><span class="token punctuation">]</span> <span class="token keyword">CHECK</span> <span class="token keyword">OPTION</span><span class="token punctuation">]</span>
+
+<span class="token keyword">ALTER</span> <span class="token punctuation">[</span><span class="token keyword">ALGORITHM</span><span class="token operator">=</span>{<span class="token keyword">UNDEFINED</span><span class="token operator">|</span><span class="token keyword">MERGE</span><span class="token operator">|</span><span class="token keyword">TEMPTABLE</span>}<span class="token punctuation">]</span> <span class="token keyword">VIEW</span> view_name <span class="token punctuation">[</span><span class="token punctuation">(</span>column_list<span class="token punctuation">)</span><span class="token punctuation">]</span>
+ <span class="token keyword">AS</span> <span class="token keyword">SELECT</span> _statement <span class="token punctuation">[</span><span class="token keyword">WITH</span> <span class="token punctuation">[</span><span class="token keyword">CASCADED</span><span class="token operator">|</span><span class="token keyword">LOCAL</span><span class="token punctuation">]</span> <span class="token keyword">CHECK</span> <span class="token keyword">OPTION</span><span class="token punctuation">]</span>
+
+<span class="token comment"># 删除视图</span>
+<span class="token keyword">DROP</span> <span class="token keyword">VIEW</span> <span class="token punctuation">[</span><span class="token keyword">IF</span> <span class="token keyword">EXISTS</span><span class="token punctuation">]</span> view_name <span class="token punctuation">[</span><span class="token punctuation">,</span>view_name<span class="token punctuation">]</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">[</span><span class="token keyword">RESTRICT</span><span class="token operator">|</span><span class="token keyword">CASCADE</span><span class="token punctuation">]</span>
+</code></pre></div><h4 id="触发器"><a href="#触发器" class="header-anchor">#</a> 触发器</h4> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token comment"># 创建触发器</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TRIGGER</span> trigger_name trigger_time trigger_event <span class="token keyword">ON</span> tbl_name <span class="token keyword">FOR EACH ROW</span> trigger_stmt<span class="token punctuation">;</span>
+
+<span class="token comment"># 查看触发器</span>
+<span class="token keyword">SHOW</span> TRIGGERS<span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> information_schema<span class="token punctuation">.</span>triggers <span class="token keyword">WHERE</span> conditon<span class="token punctuation">;</span>
+
+<span class="token comment"># 删除触发器</span>
+<span class="token keyword">DROP</span> <span class="token keyword">TRIGGER</span> 【schema_name<span class="token punctuation">.</span><span class="token punctuation">]</span>trigger_name<span class="token punctuation">;</span>
+</code></pre></div><h4 id="dcl-用户管理"><a href="#dcl-用户管理" class="header-anchor">#</a> DCL(用户管理）</h4> <ul><li>权限表
+<ul><li>user 表</li> <li>db 表和 host 表</li> <li>tables_priv 表和 columns_priv 表</li> <li>procs_priv 表</li></ul></li> <li>账户管理</li></ul> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token comment"># 新建用户</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">USER</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">GRANT</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+直接操作权限表
+
+<span class="token comment"># 删除普通用户</span>
+<span class="token keyword">DROP</span> <span class="token keyword">USER</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">DELETE</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token comment"># root 用户修改自己密码</span>
+mysqladmin <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+修改 <span class="token keyword">user</span> 表
+<span class="token keyword">SET</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token comment"># root 用户修改普通用户密码</span>
+<span class="token keyword">SET</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">UPDATE</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">GRANT</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token comment"># 普通用户修改密码</span>
+<span class="token keyword">SET</span> PASSWORD <span class="token operator">=</span> PASSWORD<span class="token punctuation">(</span><span class="token string">'newpassword'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment"># root 用户密码丢失的解决办法</span>
+使用 <span class="token comment">--skip-grant-tables 选项启动</span>
+使用 root 用户登录和重新设置密码
+加载权限表
+</code></pre></div><ul><li><p>权限管理</p> <ul><li>MySQL 各种权限</li> <li>授权</li> <li>收回权限</li> <li>查看权限</li></ul> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SHOW</span> GRANTS <span class="token keyword">FOR</span> <span class="token string">'user'</span><span class="token variable">@'host'</span><span class="token punctuation">;</span>
+</code></pre></div></li> <li><p>访问控制</p> <ul><li>连接核实阶段</li> <li>请求核实阶段
+<img src="/assets/img/mysql-note-1-access-control.30de7421.png" alt="访问控制"></li></ul></li></ul> <h4 id="备份和还原"><a href="#备份和还原" class="header-anchor">#</a> 备份和还原</h4> <h5 id="数据备份"><a href="#数据备份" class="header-anchor">#</a> 数据备份</h5> <ul><li>使用 mysqldump 命令备份</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>mysqldump -u user -h <span class="token function">host</span> -ppassword dbname<span class="token punctuation">[</span>tbname,<span class="token punctuation">[</span>tbname<span class="token punctuation">..</span>.<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&gt;</span>filename.sql
+</code></pre></div><ul><li>直接复制整个数据库目录（InnoDB 存储引擎的表不适用，不同的版本可能不兼容）</li> <li>使用 mysqlhotcopy 工具快速备份（只可以备份 MyISAM 类型的表）</li></ul> <h5 id="数据还原"><a href="#数据还原" class="header-anchor">#</a> 数据还原</h5> <ul><li>使用 mysql 命令还原</li> <li>直接复制到数据库目录（复制后需要调整文件的所有者）</li> <li>mysqlhotcopy 快速恢复</li></ul> <h5 id="数据库迁移"><a href="#数据库迁移" class="header-anchor">#</a> 数据库迁移</h5> <ul><li>相同版本 MySQL</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>mysqldump -h www.bac.com -uroot -ppassword dbname<span class="token operator">|</span>mysql -h www.bcd.com -uroot -ppassword
+</code></pre></div><ul><li>不同版本 MySQL</li> <li>不同数据库之间（如 MySQL -&gt; Oracle, MySQL -&gt; SQL Server</li></ul> <h5 id="表的导出和导入"><a href="#表的导出和导入" class="header-anchor">#</a> 表的导出和导入</h5> <h6 id="导出"><a href="#导出" class="header-anchor">#</a> 导出</h6> <ul><li>SELECT ... INTO OUTFILE 语句</li></ul> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">SELECT</span> columnlist <span class="token keyword">FROM</span> <span class="token keyword">table</span> <span class="token keyword">WHERE</span> condition <span class="token keyword">INTO</span> OUTIFLE <span class="token string">'filename'</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span>
+</code></pre></div><ul><li>mysqldump 命令</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>mysqldump -T path -u root -p dbname <span class="token punctuation">[</span>tables<span class="token punctuation">]</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span>
+</code></pre></div><ul><li>mysql 命令</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>mysql -u root -p --execute<span class="token operator">=</span><span class="token string">&quot;SELECT 语句&quot;</span> dbname <span class="token operator">&gt;</span> filename.txt
+</code></pre></div><h6 id="导入"><a href="#导入" class="header-anchor">#</a> 导入</h6> <ul><li>LOAD DATA INFILE ... 导入</li></ul> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">LOAD</span> <span class="token keyword">DATA</span> <span class="token keyword">INFILE</span> <span class="token string">'filename.txt'</span> <span class="token keyword">INTO</span> <span class="token keyword">TABLE</span> tablename <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token keyword">IGNORE</span> number <span class="token keyword">LINES</span><span class="token punctuation">]</span>
+</code></pre></div><ul><li>mysqlimport 命令</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>mysqlimport -u root -p dbname filename.txt <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span>
+</code></pre></div><h4 id="日志"><a href="#日志" class="header-anchor">#</a> 日志</h4> <h5 id="二进制日志"><a href="#二进制日志" class="header-anchor">#</a> 二进制日志</h5> <div class="language- extra-class"><pre class="language-text"><code># 在 my.ini 开启
+[mysqld]
+log-bin [=path/[filename]]
+expire_logs_days = 10
+max_binlog_size = 100M
+
+# 查看
+mysql&gt;show binary logs 查看文件个数及其文件名
+mysqlbinlog 查看内容
+
+# 删除
+mysql&gt;RESET MASTER 删除所有
+mysql&gt;PURGE MASTER LOGS 删除指定
+
+# 使用二进制日志还原数据库
+
+# 暂停
+mysql&gt;SET sql_log_bin = 0;
+# 恢复
+mysql&gt;SET sql_log_bin = 1;
+
+</code></pre></div><h5 id="错误日志"><a href="#错误日志" class="header-anchor">#</a> 错误日志</h5> <div class="language- extra-class"><pre class="language-text"><code># 开启
+my.ini 中若没有指定则文件名默认为 hostname.err
+[mysqld]
+log-error = [path/[filename]]
+
+# 查看
+mysql&gt;SHOW VARIABLES LIKE 'log_error';
+
+# 删除
+mysqladmin -u root -p flush-logs
+</code></pre></div><h5 id="通过查询日志"><a href="#通过查询日志" class="header-anchor">#</a> 通过查询日志</h5> <div class="language- extra-class"><pre class="language-text"><code># 开启
+my.ini
+[mysqld]
+log[=path/[filename]]
+
+# 查看（直接使用文本编辑器）
+
+# 删除
+mysqladmin -u root -p flush-logs
+</code></pre></div><h5 id="慢查询日志"><a href="#慢查询日志" class="header-anchor">#</a> 慢查询日志</h5> <div class="language- extra-class"><pre class="language-text"><code># 在配置中开启，或在 MySQL 服务启动时使用 --log-show-queries[=file_name] 开启
+my.ini
+[mysqld]
+log-show-queries[=path/[filename]]
+
+# 查看（直接使用文本编辑器）
+
+# 删除
+mysqladmin -u root -p flush-logs
+flush logs
+</code></pre></div><h4 id="性能优化"><a href="#性能优化" class="header-anchor">#</a> 性能优化</h4> <ul><li><p>优化查询</p> <ul><li>分析查询语句</li></ul> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token keyword">EXPLAIN</span> <span class="token punctuation">[</span><span class="token keyword">EXTENDED</span><span class="token punctuation">]</span> <span class="token keyword">SELECT</span> select_options<span class="token punctuation">;</span>
+<span class="token keyword">DESCRIBE</span> <span class="token keyword">SELECT</span> select_options<span class="token punctuation">;</span>
+</code></pre></div><ul><li>索引对查询速度的影响</li> <li>使用索引查询：LIKE, OR, 多列索引的查询问题</li> <li>优化子查询：使用连接（JOIN)来替代子查询，连接查询不需要建立临时表</li></ul></li> <li><p>优化数据库结构</p> <ul><li>将字段很多的表分解成多个表</li> <li>增加中间表</li> <li>增加冗余字段</li> <li>优化插入记录的速度
+<ul><li>禁用索引</li> <li>禁用唯一性检查</li> <li>使用批量插入</li> <li>使用 LOAD DATA INFILE 批量导入</li></ul></li> <li>分析表、检查表和优化表
+<ul><li>分析关键字的分布</li> <li>检查表是否存在错误</li> <li>消除删除或更新造成的空间浪费</li></ul></li></ul></li> <li><p>优化 MySQL 服务器</p> <ul><li>优化 MySQL 的参数：key_buffer_size, table_cache, query_cache_size</li> <li>优化服务器硬件</li></ul></li></ul> <h4 id="主从复制"><a href="#主从复制" class="header-anchor">#</a> 主从复制</h4> <p><img src="/assets/img/mysql-note-1-replication.f3645217.png" alt="主从复制"></p> <h4 id="读写分离-mysql-proxy"><a href="#读写分离-mysql-proxy" class="header-anchor">#</a> 读写分离——MySQL Proxy</h4> <h4 id="mysql-cluster"><a href="#mysql-cluster" class="header-anchor">#</a> MySQL Cluster</h4> <h4 id="mysql-workbench-的使用"><a href="#mysql-workbench-的使用" class="header-anchor">#</a> MySQL Workbench 的使用</h4> <h4 id="mysql-utilites-的使用"><a href="#mysql-utilites-的使用" class="header-anchor">#</a> MySQL Utilites 的使用</h4> <ul><li>mysqldbcompare 比较数据</li> <li>mysqldbcopy 复制数据</li> <li>mysqldbexport 导出数据</li> <li>mysqldbimport 导入数据</li> <li>mysqldiff 比较对象的定义</li></ul> <h4 id="php-操作-mysql-数据库"><a href="#php-操作-mysql-数据库" class="header-anchor">#</a> PHP 操作 MySQL 数据库</h4> <ul><li>mysqli 类库
+<ul><li>mysqli_connect()</li> <li>mysqli_select_db()</li> <li>mysqli_query()</li> <li>mysqli_fetch_assoc()</li> <li>mysqli_fetch_object()</li> <li>mysqli_num_rows()</li> <li>mysqli_free_result()</li> <li>mysqli_close()</li></ul></li></ul> <h4 id="编辑记录"><a href="#编辑记录" class="header-anchor">#</a> 编辑记录</h4> <p>01-20-2018 13:22 周日<br></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/mongodb/MongoBegin.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        MongoDB 起步
+      </a></span> <span class="next"><a href="/mysql/about_version.html">
+        版本类问题
+        <i aria-label="icon: right" class="anticon anticon-right"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i></a></span></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d27ffea8.js" defer></script><script src="/assets/js/3.e8b8d8a4.js" defer></script><script src="/assets/js/8.b8da02e2.js" defer></script>
+  </body>
+</html>
