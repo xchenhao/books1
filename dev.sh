@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo vuepress dev ./articles
+vuepress dev ./articles

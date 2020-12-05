@@ -39,13 +39,12 @@ module.exports = {
         title: '数据库',
         // path: '/foo/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
         collapsable: true, // 可选的, 默认值是 true,
-        sidebarDepth: 2,    // 可选的, 默认值是 1
+        // sidebarDepth: 2,    // 可选的, 默认值是 1
         children: [
           // [<link>, <title>] 格式：['/Hive', 'Hive'],
           // 或 {title: <title>, path: <path>}
           {title: 'Hive', path: '/Hive'},
           {title: 'ODPS', path: '/ODPS'},
-
           {title: 'MongoDB 基础', path: '/mongodb/MongoBasis'},
           {title: 'MongoDB 起步', path: '/mongodb/MongoBegin'},
         ]
@@ -58,6 +57,7 @@ module.exports = {
           {title: '版本类问题', path: '/mysql/about_version'},
           {title: '用户管理类问题', path: '/mysql/about_user'},
           {title: '服务器配置类问题', path: '/mysql/about_config'},
+          {title: '日志类问题', path: '/mysql/about_log'},
         ]
       },
       {

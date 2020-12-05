@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>日志类问题 | 不可思议</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.7.1">
+    
+    <meta name="description" content="xchenhao.gitee.io">
+    <link rel="preload" href="/assets/css/0.styles.dcdd4981.css" as="style"><link rel="preload" href="/assets/js/app.184a6017.js" as="script"><link rel="preload" href="/assets/js/3.e8b8d8a4.js" as="script"><link rel="preload" href="/assets/js/27.a8774b78.js" as="script"><link rel="prefetch" href="/assets/js/10.159ee789.js"><link rel="prefetch" href="/assets/js/11.0378964a.js"><link rel="prefetch" href="/assets/js/12.286d2785.js"><link rel="prefetch" href="/assets/js/13.e620a130.js"><link rel="prefetch" href="/assets/js/14.1a82e8e9.js"><link rel="prefetch" href="/assets/js/15.4e7ea9eb.js"><link rel="prefetch" href="/assets/js/16.58d4add7.js"><link rel="prefetch" href="/assets/js/17.2df49766.js"><link rel="prefetch" href="/assets/js/18.95e8e9f1.js"><link rel="prefetch" href="/assets/js/19.2f7f3c01.js"><link rel="prefetch" href="/assets/js/20.9ea11389.js"><link rel="prefetch" href="/assets/js/21.19fbac72.js"><link rel="prefetch" href="/assets/js/22.f7457a08.js"><link rel="prefetch" href="/assets/js/23.2247a70c.js"><link rel="prefetch" href="/assets/js/24.cdfebe4d.js"><link rel="prefetch" href="/assets/js/25.c95b8a73.js"><link rel="prefetch" href="/assets/js/26.3b102b6f.js"><link rel="prefetch" href="/assets/js/28.9669f25e.js"><link rel="prefetch" href="/assets/js/29.35ba3375.js"><link rel="prefetch" href="/assets/js/30.3d45b4fd.js"><link rel="prefetch" href="/assets/js/31.89c4cdd5.js"><link rel="prefetch" href="/assets/js/32.e2e23ea9.js"><link rel="prefetch" href="/assets/js/33.9edae508.js"><link rel="prefetch" href="/assets/js/34.e0651aa9.js"><link rel="prefetch" href="/assets/js/35.6fbf8883.js"><link rel="prefetch" href="/assets/js/36.f56a0358.js"><link rel="prefetch" href="/assets/js/4.cd2a78b0.js"><link rel="prefetch" href="/assets/js/5.34260719.js"><link rel="prefetch" href="/assets/js/6.a8a86e38.js"><link rel="prefetch" href="/assets/js/7.ff579744.js"><link rel="prefetch" href="/assets/js/8.44251112.js"><link rel="prefetch" href="/assets/js/9.d1fd1b49.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.40e3c389.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.dcdd4981.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">不可思议</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          数据库
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          语言
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>数据库</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>MySQL</span> <span class="arrow down"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mysql/note1.html" title="MySQL 笔记 1" class="sidebar-link">MySQL 笔记 1</a></li><li><a href="/mysql/about_version.html" title="版本类问题" class="sidebar-link">版本类问题</a></li><li><a href="/mysql/about_user.html" title="用户管理类问题" class="sidebar-link">用户管理类问题</a></li><li><a href="/mysql/about_config.html" title="服务器配置类问题" class="sidebar-link">服务器配置类问题</a></li><li><a href="/mysql/about_log.html" aria-current="page" title="日志类问题" class="active sidebar-link">日志类问题</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>语言</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>工具</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>其它</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><a href="/books-note.html" title="读书笔记" class="sidebar-link">读书笔记</a></li><li><a href="/update_log.html" title="更新记录" class="sidebar-link">更新记录</a></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h3 id="日志类问题"><a href="#日志类问题" class="header-anchor">#</a> 日志类问题</h3> <ol><li>常用的MySQL日志有那些？我们在什么情况下使用这些日志？</li> <li>如何通过日志来审计用户活动？</li></ol> <ul><li><p>常用的 MySQL 日志及使用场景</p> <p>知识点</p> <ul><li><p>MySQL 常用的日志类型</p> <table><thead><tr><th>日志名称</th> <th>作用</th></tr></thead> <tbody><tr><td>错误日志（error-log）</td> <td>记录mysql在启动、运行或停止时出现的问题</td></tr> <tr><td>常规日志（general-log）</td> <td>记录所有发向MySQL的请求。</td></tr> <tr><td>慢查日志（slow-query-log）</td> <td>记录符合条件的查询</td></tr> <tr><td>二进制日志（binary_log）</td> <td>记录全部有效的数据修改日志</td></tr> <tr><td>中继日志（relay_log）</td> <td>用于主从复制，临时存储从主库同步的二进制日志</td></tr></tbody></table> <ul><li><p>错误日志（error-log）</p> <ul><li><p>分析排除MySQL运行错误</p></li> <li><p>记录未经授权的访问</p></li> <li><p>log_error = $mysql/sql_log/mysql-error. log</p></li> <li><p>log_error_verbosity = [1,2,3]</p></li></ul> <table><thead><tr><th>verbosity</th> <th>作用</th></tr></thead> <tbody><tr><td>1</td> <td>Error messages</td></tr> <tr><td>2</td> <td>Error and warning messages</td></tr> <tr><td>3</td> <td>Error, warning, and note messages</td></tr></tbody></table> <ul><li><p>log_error_services=[日志服务组件；日志服务组件]</p> <table><thead><tr><th>组件名称</th> <th>作用</th></tr></thead> <tbody><tr><td>log_filter_internal</td> <td>默认的日志过滤组件，依赖log_error_verbosity</td></tr> <tr><td>log_sink_internal</td> <td>默认的日志输出组件，依赖log_error</td></tr> <tr><td>log_sink_json</td> <td>将错误日志输出到json文件</td></tr> <tr><td>log_sink_syseventlog</td> <td>将错误日志输出到系统日志文件</td></tr></tbody></table> <div class="language-sh extra-class"><pre class="language-sh"><code>mysql<span class="token operator">&gt;</span> <span class="token keyword">select</span> @@log_error<span class="token punctuation">;</span>
+/home/mysql/sql_log/mysql-error.log
+mysql<span class="token operator">&gt;</span> <span class="token keyword">select</span> @@log_error_verbosity<span class="token punctuation">;</span>
+<span class="token number">2</span>
+mysql<span class="token operator">&gt;</span> <span class="token keyword">select</span> @@log_error_services<span class="token punctuation">;</span>
+log_filter_internal<span class="token punctuation">;</span> log_sink_internal
+mysql<span class="token operator">&gt;</span> <span class="token keyword">select</span> @@log_timestamps<span class="token punctuation">;</span>
+UTC
+mysql<span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> persist <span class="token assign-left variable">log_timestamps</span><span class="token operator">=</span><span class="token string">'SYSTEM'</span><span class="token punctuation">;</span>
+</code></pre></div></li></ul></li></ul> <ul><li><p>常规日志（general_log）</p> <p>分析客户端发送到 MySQL 的实际请求</p> <ul><li>general_log = [ON|OFF]</li> <li>general_log_file = $mysql/sql_log/general.log</li> <li>log_output = [FILE | TABLE | NONE]</li></ul> <div class="language-sh extra-class"><pre class="language-sh"><code>mysql<span class="token operator">&gt;</span> use mysql<span class="token punctuation">;</span>
+mysql<span class="token operator">&gt;</span> show create table general_log<span class="token punctuation">\</span>G
+Table: general_log
+Create Table: CREATE TABLE general_log <span class="token punctuation">(</span>
+	event_time timestamp<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span> NOT NULL DEFAULT CURRENT-TIMESTAMP <span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span> ON UPDATE CURRENT_TIMESTAMP <span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>,
+	user_host mediumtext NOT NULL, thread_id bigint<span class="token punctuation">(</span><span class="token number">21</span><span class="token punctuation">)</span> unsigned NOT NULL, 		server_id int<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> unsigned NOT NULL, command_type varchar<span class="token punctuation">(</span><span class="token number">64</span><span class="token punctuation">)</span> NOT NULL, 	argument mediumblob NOT NULL
+<span class="token punctuation">)</span> ENGINE-CSV DEFAULT CHARSET-utf8 <span class="token assign-left variable">COMMENT</span><span class="token operator">=</span><span class="token string">'General log'</span>
+
+mysql<span class="token operator">&gt;</span> <span class="token keyword">select</span> @@general_log<span class="token punctuation">;</span>
+<span class="token number">0</span>
+mysql<span class="token operator">&gt;</span> <span class="token keyword">select</span> @@general_log_file<span class="token punctuation">;</span>
+/home/mysql/data/MysQL-06.1og
+mysql<span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> persist <span class="token assign-left variable">general_log_file</span><span class="token operator">=</span><span class="token string">'/home/mysql/sql_log/general.1og'</span><span class="token punctuation">;</span>
+mysql<span class="token operator">&gt;</span> <span class="token keyword">select</span> @@general_log_file<span class="token punctuation">;</span>
+/home/mysql/sql_log/general.1og
+mysql<span class="token operator">&gt;</span> <span class="token keyword">select</span> @@log_output<span class="token punctuation">;</span>
+FILE
+mysql<span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> global <span class="token assign-left variable">general_log</span><span class="token operator">=</span>on<span class="token punctuation">;</span>
+
+$ <span class="token function">tail</span> -f /home/mysql/sql_log/general_log
+/home/mysql/bin/mysqld, version: <span class="token number">8.0</span>.11 <span class="token punctuation">(</span>source distribution<span class="token punctuation">)</span>. started with: Tcp port: <span class="token number">3306</span> Unix socket: /home/mysql/data/mysql.sock
+Time Id <span class="token builtin class-name">command</span> Argument
+<span class="token number">2018</span>/8/27 <span class="token number">23</span>:36:26  <span class="token number">10</span> Query show databases
+<span class="token number">2018</span>/8/27 <span class="token number">23</span>:36:55  <span class="token number">10</span> Quit
+<span class="token number">2018</span>/8/27 <span class="token number">23</span>:37:07  <span class="token number">11</span> connect root@localhost on using socket
+<span class="token number">2018</span>/8/27 <span class="token number">23</span>:37:07  <span class="token number">11</span> Query <span class="token keyword">select</span> @@version_comment limit <span class="token number">1</span>
+
+mysql<span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> global <span class="token assign-left variable">general_log</span><span class="token operator">=</span>off<span class="token punctuation">;</span>
+mysql<span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> global <span class="token assign-left variable">log_output</span><span class="token operator">=</span><span class="token string">'table'</span><span class="token punctuation">;</span>
+mysql<span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> global <span class="token assign-left variable">general_log</span><span class="token operator">=</span>on<span class="token punctuation">;</span>
+mysql<span class="token operator">&gt;</span>  create user dba_test@<span class="token string">'127.0.0.1'</span> identified by <span class="token string">'123456'</span><span class="token punctuation">;</span>
+mysql<span class="token operator">&gt;</span> <span class="token keyword">select</span> * from general_log<span class="token punctuation">;</span>
+<span class="token punctuation">..</span>.
+<span class="token number">6</span> rows <span class="token keyword">in</span> <span class="token builtin class-name">set</span>
+
+$ <span class="token function">more</span> general_log.csv
+</code></pre></div></li></ul> <ul><li><p>慢查询日志（slow_query_log）</p> <ul><li>将执行成功并符合条件的查询记录到日志中</li> <li>找到需要优化的SQL</li> <li>slow_query_log =[ON I OFF]</li> <li>slow_query_log_file = $mysql/sql_log/slowlog.log</li> <li>long.query_time = xx秒</li> <li>log_queries_not_using_indexes= [ON | OFF]</li> <li>log_slow_admin_statements= [ON | OFF]</li> <li>log_slow_slave_statements = [ON | OFF]</li></ul> <div class="language-sh extra-class"><pre class="language-sh"><code>mysql<span class="token operator">&gt;</span> show variables like <span class="token string">'long_query_time'</span><span class="token punctuation">;</span>
+<span class="token number">10</span>
+mysql<span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> persist <span class="token assign-left variable">long_query_time</span><span class="token operator">=</span><span class="token number">0.001</span><span class="token punctuation">;</span>
+mysql<span class="token operator">&gt;</span> show variables like <span class="token string">'slow_query_log%'</span><span class="token punctuation">;</span>
+slow_query_log OFF
+slow_query_log_file /home/mysql/sql_log/slowlog_1305.log
+mysql<span class="token operator">&gt;</span> <span class="token builtin class-name">set</span> global <span class="token assign-left variable">slow_query_log</span><span class="token operator">=</span>on<span class="token punctuation">;</span>
+
+$ <span class="token function">more</span> /home/mysql/sql_log/slowlog_1305.log
+</code></pre></div></li> <li><p>二进制日志（binary_log）</p> <ul><li>记录所有对数据库中数据的修改</li> <li>基于时间点的备份和恢复</li> <li>主从复制</li> <li>log-bin [=base_name]</li> <li>binlog_format = [ROW | STATEMENT | MIXED ]</li> <li>binlog_row_image = [FULL | MINIMAL | NOBLOB ]</li> <li>binlog_rows_query_log_events=[ON |OFF]</li> <li>log_slave_updates = [ON | OFF]</li> <li>sync_binlog = [1 | 0]</li> <li>expire_logs_days = days</li> <li>PURGE BINARY LOGS TO ' mysql-bin.010'</li> <li>PURGE BINARY LOGS BEFORE '2008-04-02 22:46:26';</li></ul> <div class="language-sh extra-class"><pre class="language-sh"><code>root@MysQL-06 ~<span class="token comment"># grep log_bin /etc/my.cnf</span>
+1og_bin <span class="token operator">=</span>/home/mysql/sql_log/mysq1-bin
+root@MysQL-06 ~<span class="token comment"># cd /home/mysql/sql_log</span>
+root@MysQL-06 sql_log<span class="token punctuation">]</span><span class="token comment"># 1s-lh </span>
+total 32K
+-rw-r-----1 mysql mysql <span class="token number">665</span>  Aug <span class="token number">28</span> 07:38 general.1og
+-rw-r-----1 mysq<span class="token punctuation">]</span> mysql <span class="token number">178</span>  Aug <span class="token number">27</span> <span class="token number">18</span>:46 mysql-bin.000001
+-rw-r-----1 mysql mysql <span class="token number">1</span>.2K Aug <span class="token number">28</span> <span class="token number">18</span>:53 mysql-bin.000002
+-rw-r-----1 mysql mysql <span class="token number">74</span>   Aug <span class="token number">27</span> <span class="token number">18</span>:47 mysql-bin.index
+-rw-r-----1 mysql mysql <span class="token number">6</span>.3K Aug <span class="token number">28</span> <span class="token number">18</span>:53 mysql-error.log
+-rw-r---- <span class="token number">1</span> mysql mysql <span class="token number">5</span>.5K Aug <span class="token number">28</span> <span class="token number">22</span>:49 s1owlog_1305.log
+<span class="token punctuation">[</span>root@MysQL-06 sql_log<span class="token punctuation">]</span><span class="token comment">#</span>
+
+mysql<span class="token operator">&gt;</span> show variables like <span class="token string">'log_bin%'</span><span class="token punctuation">;</span>
+log_bin ON
+log_bin_basename /home/mysql/sql_1og/mysql-bin
+loq_bin_index /home/mysq/sql_log/mysql-bin.index
+log_bin_trust_function_creators OFF
+log_bin_use_v1_row_events OFF
+mysql<span class="token operator">&gt;</span> show variables like <span class="token string">'binlog_row_image'</span><span class="token punctuation">;</span>
+binlog_row_image FULL
+mysql<span class="token operator">&gt;</span> show variables like <span class="token string">'binlog_format'</span><span class="token punctuation">;</span>
+binlog_format ROW
+mysql<span class="token operator">&gt;</span> flush logs<span class="token punctuation">;</span>
+mysql<span class="token operator">&gt;</span> update stock <span class="token builtin class-name">set</span> <span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token number">20</span> where <span class="token assign-left variable">product_id</span><span class="token operator">=</span><span class="token number">2030</span> and <span class="token assign-left variable">warehouse_id</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+
+$ mysqlbinlog --no-defaults -vv --base64-output<span class="token operator">=</span>DECODE-ROWS mysql-bin.000003
+<span class="token comment">#180829 7:56:46 server id 1306</span>
+<span class="token string">' stock mapped to number 95
+# at 411
+#180829 7:56:46 server id 1306
+id 95 flags: STMT END_F
+### UPDATE <span class="token variable"><span class="token variable">`</span>stock.stock<span class="token variable">`</span></span>
+### WHERE
+### @1-1 /* INT meta-0 nullable=0 is-nul1-0 *
+### @2-2030 /* INT meta-0 nullable-0 is_nul1-0 */
+### @3-9 /* INT meta-0 nullable=0 is-nu11-0 */### @4-1 /* INT meta-0 nullable=0 is_nu71-0 */
+### @5-10 /* INT meta-0 nullable=0 is_nul1-0
+...
+
+mysql&gt; flush logs;
+mysql&gt; set global binlog_row_image=minimal;
+mysql&gt; show variables like '</span>binlog_row_image<span class="token string">';
+binlog_row_image FULL
+mysql&gt; set session binlog_row_image=minimal;
+mysql&gt; show variables like '</span>binlog_row_image<span class="token string">';
+binlog_row_image MINIMAL
+
+$ mysqlbinlog --no-defaults -vv --base64-output=DECODE-ROWS mysql-bin.000003
+SET @@ session. character_set_client=8,@@ session. coTlation_connection-8, aasession. coTlation_
+server=33/*!*/: SET @@ session. ic_time_names-0/* ! */
+SET @ asession. collation_database-DEFAULT/* !*/;
+/*!80005 SET @ asession. default_co1 1ation_for_utf8mb4-255*//* !*/; BEGIN/*!/;
+# at 355
+#180829 8:00:18 server id 1306 end_log_pos 411 CRC32 0x59a5048a Table_map: stock stock` mapped to number 95
+at 411
+|#180829 8:00:18 server id 1306 end_1og_pos 457 CRC32 0xb2346a68
+id 95 fTags: STMT END_F Update_rows: tablel
+|F# UPDATEstock. stock
+### WHERE
+###
+@1-1 /* INT meta-0 nuTTabTe-0 is_nul1=0 /
+### SET
+##
+a5-30 /INT meta=0 nuTlabTe=0 is_nul1=0*/
+at 457
+#180829 8:00:18 server id 1306 end_log_pos 488 CRC32 Ox06a5db2o xid = 194
+COMMIT/* !/; SET aasESSION. GTID_NEXT= '</span> AUTOMATIC<span class="token string">' /* added by mysqlbinlog *//*!*/; DELIMITER End of log file
+/!50003 SET COMPLETION_TYPE-@ OLD_COMPLETION_TYPE*/;
+50530 SETOd ET QaSESSION. PSEUDO_SLAVE MODE-0/;
+
+
+mysql&gt; flush logs;
+mysql&gt; show variables like '</span>binlog_rows_query_log_events<span class="token string">';
+binlog_rows_query_log_events OFF
+mysql&gt; set binlog_rows_query_log_events=on;
+mysql&gt; update stock set count=40 where product_id=2030 and warehouse_id=1;
+
+$ mysqlbinlog --no-defaults -vv --base64-output=DECODE-ROWS mysql-bin.000003
+SET@@session.collation_database-DEFAULT/*/；
+/*180005 SET@asession.default_collation_forutf8mb4-255*//※！*/；
+|BEGIN
+//；
+#at 355
+|#180829 8：05：08 server id 1306 end_log_pos 445 CRC32 0x84fodbdf update stock set count=40 where product_id-2030 and warehouse_id=1
+Rows_query at 445
+#180829 8：05：08 server id 1306 end_1og_pos 501 CRC32 Oxa49ecc14
+stock mapped to number 95
+*at 501
+|#180829 8：05：08 server id 1306 end_log_pos 547 CRC32 0xfe46b671
+id 95 flags：STMT END_F
+|###UPDATE&quot;stockstock
+|###WHERE
+|###
+a1=1/*INT meta=0 nullable=o is_nul1-0*/
+|##SET
+|###
+@5-40/INT meta-0 nullable-0 is_nul1-0*/
+|#at 547
+|#180829 8：05：08 server id 1306 end_log_pos 578 CRC32 0x44a85943
+xid = 198
+|COMMIT/*！*/；
+|SET@aSESSION.GTID-NEXT'</span>AUTOMATIC'/*added by mysqlbinlog*//※*/
+<span class="token operator">|</span>DELIMITER
+<span class="token comment">#End of 1og file</span>
+/！50003 SET COMPLETION_TYPE-@OLD_COMPLETION_TYPE*/：
+<span class="token number">12</span>
+！50530 SET@@<span class="token environment constant">SESSION</span>.PSEUDO_SLAVE_MODE-0*/；Table_map：`stock Update_rows：table
+</code></pre></div></li> <li><p>中继日志（relay_log）</p> <ul><li>临时记录从主服务器同步的二进制日志</li> <li>relay_log = filename</li> <li>relay_log_purge = [ON | OFF]</li></ul></li></ul></li> <li><p>各种日志的配置和使用场景</p></li></ul></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/mysql/about_config.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        服务器配置类问题
+      </a></span> <span class="next"><a href="/Python.html">
+        Python 基础
+        <i aria-label="icon: right" class="anticon anticon-right"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i></a></span></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.184a6017.js" defer></script><script src="/assets/js/3.e8b8d8a4.js" defer></script><script src="/assets/js/27.a8774b78.js" defer></script>
+  </body>
+</html>

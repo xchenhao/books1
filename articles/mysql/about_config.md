@@ -161,6 +161,6 @@
     | | innodb flush_log_at_trx_commit | 0：每秒进行一次重做日志的磁盘刷新操作。<br/>1：每次事务提交都会刷新事务日志到磁盘中。<br/>2：每次事务提交写入系统缓存每秒向磁盘刷新一次 |
     | | innodb_buffer_pool_size | 设置Innodb缓冲池的大小，应为系统可用内存的75%。 |
     | | innodb_buffer_pool_instances | Innodb缓冲池的实例个数，每个实例的大小为总缓冲池大小/实例个数。 |
-    | | innodb_file_per table | 设置每个表独立使用一个表空间文件 |
+    | | innodb_file_per_table | 设置每个表独立使用一个表空间文件 |
     
     
