@@ -58,6 +58,7 @@ module.exports = {
           {title: '用户管理类问题', path: '/mysql/about_user'},
           {title: '服务器配置类问题', path: '/mysql/about_config'},
           {title: '日志类问题', path: '/mysql/about_log'},
+          {title: '存储引擎类问题', path: '/mysql/about_engine'},
         ]
       },
       {
@@ -83,6 +84,7 @@ module.exports = {
         children: [
           {title: '时间戳与日期转换', path: 'https://xchenhao.gitee.io/time.html'},
           {title: 'JSON 格式化', path: 'https://xchenhao.gitee.io/jsonformatter/'},
+          {title: '常用网站', path: '/good_sites'},
         ]
       },
       {
