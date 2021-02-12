@@ -1,6 +1,11 @@
 module.exports = {
   title: '不可思议',
   description: 'xchenhao.gitee.io',
+  markdown: {
+    toc: {
+      includeLevel:[1, 2, 3, 4]
+    }
+  },
   plugins: [
     'flowchart'  // https://flowchart.vuepress.ulivz.com/
   ],
@@ -62,7 +67,7 @@ module.exports = {
         ]
       },
       {
-        title: '语言',
+        title: 'Python',
         collapsable: true,
         children: [
           {title: 'Python 基础', path: '/Python'},
@@ -71,13 +76,34 @@ module.exports = {
           {title: 'Python 笔记 3', path: '/python-note-3'},
           {title: 'Python 笔记 4', path: '/python-note-4'},
           {title: 'Python 笔记 5', path: '/python-note-5'},
-          {title: 'Shell 脚本笔记 1', path: '/shell-learning-1'},
         ]
       },
-      // {
-      //   title: 'Git',
-      //   path: '/Git',
-      // },
+      {
+        title: 'Shell',
+       // sidebarDepth: 0,
+        children: [
+          {title: '笔记', path: 'shell-learning-1'},
+          {title: 'grep & sed & awk', path: '/grep-sed-awk'},
+        ],
+      },
+      {
+        title: 'Node.js',
+        collapsable: true,
+        sidebarDepth: 2,
+        children: [
+          {title: '01-Node.js基础', path: '/nodejs/basics/01-Node.js基础.md'},
+          {title: '02-Yarn入门', path: '/nodejs/basics/02-yarn.md'},
+          {title: '03-Express', path: '/nodejs/basics/03-Express.md'},
+          {title: '04-Koa2', path: '/nodejs/basics/04-Koa2.md'},
+          {title: '05-MongoDB', path: '/nodejs/basics/05-MongoDB.md'},
+          {title: '06-socket编程', path: '/nodejs/basics/06-socket.md'},
+          {title: '进阶：01-Node中间件', path: '/nodejs/advanced/01-Node中间件.md'},
+          {title: '进阶：02-Node事件循环', path: '/nodejs/advanced/02-Node事件循环.md'},
+          // 参考：https://gitee.com/lurongtao/felixbooks-gp19-Node.js
+          // https://www.jianshu.com/p/81b6ebc0dd85
+         // {title: '进阶：03-Node中间层', path: '/nodejs/advanced/03-Node中间层.md'},
+        ],
+      },
       {
         title: '工具',
         collapsable: true,
@@ -97,7 +123,6 @@ module.exports = {
           {title: 'TDD 笔记', path: '/TDD-note'},
           {title: 'Vim 笔记', path: '/vim-note'},
           {title: '网络笔记', path: '/network-note-1'},
-          {title: 'grep & sed & awk', path: '/grep-sed-awk'},
           {title: 'Git', path: '/Git'},
           {title: 'Docker', path: '/Docker-note'},
         ]
