@@ -125,6 +125,8 @@ module.exports = {
           {title: '网络笔记', path: '/network-note-1'},
           {title: 'Git', path: '/Git'},
           {title: 'Docker', path: '/Docker-note'},
+          {title: 'OpenResty', path: '/openresty/openresty'},
+          {title: 'Neo4j', path: '/neo4j'},
         ]
       },
       {

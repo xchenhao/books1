@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Neo4j | 不可思议</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.7.1">
+    
+    <meta name="description" content="xchenhao.gitee.io">
+    <link rel="preload" href="/assets/css/0.styles.dcdd4981.css" as="style"><link rel="preload" href="/assets/js/app.38984056.js" as="script"><link rel="preload" href="/assets/js/3.3d2e4cc1.js" as="script"><link rel="preload" href="/assets/js/36.19da97f7.js" as="script"><link rel="prefetch" href="/assets/js/10.b026ad5d.js"><link rel="prefetch" href="/assets/js/11.b0403ef5.js"><link rel="prefetch" href="/assets/js/12.fca7a2f5.js"><link rel="prefetch" href="/assets/js/13.b0df6f4f.js"><link rel="prefetch" href="/assets/js/14.4003522f.js"><link rel="prefetch" href="/assets/js/15.58b6f351.js"><link rel="prefetch" href="/assets/js/16.447b7402.js"><link rel="prefetch" href="/assets/js/17.f858feb7.js"><link rel="prefetch" href="/assets/js/18.5d0c6b39.js"><link rel="prefetch" href="/assets/js/19.1f542932.js"><link rel="prefetch" href="/assets/js/20.b74c0525.js"><link rel="prefetch" href="/assets/js/21.32c260eb.js"><link rel="prefetch" href="/assets/js/22.c6f2004c.js"><link rel="prefetch" href="/assets/js/23.96c43c70.js"><link rel="prefetch" href="/assets/js/24.2b3b99e2.js"><link rel="prefetch" href="/assets/js/25.c249dd9c.js"><link rel="prefetch" href="/assets/js/26.242afa0f.js"><link rel="prefetch" href="/assets/js/27.324469e6.js"><link rel="prefetch" href="/assets/js/28.a8619cc6.js"><link rel="prefetch" href="/assets/js/29.a0ac54f5.js"><link rel="prefetch" href="/assets/js/30.373072e2.js"><link rel="prefetch" href="/assets/js/31.8c594f12.js"><link rel="prefetch" href="/assets/js/32.debc2926.js"><link rel="prefetch" href="/assets/js/33.795b9f0a.js"><link rel="prefetch" href="/assets/js/34.d6fab697.js"><link rel="prefetch" href="/assets/js/35.c17e1ad1.js"><link rel="prefetch" href="/assets/js/37.86d50c6f.js"><link rel="prefetch" href="/assets/js/38.851db332.js"><link rel="prefetch" href="/assets/js/39.03abafe9.js"><link rel="prefetch" href="/assets/js/4.9bf0d44e.js"><link rel="prefetch" href="/assets/js/40.9d14acde.js"><link rel="prefetch" href="/assets/js/41.fdfe888a.js"><link rel="prefetch" href="/assets/js/42.c412929f.js"><link rel="prefetch" href="/assets/js/43.a29eadf0.js"><link rel="prefetch" href="/assets/js/44.7a991361.js"><link rel="prefetch" href="/assets/js/45.e1544482.js"><link rel="prefetch" href="/assets/js/46.3ec424d9.js"><link rel="prefetch" href="/assets/js/47.527f842f.js"><link rel="prefetch" href="/assets/js/48.4736274c.js"><link rel="prefetch" href="/assets/js/49.21801344.js"><link rel="prefetch" href="/assets/js/5.6ac7e6ae.js"><link rel="prefetch" href="/assets/js/50.048b3e90.js"><link rel="prefetch" href="/assets/js/51.588815c6.js"><link rel="prefetch" href="/assets/js/52.33c56239.js"><link rel="prefetch" href="/assets/js/53.f4737b7a.js"><link rel="prefetch" href="/assets/js/54.272aafae.js"><link rel="prefetch" href="/assets/js/55.59a14652.js"><link rel="prefetch" href="/assets/js/6.302fce31.js"><link rel="prefetch" href="/assets/js/7.0def4eb7.js"><link rel="prefetch" href="/assets/js/8.d0119b48.js"><link rel="prefetch" href="/assets/js/9.f6d981ca.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.8b19d9a7.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.dcdd4981.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="ant-row"><div class="sidebar-button"><i aria-label="icon: bars" class="anticon anticon-bars"><svg viewBox="0 0 1024 1024" focusable="false" data-icon="bars" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M912 192H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 284H328c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h584c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM104 228a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 284a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"></path></svg></i> <span></span></div> <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-5 ant-col-xl-5 ant-col-xxl-4"><a href="/" class="router-link-active no-logo home-link"><!----> <span class="site-name">不可思议</span></a> <div class="search-box mobile-search"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div></div> <div class="ant-col ant-col-xs-0 ant-col-sm-0 ant-col-md-18 ant-col-lg-19 ant-col-xl-19 ant-col-xxl-20"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><ul role="menu" id="nav" class="ant-menu ant-menu-horizontal ant-menu-root ant-menu-light"><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          数据库
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="display:none;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>
+          语言
+        </span><i class="ant-menu-submenu-arrow"></i></div></li><li role="menuitem" class="ant-menu-submenu ant-menu-submenu-horizontal ant-menu-overflowed-submenu" style="visibility:hidden;position:absolute;"><div aria-haspopup="true" class="ant-menu-submenu-title"><span>···</span><i class="ant-menu-submenu-arrow"></i></div></li></ul> <!----></nav></div></div> <!----></header> <aside class="sidebar"><!----> <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>数据库</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>MySQL</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Python</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Shell</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Node.js</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>工具</span> <span class="arrow right"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>其它</span> <span class="arrow down"><i aria-label="icon: down" class="anticon anticon-down"><svg viewBox="64 64 896 896" focusable="false" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JetBrainsCrack.html" title="JetBrains IDE 破解教程" class="sidebar-link">JetBrains IDE 破解教程</a></li><li><a href="/WebTorrent.html" title="WebTorrent 下载磁力链接工具" class="sidebar-link">WebTorrent 下载磁力链接工具</a></li><li><a href="/HTTP-Protocol.html" title="HTTP 协议" class="sidebar-link">HTTP 协议</a></li><li><a href="/TDD-note.html" title="TDD 笔记" class="sidebar-link">TDD 笔记</a></li><li><a href="/vim-note.html" title="Vim 笔记" class="sidebar-link">Vim 笔记</a></li><li><a href="/network-note-1.html" title="网络笔记" class="sidebar-link">网络笔记</a></li><li><a href="/Git.html" title="Git" class="sidebar-link">Git</a></li><li><a href="/Docker-note.html" title="Docker" class="sidebar-link">Docker</a></li><li><a href="/openresty/openresty.html" title="OpenResty" class="sidebar-link">OpenResty</a></li><li><a href="/neo4j.html" aria-current="page" title="Neo4j" class="active sidebar-link">Neo4j</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/neo4j.html#neo4j" title="Neo4j" class="sidebar-link">Neo4j</a></li></ul></li></ul></section></li><li><a href="/books-note.html" title="读书笔记" class="sidebar-link">读书笔记</a></li><li><a href="/update_log.html" title="更新记录" class="sidebar-link">更新记录</a></li></ul></aside> <main class="page"> <div class="theme-antdocs-content content__default"><h2 id="neo4j"><a href="#neo4j" class="header-anchor">#</a> Neo4j</h2> <div class="language-shell extra-class"><pre class="language-shell"><code>create database movies
+</code></pre></div><h3 id="cypher-syntax"><a href="#cypher-syntax" class="header-anchor">#</a> Cypher Syntax</h3> <p>https://neo4j.com/docs/cypher-manual/4.2/</p> <div class="language- extra-class"><pre class="language-text"><code>CREATE (ee:Person { name: &quot;Emil&quot;, from: &quot;Sweden&quot;, klout: 99 });
+MATCH (ee:Person) WHERE ee.name = &quot;Emil&quot; RETURN ee;
+
+MATCH (ee:Person) WHERE ee.name = &quot;Emil&quot;
+CREATE (js:Person { name: &quot;Johan&quot;, from: &quot;Sweden&quot;, learn: &quot;surfing&quot; }),
+(ir:Person { name: &quot;Ian&quot;, from: &quot;England&quot;, title: &quot;author&quot; }),
+(rvb:Person { name: &quot;Rik&quot;, from: &quot;Belgium&quot;, pet: &quot;Orval&quot; }),
+(ally:Person { name: &quot;Allison&quot;, from: &quot;California&quot;, hobby: &quot;surfing&quot; }),
+(ee)-[:KNOWS {since: 2001}]-&gt;(js),(ee)-[:KNOWS {rating: 5}]-&gt;(ir),
+(js)-[:KNOWS]-&gt;(ir),(js)-[:KNOWS]-&gt;(rvb),
+(ir)-[:KNOWS]-&gt;(js),(ir)-[:KNOWS]-&gt;(ally),
+(rvb)-[:KNOWS]-&gt;(ally);
+
+MATCH (ee:Person)-[:KNOWS]-(friends)
+WHERE ee.name = &quot;Emil&quot; RETURN ee, friends;
+
+MATCH (js:Person)-[:KNOWS]-()-[:KNOWS]-(surfer)
+WHERE js.name = &quot;Johan&quot; AND surfer.hobby = &quot;surfing&quot;
+RETURN DISTINCT surfer;
+
+PROFILE MATCH (js:Person)-[:KNOWS]-()-[:KNOWS]-(surfer)
+WHERE js.name = &quot;Johan&quot; AND surfer.hobby = &quot;surfing&quot;
+RETURN DISTINCT surfer
+</code></pre></div><blockquote><p>CREATE
+(标签:节点{属性名1:属性值1,属性名2:属性值2,属性N:属性值N})</p></blockquote> <div class="language- extra-class"><pre class="language-text"><code>CREATE (CloudAtlas:Movie {title:'Cloud Atlas', released:2012, tagline:'Everything is connected'})
+</code></pre></div><blockquote><p>CREATE
+(标签1)-[:关系{属性名1:属性值1,属性名2:属性值2,属性名N:属性值N}]-&gt;(标签2)</p></blockquote> <div class="language- extra-class"><pre class="language-text"><code>CREATE
+(TomH)-[:ACTED_IN {roles:['Zachry', 'Dr. Henry Goose', 'Isaac Sachs', 'Dermot Hoggins']}]-&gt;(CloudAtlas),
+</code></pre></div><blockquote><p>MATCH
+(标签:{属性名1:属性值1,属性名2:属性值2,属性名N:属性值N})
+RETURN 标签</p></blockquote> <div class="language- extra-class"><pre class="language-text"><code>MATCH (cloudAtlas {title: &quot;Cloud Atlas&quot;}) RETURN cloudAtlas
+
+// people 为别名
+MATCH (people:Person) RETURN people.name LIMIT 10
+
+MATCH (nineties:Movie) WHERE nineties.released &gt;= 1990 AND nineties.released &lt; 2000 RETURN nineties.title
+
+MATCH (tom:Person {name: &quot;Tom Hanks&quot;})-[:ACTED_IN]-&gt;(tomHanksMovies) RETURN tom,tomHanksMovies
+
+MATCH (cloudAtlas {title: &quot;Cloud Atlas&quot;})&lt;-[:DIRECTED]-(directors) RETURN directors.name
+
+MATCH (tom:Person {name:&quot;Tom Hanks&quot;})-[:ACTED_IN]-&gt;(m)&lt;-[:ACTED_IN]-(coActors) RETURN coActors.name
+
+MATCH (people:Person)-[relatedTo]-(:Movie {title: &quot;Cloud Atlas&quot;}) RETURN people.name, Type(relatedTo), relatedTo
+
+WITH TomH as a
+MATCH (a)-[:ACTED_IN]-&gt;(m)&lt;-[:DIRECTED]-(d) RETURN a,m,d LIMIT 10
+
+MATCH (bacon:Person {name:&quot;Kevin Bacon&quot;})-[*1..4]-(hollywood)
+RETURN DISTINCT hollywood
+
+MATCH p=shortestPath(
+(bacon:Person {name:&quot;Kevin Bacon&quot;})-[*]-(meg:Person {name:&quot;Meg Ryan&quot;})
+)
+RETURN p
+
+
+MATCH (tom:Person {name:&quot;Tom Hanks&quot;})-[:ACTED_IN]-&gt;(m)&lt;-[:ACTED_IN]-(coActors),(coActors)-[:ACTED_IN]-&gt;(m2)&lt;-[:ACTED_IN]-(cocoActors)
+WHERE NOT (tom)-[:ACTED_IN]-&gt;()&lt;-[:ACTED_IN]-(cocoActors) AND tom &lt;&gt; cocoActors
+RETURN cocoActors.name AS Recommended, count(*) AS Strength ORDER BY Strength DESC
+
+MATCH (tom:Person {name:&quot;Tom Hanks&quot;})-[:ACTED_IN]-&gt;(m)&lt;-[:ACTED_IN]-(coActors),(coActors)-[:ACTED_IN]-&gt;(m2)&lt;-[:ACTED_IN]-(cruise:Person {name:&quot;Tom Cruise&quot;})
+RETURN tom, m, coActors, m2, cruise
+
+MATCH (n) RETURN n
+// Nodes can't be deleted if relationships exist
+// Delete both nodes and relationships together
+// Delete all Movie and Person nodes, and their relationships
+MATCH (n) DETACH DELETE n
+
+
+CREATE (ee:Person { name: &quot;Emil&quot;, from: &quot;Sweden&quot;, klout: 99 })
+MATCH (ee:Person) WHERE ee.name = &quot;Emil&quot; RETURN ee;
+</code></pre></div><h3 id="from-rdbms-to-grapth"><a href="#from-rdbms-to-grapth" class="header-anchor">#</a> FROM RDBMS TO grapth</h3> <h4 id="demo1-product-catalog"><a href="#demo1-product-catalog" class="header-anchor">#</a> demo1: Product Catalog</h4> <ul><li>Load records</li></ul> <div class="language- extra-class"><pre class="language-text"><code>LOAD CSV WITH HEADERS FROM &quot;http://data.neo4j.com/northwind/products.csv&quot; AS row
+CREATE (n:Product)
+SET n = row,
+n.unitPrice = toFloat(row.unitPrice),
+n.unitsInStock = toInteger(row.unitsInStock), n.unitsOnOrder = toInteger(row.unitsOnOrder),
+n.reorderLevel = toInteger(row.reorderLevel), n.discontinued = (row.discontinued &lt;&gt; &quot;0&quot;)
+
+LOAD CSV WITH HEADERS FROM &quot;http://data.neo4j.com/northwind/categories.csv&quot; AS row
+CREATE (n:Category)
+SET n = row
+
+LOAD CSV WITH HEADERS FROM &quot;http://data.neo4j.com/northwind/suppliers.csv&quot; AS row
+CREATE (n:Supplier)
+SET n = row
+</code></pre></div><ul><li>Create indexes</li></ul> <div class="language- extra-class"><pre class="language-text"><code>CREATE INDEX ON :Product(productID)
+CREATE INDEX ON :Category(categoryID)
+CREATE INDEX ON :Supplier(supplierID)
+</code></pre></div><ul><li>Create data relationships</li></ul> <div class="language- extra-class"><pre class="language-text"><code>MATCH (p:Product),(c:Category)
+WHERE p.categoryID = c.categoryID
+CREATE (p)-[:PART_OF]-&gt;(c)
+
+MATCH (p:Product),(s:Supplier)
+WHERE p.supplierID = s.supplierID
+CREATE (s)-[:SUPPLIES]-&gt;(p)
+</code></pre></div><ul><li>Query</li></ul> <div class="language- extra-class"><pre class="language-text"><code>MATCH (s:Supplier)--&gt;(:Product)--&gt;(c:Category)
+RETURN s.companyName as Company, collect(distinct c.categoryName) as Categories
+
+MATCH (c:Category {categoryName:&quot;Produce&quot;})&lt;--(:Product)&lt;--(s:Supplier)
+RETURN DISTINCT s.companyName as ProduceSuppliers
+</code></pre></div><h4 id="demo2-customer-orders"><a href="#demo2-customer-orders" class="header-anchor">#</a> demo2: Customer Orders</h4> <ul><li>Load and index records</li></ul> <div class="language- extra-class"><pre class="language-text"><code>LOAD CSV WITH HEADERS FROM &quot;http://data.neo4j.com/northwind/customers.csv&quot; AS row
+CREATE (n:Customer)
+SET n = row
+
+LOAD CSV WITH HEADERS FROM &quot;http://data.neo4j.com/northwind/orders.csv&quot; AS row
+CREATE (n:Order)
+SET n = row
+
+CREATE INDEX ON :Customer(customerID)
+CREATE INDEX ON :Order(orderID)
+</code></pre></div><ul><li>Create data relationships</li></ul> <div class="language- extra-class"><pre class="language-text"><code>MATCH (c:Customer),(o:Order)
+WHERE c.customerID = o.customerID
+CREATE (c)-[:PURCHASED]-&gt;(o)
+</code></pre></div><h4 id="demo3-customer-order-graph"><a href="#demo3-customer-order-graph" class="header-anchor">#</a> demo3: Customer Order Graph</h4> <ul><li>Load and index records</li></ul> <div class="language- extra-class"><pre class="language-text"><code>LOAD CSV WITH HEADERS FROM &quot;http://data.neo4j.com/northwind/order-details.csv&quot; AS row
+MATCH (p:Product), (o:Order)
+WHERE p.productID = row.productID AND o.orderID = row.orderID
+CREATE (o)-[details:ORDERS]-&gt;(p)
+SET details = row,
+details.quantity = toInteger(row.quantity)
+</code></pre></div><ul><li>Query</li></ul> <div class="language- extra-class"><pre class="language-text"><code>MATCH (cust:Customer)-[:PURCHASED]-&gt;(:Order)-[o:ORDERS]-&gt;(p:Product),
+  (p)-[:PART_OF]-&gt;(c:Category {categoryName:&quot;Produce&quot;})
+RETURN DISTINCT cust.contactName as CustomerName, SUM(o.quantity) AS TotalProductsPurchased
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/openresty/openresty.html" class="prev"><i aria-label="icon: left" class="anticon anticon-left"><svg viewBox="64 64 896 896" focusable="false" data-icon="left" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"></path></svg></i>
+        OpenResty
+      </a></span> <span class="next"><a href="/books-note.html">
+        读书笔记
+        <i aria-label="icon: right" class="anticon anticon-right"><svg viewBox="64 64 896 896" focusable="false" data-icon="right" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"></path></svg></i></a></span></p></div> </main> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.38984056.js" defer></script><script src="/assets/js/3.3d2e4cc1.js" defer></script><script src="/assets/js/36.19da97f7.js" defer></script>
+  </body>
+</html>
