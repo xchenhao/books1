@@ -7,7 +7,15 @@ module.exports = {
     }
   },
   plugins: [
-    'flowchart'  // https://flowchart.vuepress.ulivz.com/
+    'flowchart',  // https://flowchart.vuepress.ulivz.com/
+    [
+      "vuepress-plugin-toolbar",
+      {
+        // https://zq99299.github.io/vuepress-plugin/vuepress-plugin-toolbar
+        // https://github.com/zq99299?tab=repositories
+        pageNav: {name: '导航'},
+      }
+    ],
   ],
   // 文档 https://www.vuepress.cn/theme/default-theme-config.html
   // 主题 https://antdocs.seeyoz.cn/guide/

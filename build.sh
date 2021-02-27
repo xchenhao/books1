@@ -9,4 +9,4 @@ vuepress build ./articles -d ./docs
 cp -r others/* ./docs 
 
 cd ./docs 
-npx http-server --port 8080
+npx http-server --port 8088
