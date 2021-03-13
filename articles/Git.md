@@ -13,7 +13,7 @@ git push origin localbranch:remotebranch
 # 打包
 git bundle create myrepo.bundle HEAD master
 # 对指定的提交区间进行打包
-git bunlle create commits.bundle master ^9a466c5
+git bundle create commits.bundle master ^9a466c5
 # 验证是否是合法的 Git 包
 git bundle verify ./myrepo.bundle
 # 查看包中可以导入的分支

@@ -1,6 +1,7 @@
 module.exports = {
   title: '不可思议',
   description: 'xchenhao.gitee.io',
+  //  闽ICP备17026538号-3 books1.cn
   markdown: {
     toc: {
       includeLevel:[1, 2, 3, 4]
