@@ -1,4 +1,4 @@
-### SQLite UDF/UDAF
+### SQLite UDF/UDAF 的实现
 
 ```php
 <?php
@@ -7,8 +7,8 @@
 // https://blog.csdn.net/wyqwilliam/article/details/84500578
 
 // 参考：
-// php 版本：https://www.php.net/manual/en/ref.pdo-sqlite.connection.php
-// go 版本：https://github.com/mattn/go-sqlite3/pull/229/files
+// php 版本实现：https://www.php.net/manual/en/ref.pdo-sqlite.connection.php
+// go 版本实现：https://github.com/mattn/go-sqlite3/pull/229/files
 
 $db = new \PDO('sqlite::memory:');
 //$db->setAttribute(PDO::ATTR)

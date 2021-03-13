@@ -63,7 +63,7 @@ module.exports = {
           {title: 'MongoDB 起步', path: '/mongodb/MongoBegin'},
           {title: '随机排序的一种优化实现', path: '/orderbyrand.md'},
           {title: '数据库分页的几种实现', path: '/db_pagination.md'},
-          {title: 'SQLite UDF/UDAF', path: '/sqlite_udf_udaf'},
+          {title: 'SQLite UDF/UDAF 的实现', path: '/sqlite_udf_udaf'},
         ]
       },
       {
