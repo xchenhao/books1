@@ -60,6 +60,8 @@ module.exports = {
           {title: 'ODPS', path: '/ODPS'},
           {title: 'MongoDB 基础', path: '/mongodb/MongoBasis'},
           {title: 'MongoDB 起步', path: '/mongodb/MongoBegin'},
+          {title: '随机排序的一种优化实现 && 数据库分页的几种实现', path: '/orderbyrand_pagination.md'},
+          {title: 'SQLite UDF/UDAF', path: '/sqlite_udf_udaf'},
         ]
       },
       {
