@@ -1,19 +1,4 @@
-### 随机排序的一种优化实现 && 数据库分页的几种实现
-
-[TOC]
-
-#### 随机排序的一种优化实现
-
-```sql
-SELECT * FROM <table_name> ORDER BY RAND() LIMIT 50;
-
-WITH a AS (
-	SELECT id FROM <table_name> WHERE RAND() < (<expected_count> * N)/<row_count>
-)
-SELECT * FROM <table_name> WHERE id IN (SELECT id FROM a);
-```
-
-#### 数据库分页的几种实现
+### 数据库分页的几种实现
 
 数据库的分页总体上有两种方式：
 
@@ -21,7 +6,7 @@ SELECT * FROM <table_name> WHERE id IN (SELECT id FROM a);
 - 游标方式
 - 滚动方式
 
-##### SQL
+#### SQL
 
 ```sql
 -- 通过 LIMIT/OFFSET
@@ -77,7 +62,7 @@ END //
 DELIMITER ;
 ```
 
-##### MongoDB
+#### MongoDB
 
 ```js
 # limit/offset
@@ -101,7 +86,7 @@ while (datas.hasNext()) {
 ```
 
 
-##### Elasticsearch
+#### Elasticsearch
 ```js
 # from/size 方式
 POST <index>/_search
@@ -409,7 +394,7 @@ GET twitter/_search
 }
 ```
 
-##### 参考
+#### 参考
 
 -  https://blog.51cto.com/dmarsmiao/748186
 -  https://www.cnblogs.com/yaoweijun/p/8066691.html 
