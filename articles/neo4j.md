@@ -276,10 +276,12 @@ MATCH (h1:Hero),(h2:Hero) WHERE h1.name = line.head AND h2.name = line.tail AND 
 #### 索引
 
 > RETURN (:Hero{name:"曹操"})-[*..1]->(:Hero)
+>
 > ![image-20210227142908735](./images/neo4j/image-20210227142908735.png)
 
 > PROFILE RETURN (:Hero{name:"曹操"})-[*..1]->(:Hero)
 > EXPLAIN RETURN (:Hero{name:"曹操"})-[*..1]->(:Hero)
+>
 > ![no_index](./images/neo4j/no_index.png)
 
 
