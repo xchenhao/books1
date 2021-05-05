@@ -139,6 +139,7 @@ module.exports = {
           {title: 'Docker', path: '/Docker-note'},
           {title: 'OpenResty', path: '/openresty/openresty'},
           {title: 'Neo4j', path: '/neo4j'},
+          {title: 'URL Decode 的实现原理', path: '/urldecode'},
           {title: '复盘', path: '/fupan/fupan'},
         ]
       },
